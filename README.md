@@ -19,7 +19,9 @@ Rather than self-host this website, placing it here allows me to utilize GitHub 
 ## Credits
 
 Website design provided by:
+
 &ensp;Dimension by [HTML5 UP](html5up.net) | [@ajlkn](https://twitter.com/ajlkn)
+
 &ensp;Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
 
 Icons provided by [Font Awesome](fontawesome.io)
