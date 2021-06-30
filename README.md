@@ -14,7 +14,8 @@ Source code for my website.
 
 ## Background
 
-Rather than self-host this website, placing it here allows me to utilize GitHub Pages. Additionally, I'm using Cloudflare for DNS, CDN and bot protection.
+Rather than self-host this website, placing it here allows me to utilize GitHub Pages.\
+Additionally, I'm using Cloudflare for DNS, CDN and bot protection.
 
 ## Credits
 
