@@ -398,4 +398,9 @@
 						$main._show(location.hash.substr(1), true);
 					});
 
+    // Update the year dynamically in the footer
+		$(function() { // This ensures the code runs after the document is ready
+			$('#year').text(new Date().getFullYear());
+		});
+
 })(jQuery);
