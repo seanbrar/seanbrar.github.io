@@ -1,7 +1,7 @@
 # Personal Website *(seanbrar.github.io)*
 
 [![GitHub License](https://img.shields.io/badge/license-MIT-green)](LICENSE)
-[![GitHub License](https://img.shields.io/badge/license-Content-red)](CONTENT_LICENSE.md)
+[![GitHub License](https://img.shields.io/badge/license-CC--BY-blue)](CONTENT_LICENSE.md)
 [![standard-readme compliant](https://img.shields.io/badge/readme%20style-standard-brightgreen.svg?style=flat-square)](https://github.com/RichardLitt/standard-readme)
 
 Source code for my personal website, hosting my blog and professional information.
@@ -43,6 +43,6 @@ This project uses a dual licensing structure:
 
 1. **Website Theme and Code**: The website's theme, including all modifications and custom code, is licensed under the [MIT License](LICENSE). You are free to use, modify, and distribute the theme and code, subject to the terms of this license.
 
-2. **Content**: All original content (including but not limited to blog posts, articles, and images) is protected under a separate [Content License](CONTENT_LICENSE.md). This license restricts the reproduction, distribution, and use of the content without explicit permission.
+2. **Content**: All original content (including but not limited to blog posts, articles, and images) is licensed under the Creative Commons Attribution 4.0 International License (CC BY 4.0). The full text of this license is available in the [LICENSE_CONTENT](LICENSE_CONTENT) file. This license allows others to share, copy, redistribute, adapt, and build upon the content for any purpose, even commercially, as long as appropriate credit is given to the original author.
 
 Please review both license files for full details before using any part of this project.
