@@ -47,10 +47,10 @@ Since then, progress has been both fast and slow. It has become apparent that dr
 
 In this blog, I aim to:
 
-  1. Share insights from my own projects and experiments
-  2. Explore topics that interest me in a variety of fields
-  3. Discuss the social and ethical impacts of emerging technologies
-  4. Speculate on future advancements and their potential applications
+1. Share insights from my own projects and experiments
+2. Explore topics that interest me in a variety of fields
+3. Discuss the social and ethical impacts of emerging technologies
+4. Speculate on future advancements and their potential applications
 
 Humanity is approaching the dawn of a new age. There will be tremendous opportunities to shape the future into something extraordinary. I am asking you to join me in having the courage to dream big.
 

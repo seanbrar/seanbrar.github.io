@@ -1,4 +1,4 @@
-# Personal Website *(seanbrar.github.io)*
+# Personal Website _(seanbrar.github.io)_
 
 [![GitHub License](https://img.shields.io/badge/license-MIT-green)](LICENSE)
 [![GitHub License](https://img.shields.io/badge/license-CC--BY-blue)](CONTENT_LICENSE.md)
