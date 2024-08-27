@@ -1,7 +1,7 @@
 # Personal Website _(seanbrar.github.io)_
 
 [![GitHub License](https://img.shields.io/badge/license-MIT-green)](LICENSE)
-[![GitHub License](https://img.shields.io/badge/license-CC--BY-blue)](CONTENT_LICENSE.md)
+[![GitHub License](https://img.shields.io/badge/license-CC--BY-blue)](LICENSE_CONTENT)
 [![standard-readme compliant](https://img.shields.io/badge/readme%20style-standard-brightgreen.svg?style=flat-square)](https://github.com/RichardLitt/standard-readme)
 
 Source code for my personal website, hosting my blog and professional information.
