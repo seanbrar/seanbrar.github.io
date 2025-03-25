@@ -1,6 +1,52 @@
 /*****************************
+ * Global Scroll Behaviors
+ *****************************/
+
+ html {
+  /* Cross-browser scroll padding for anchor navigation */
+  scroll-padding-top: 80px; /* Set slightly larger than your nav bar height */
+}
+
+/* Chromium-specific enhancements */
+@supports (-webkit-appearance:none) {
+  #basics.anchor {
+    top: -80px !important; /* Stronger offset specifically for Chromium */
+  }
+}
+
+/* For smaller screens with potentially taller navigation bar */
+@media (max-width: 768px) {
+  html {
+    scroll-padding-top: 100px;
+  }
+  
+  @supports (-webkit-appearance:none) {
+    #basics.anchor {
+      top: -100px !important;
+    }
+  }
+}
+
+/*****************************
  * CV shared styles
  *****************************/
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* We don't need the basics-spacer anymore, the scroll-padding handles it */
+.basics-spacer {
+  display: none; /* Hide instead of adding height */
+}
 
 div.container-link-button {
   margin-right: 0.5rem;
@@ -195,26 +241,51 @@ ul.timeline li::before {
   top: -0.5rem;
 }
 
-/*ul.timeline::before {
-     content: "●";
-     font-size: 1em;
-     display: inline-block;
-     margin: 0;
-     padding: 0;
-     position: relative;
-     left: -2px;
-     top: 0.4rem;
-     color: var(--global-text-color);
+/*****************************
+ * Basics section styles
+ *****************************/
+
+.basics {
+  .name {
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+    color: var(--global-text-color);
+  }
+
+  .label {
+    font-size: 1.5rem;
+    color: var(--global-theme-color);
+    margin-bottom: 1rem;
+  }
+
+  .location {
+    margin-bottom: 1rem;
+    color: var(--global-text-color-light);
+    
+    i {
+      margin-right: 0.5rem;
+      color: var(--global-theme-color);
+    }
+  }
+
+  .profiles {
+    margin-bottom: 1rem;
+    
+    .profile-link {
+      display: inline-block;
+      margin-right: 1.5rem;
+      color: var(--global-text-color);
+      text-decoration: none;
+      
+      &:hover {
+        color: var(--global-theme-color);
+      }
+      
+      i {
+        margin-right: 0.5rem;
+        color: var(--global-theme-color);
+      }
+    }
+  }
 }
- ul.timeline::after {
-     content: "●";
-     font-size: 1em;
-     display: inline-block;
-     margin: 0;
-     padding: 0;
-     position: relative;
-     left: -2px;
-     top: -1rem;
-     color: var(--global-text-color);
-}
-*/
