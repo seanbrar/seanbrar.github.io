@@ -244,10 +244,28 @@ ul.task-list input[type="checkbox"] {
 // Navbar customization
 
 .navbar {
-  box-shadow: none;
-  border-bottom: 1px solid var(--global-divider-color);
   background-color: var(--global-bg-color);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  border-bottom: 1px solid var(--global-divider-color);
   opacity: 0.95;
+  transition: background-color 0.3s ease;
+
+  .navbar-brand {
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+
+    .navbar-brand-inner-wrapper {
+      display: flex;
+      align-items: center;
+
+      .navbar-logo {
+        height: 30px;
+        width: auto;
+        margin-right: 10px;
+        filter: var(--global-logo-filter);
+      }
+    }
+  }
 }
 
 .navbar .dropdown-menu {
@@ -395,6 +413,25 @@ ul.task-list input[type="checkbox"] {
   }
 }
 
+// Media query for smaller screens
+@media (max-width: 576px) {
+  .navbar {
+    .navbar-brand {
+      .navbar-brand-inner-wrapper {
+        .navbar-logo {
+          height: 24px; // Smaller logo size for mobile
+        }
+      }
+    }
+  }
+}
+
+// Custom Title Margin
+
+.post-header .post-title {
+  margin-bottom: 0;
+}
+
 // Social (bottom)
 
 .social {
@@ -438,6 +475,17 @@ ul.task-list input[type="checkbox"] {
 
   .contact-note {
     font-size: 0.8rem;
+  }
+
+  .logo-wrapper {
+    margin-top: 3rem;
+    text-align: center;
+
+    .footer-logo {
+      max-width: 150px;
+      height: auto;
+      filter: var(--global-logo-filter);
+    }
   }
 }
 
