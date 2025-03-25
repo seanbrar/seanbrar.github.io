@@ -43,6 +43,10 @@
   --global-danger-block-text: #600;
   --global-danger-block-title: #c00;
 
+  // Custom colors
+  --global-about-subtitle: #{$rich-purple-color};
+  --global-logo-filter: invert(1);
+
   #light-toggle-system {
     padding-left: 10px;
     padding-top: 12px;
@@ -113,6 +117,10 @@ html[data-theme="dark"] {
   --global-danger-block-bg: #ffe0e0;
   --global-danger-block-text: #600;
   --global-danger-block-title: #c00;
+
+  // Custom colors
+  --global-about-subtitle: #{$blue-color};
+  --global-logo-filter: none;
 
   .only-light {
     display: none;
