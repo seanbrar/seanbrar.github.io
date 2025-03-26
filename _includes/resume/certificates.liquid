@@ -1,6 +1,6 @@
 {% assign certificates = data[1] | sort: 'date' | reverse %}
 
-<div class="certificates-container">
+<div class="certificates-container font-weight-light">
   {% assign ai_certs = certificates | where_exp: "cert", "cert.category == 'AI/ML'" %}
   {% assign systems_certs = certificates | where_exp: "cert", "cert.category == 'Systems'" %}
   {% assign other_certs = certificates | where_exp: "cert", "cert.category == null or cert.category != 'AI/ML' and cert.category != 'Systems'" %}
@@ -15,7 +15,7 @@
       <div class="cert-items">
         {% for cert in ai_certs %}
           <div class="cert-item">
-            <div class="cert-name">
+            <div class="cert-name font-weight-bold">
               {% if cert.url and cert.url != "" %}
                 <a href="{{ cert.url }}" target="_blank" rel="noopener noreferrer">{{ cert.name }}</a>
               {% else %}
@@ -42,7 +42,7 @@
       <div class="cert-items">
         {% for cert in systems_certs %}
           <div class="cert-item">
-            <div class="cert-name">
+            <div class="cert-name font-weight-bold">
               {% if cert.url and cert.url != "" %}
                 <a href="{{ cert.url }}" target="_blank" rel="noopener noreferrer">{{ cert.name }}</a>
               {% else %}
@@ -70,7 +70,7 @@
       <div class="cert-items">
         {% for cert in other_certs %}
           <div class="cert-item">
-            <div class="cert-name">
+            <div class="cert-name font-weight-bold">
               {% if cert.url and cert.url != "" %}
                 <a href="{{ cert.url }}" target="_blank" rel="noopener noreferrer">{{ cert.name }}</a>
               {% else %}
