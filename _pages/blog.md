@@ -123,9 +123,19 @@ pagination:
     <li>
 
 {% if post.thumbnail %}
-
 <div class="row">
-          <div class="col-sm-9">
+  <!-- Thumbnail column: 
+       - 25% width on desktop (col-sm-3)
+       - Left position on desktop (order-sm-1)
+       - Below content on mobile (order-2) -->
+  <div class="col-sm-3 order-sm-1 order-2">
+    <img class="card-img" src="{{ post.thumbnail | relative_url }}" style="object-fit: cover; height: 90%" alt="image">
+  </div>
+  <!-- Content column:
+       - 75% width on desktop (col-sm-9)
+       - Right position on desktop (order-sm-2)
+       - Above thumbnail on mobile (order-1) -->
+  <div class="col-sm-9 order-sm-2 order-1">
 {% endif %}
         <h3>
         {% if post.redirect == blank %}
@@ -175,12 +185,7 @@ pagination:
     </p>
 
 {% if post.thumbnail %}
-
 </div>
-
-  <div class="col-sm-3">
-    <img class="card-img" src="{{ post.thumbnail | relative_url }}" style="object-fit: cover; height: 90%" alt="image">
-  </div>
 </div>
 {% endif %}
     </li>
