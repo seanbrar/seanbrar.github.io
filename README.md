@@ -55,6 +55,8 @@ This website is based on the 'al-folio' Jekyll theme. If you're interested in co
 
 Please note that due to the personal nature of this website, I am not accepting direct pull requests for content or major design changes at this time. However, I greatly appreciate your interest and support!
 
+For contact information or professional inquiries, please visit the live site at [seanbrar.com](https://seanbrar.com).
+
 ## License
 
 This project uses a dual licensing structure:
