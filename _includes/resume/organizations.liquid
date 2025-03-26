@@ -13,7 +13,11 @@
     <div class="organizations-wrapper">
       {% for org in professional_orgs %}
         <div class="organization">
-          {{ org.name }}{% unless forloop.last %},{% endunless %}
+          {% if org.url and org.url != "" %}
+            <a href="{{ org.url }}" class="org-link" target="_blank" rel="noopener noreferrer">{{ org.name }}</a>{% unless forloop.last %},{% endunless %}
+          {% else %}
+            {{ org.name }}{% unless forloop.last %},{% endunless %}
+          {% endif %}
         </div>
       {% endfor %}
     </div>
@@ -28,7 +32,11 @@
     <div class="organizations-wrapper">
       {% for org in academic_orgs %}
         <div class="organization">
-          {{ org.name }}{% unless forloop.last %},{% endunless %}
+          {% if org.url and org.url != "" %}
+            <a href="{{ org.url }}" class="org-link" target="_blank" rel="noopener noreferrer">{{ org.name }}</a>{% unless forloop.last %},{% endunless %}
+          {% else %}
+            {{ org.name }}{% unless forloop.last %},{% endunless %}
+          {% endif %}
         </div>
       {% endfor %}
     </div>
@@ -43,7 +51,11 @@
     <div class="organizations-wrapper">
       {% for org in service_orgs %}
         <div class="organization">
-          {{ org.name }}{% unless forloop.last %},{% endunless %}
+          {% if org.url and org.url != "" %}
+            <a href="{{ org.url }}" class="org-link" target="_blank" rel="noopener noreferrer">{{ org.name }}</a>{% unless forloop.last %},{% endunless %}
+          {% else %}
+            {{ org.name }}{% unless forloop.last %},{% endunless %}
+          {% endif %}
         </div>
       {% endfor %}
     </div>
