@@ -337,6 +337,29 @@ ul.timeline li::before {
   font-weight: 300;
 }
 
+.org-link {
+  color: inherit;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.org-link:hover {
+  color: var(--global-theme-color);
+  text-decoration: underline;
+}
+
+/* Optional: Add a subtle external link icon */
+.org-link::after {
+  content: "\f08e";
+  font-family: "Font Awesome 6 Free";
+  font-weight: 900;
+  font-size: 0.7rem;
+  margin-left: 0.25rem;
+  opacity: 0.5;
+  display: inline-block;
+  vertical-align: text-top;
+}
+
 /* Remove the media query for responsive grid adjustments since we're using a vertical layout */
 
 /*****************************
