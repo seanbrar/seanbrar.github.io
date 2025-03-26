@@ -448,3 +448,39 @@ ul.timeline li::before {
     grid-template-columns: 1fr;
   }
 }
+
+/*****************************
+ * CV Work Experience styles
+ *****************************/
+
+.title {
+  color: var(--global-theme-color);
+  font-weight: 500;
+}
+
+.title a {
+  color: var(--global-theme-color);
+  text-decoration: none;
+}
+
+.title a:hover {
+  text-decoration: underline;
+}
+
+/*****************************
+ * CV Projects styles
+ *****************************/
+
+.project-title {
+  color: var(--global-theme-color);
+  font-weight: 500;
+}
+
+.project-title a {
+  color: var(--global-theme-color);
+  text-decoration: none;
+}
+
+.project-title a:hover {
+  text-decoration: underline;
+}
