@@ -368,6 +368,7 @@ ul.timeline li::before {
 
 .certificates-container {
   margin-bottom: 2rem;
+  margin-left: 1rem;  /* Add left margin to match organizations section */
 }
 
 .cert-row {
@@ -382,22 +383,26 @@ ul.timeline li::before {
   display: flex;
   align-items: center;
   margin-bottom: 0.75rem;
-  font-weight: 500;
   color: var(--global-theme-color);
-  font-size: 1rem;
   border-bottom: 1px solid rgba(0, 0, 0, 0.1);
   padding-bottom: 0.5rem;
 }
 
 .category-header i {
   margin-right: 0.5rem;
-  font-size: 1rem;
+}
+
+.category-header span {
+  color: var(--global-theme-color);
 }
 
 .cert-items {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
   gap: 1rem;
+  margin-left: 2rem;  /* Keep existing indentation for items under categories */
+  margin-right: 1rem;
+  width: calc(100% - 2rem);
 }
 
 .cert-item {
@@ -408,9 +413,18 @@ ul.timeline li::before {
 }
 
 .cert-name {
-  font-weight: 500;
+  color: var(--global-theme-color);
   margin-bottom: 0.25rem;
   font-size: 0.9rem;
+}
+
+.cert-name a {
+  color: var(--global-theme-color);
+  text-decoration: none;
+}
+
+.cert-name a:hover {
+  text-decoration: underline;
 }
 
 .cert-details {
