@@ -1,28 +1,65 @@
-<table class="table table-cv table-sm table-borderless table-responsive table-cv-map">
-  {% assign skip_basics = 'image,profiles,location' | split: ',' %}
-  {% for content in data[1] %}
-    {%
-      if (content[1] == "") or (skip_basics contains
-      content[0])
-    %}
-      {% continue %}
-    {% endif %}
+<div class="row">
+  <div class="col-xs-12 col-sm-12 col-md-12 col-print-12">
+    <div class="basics">
+      {% if data[1].name %}
+        <h1 class="name" data-toc-skip>{{ data[1].name }}</h1>
+      {% endif %}
+      
+      {% if data[1].label %}
+        <h2 class="label" data-toc-skip>{{ data[1].label }}</h2>
+      {% endif %}
 
-    <tr>
-      <td class="p-1 pr-2 font-weight-bold">
-        <b>{{ content[0] | capitalize }}</b>
-      </td>
-      <td class="p-1 pl-2 font-weight-light text">
-        {% if content[0] == 'url' %}
-          <a href="{{ content[1] }}" target="_blank" rel="noopener noreferrer">{{ content[1] }}</a>
-        {% elsif content[0] == 'email' %}
-          <a href="mailto:{{ content[1] }}" target="_blank">{{ content[1] }}</a>
-        {% elsif content[0] == 'phone' %}
-          <a href="tel:{{ content[1] }}">{{ content[1] }}</a>
-        {% else %}
-          {{ content[1] }}
-        {% endif %}
-      </td>
-    </tr>
-  {% endfor %}
-</table>
+      {% if data[1].location %}
+        <div class="location">
+          <i class="fa-solid fa-location-dot"></i>
+          {{ data[1].location.city }}{% if data[1].location.region %}, {{ data[1].location.region }}{% endif %}{% if data[1].location.countryCode %}, {{ data[1].location.countryCode }}{% endif %}
+        </div>
+      {% endif %}
+
+      {% if data[1].profiles %}
+        <div class="profiles">
+          {% for profile in data[1].profiles %}
+            <a href="{{ profile.url }}" target="_blank" rel="noopener noreferrer" class="profile-link">
+              {% if profile.network == "GitHub" %}
+                <i class="fab fa-github"></i>
+              {% elsif profile.network == "LinkedIn" %}
+                <i class="fab fa-linkedin"></i>
+              {% elsif profile.network == "Website" %}
+                <i class="fas fa-globe"></i>
+              {% else %}
+                {{ profile.network }}
+              {% endif %}
+              {{ profile.username }}
+            </a>
+          {% endfor %}
+        </div>
+      {% endif %}
+
+      <table class="table table-cv table-sm table-borderless table-responsive table-cv-map">
+        {% assign skip_basics = 'image,profiles,location,name,label' | split: ',' %}
+        {% for content in data[1] %}
+          {% if (content[1] == "") or (skip_basics contains content[0]) %}
+            {% continue %}
+          {% endif %}
+
+          <tr>
+            <td class="p-1 pr-2 font-weight-bold">
+              <b>{{ content[0] | capitalize }}</b>
+            </td>
+            <td class="p-1 pl-2 font-weight-light text">
+              {% if content[0] == 'url' %}
+                <a href="{{ content[1] }}" target="_blank" rel="noopener noreferrer">{{ content[1] }}</a>
+              {% elsif content[0] == 'email' %}
+                <a href="mailto:{{ content[1] }}" target="_blank">{{ content[1] }}</a>
+              {% elsif content[0] == 'phone' %}
+                <a href="tel:{{ content[1] }}">{{ content[1] }}</a>
+              {% else %}
+                {{ content[1] }}
+              {% endif %}
+            </td>
+          </tr>
+        {% endfor %}
+      </table>
+    </div>
+  </div>
+</div>
