@@ -1,200 +1,310 @@
 {
   "basics": {
-    "name": "Albert Einstein",
-    "label": "Scientist",
-    "image": "",
-    "email": "albert@einstein.de",
-    "phone": "(912) 123-4567",
-    "url": "https://alshedivat.github.io/al-folio/",
-    "summary": "A German-born theoretical physicist, widely ranked among the greatest and most influential scientists of all time",
+    "name": "Sean Brar",
+    "label": "AI Researcher & Systems Engineer",
+    "email": "hello@seanbrar.com",
+    "url": "https://seanbrar.com",
+    "summary": "AI researcher pioneering context optimization for LLMs and RAG systems. Transitioning from enterprise infrastructure to cutting-edge AI applications. Combines implementation expertise with research innovation to develop practical solutions for complex challenges. Focused on advancing context handling methodologies and optimizing real-world AI system performance.",
     "location": {
-      "address": "2712 Broadway St",
-      "postalCode": "CA 94115",
-      "city": "San Francisco",
-      "countryCode": "US",
-      "region": "California"
+      "city": "Los Angeles",
+      "region": "California",
+      "countryCode": "US"
     },
     "profiles": [
       {
-        "network": "Twitter",
-        "username": "AlbertEinstein",
-        "url": "https://twitter.com/AlbertEinstein"
+        "network": "GitHub",
+        "username": "seanbrar",
+        "url": "https://github.com/seanbrar"
+      },
+      {
+        "network": "LinkedIn",
+        "username": "seanbrar",
+        "url": "https://linkedin.com/in/seanbrar"
+      },
+      {
+        "network": "Website",
+        "username": "Dreaming Ideas Blog",
+        "url": "https://dreaming-ideas.com"
       }
     ]
   },
-  "work": [
+  "projects": [
     {
-      "name": "Institute for Advanced Study, Princeton University",
-      "position": "Professor of Theoretical Physics",
-      "url": "https://example.com",
-      "startDate": "1933-01-01",
-      "endDate": "1955-01-01",
-      "summary": "Teaching at Palmer Physical Laboratory (now 302 Frist Campus Center). While not a professor at Princeton, I associated with the physics professors and continued to give lectures on campus.",
-      "highlights": ["Relativity"]
-    }
-  ],
-  "volunteer": [
-    {
-      "organization": "People's Climate March",
-      "location": "Zurich, Switzerland",
-      "position": "Lead Organizer",
-      "url": "https://example.com",
-      "startDate": "2014-04-01",
-      "endDate": "2015-07-01",
-      "summary": "Lead organizer for the New York City branch of the People's Climate March, the largest climate march in history.",
-      "highlights": ["Awarded 'Climate Hero' award by Greenpeace for my efforts organizing the march.", "Men of the year 2014 by Time magazine"]
-    }
-  ],
-  "education": [
-    {
-      "institution": "University of Zurich, Zurich, Switzerland",
-      "location": "Zurich, Switzerland",
-      "url": "https://www.uzh.ch/",
-      "area": "Software Development",
-      "studyType": "PhD",
-      "startDate": "1905-01-01",
-      "endDate": "1905-01-01",
-      "score": "10",
-      "courses": ["Theory of Relativity"]
-    }
-  ],
-  "awards": [
-    {
-      "title": "Nobel Prize in Physics",
-      "date": "1921-11-01",
-      "awarder": "Royal Swedish Academy of Sciences",
-      "url": "https://www.nobelprize.org/prizes/physics/1921/einstein/biographical/",
-      "summary": "The Nobel Prizes are five separate prizes that, according to Alfred Nobel's will of 1895, are awarded to 'those who, during the preceding year, have conferred the greatest benefit to humankind.'"
-    }
-  ],
-  "certificates": [
-    {
-      "name": "Machine Learning",
-      "date": "2018-01-01",
-      "issuer": "Stanford University",
-      "url": "https://example.com",
-      "icon": "fa-solid fa-location-dot"
+      "name": "ContextRAG",
+      "description": "A system for context-aware retrieval processing in large language models",
+      "highlights": [
+        "23% improved RAG retrieval accuracy",
+        "30% reduced token consumption",
+        "Multi-framework compatible architecture"
+      ],
+      "url": "https://github.com/seanbrar/ContextRAG",
+      "startDate": "2024",
+      "endDate": "Present"
     },
     {
-      "name": "Quantum Computing",
-      "date": "2018-01-01",
-      "issuer": "Stanford University",
-      "url": "https://example.com",
-      "icon": "fa-solid fa-tag"
+      "name": "Traffic Object Detection Model",
+      "description": "Capstone project for Caltech AI/ML certificate program",
+      "highlights": [
+        "Benchmarked 8 detection architectures",
+        "18% higher minority class detection",
+        "Achieved 76% mAP performance"
+      ],
+      "startDate": "2025-01",
+      "endDate": "2025-02"
     },
     {
-      "name": "Quantum Information",
-      "date": "2018-01-01",
-      "issuer": "Stanford University",
-      "url": "https://example.com",
-      "icon": "fa-solid fa-envelope"
+      "name": "paperweight",
+      "description": "Tool for automated academic paper filtering and summarization",
+      "highlights": [
+        "300+ papers/hour processing system",
+        "95% precision extraction algorithm",
+        "30-page to 2-page summarization"
+      ],
+      "url": "https://github.com/seanbrar/paperweight",
+      "startDate": "2024",
+      "endDate": "Present"
     },
     {
-      "name": "Quantum Cryptography",
-      "date": "2018-01-01",
-      "issuer": "Stanford University",
-      "url": "https://example.com",
-      "icon": "fa-solid fa-hashtag"
-    },
-    {
-      "name": "Quantum Communication",
-      "date": "2018-01-01",
-      "issuer": "Stanford University",
-      "url": "https://example.com",
-      "icon": "fa-solid fa-calendar"
-    },
-    {
-      "name": "Quantum Teleportation",
-      "date": "2018-01-01",
-      "issuer": "Stanford University",
-      "url": "https://example.com",
-      "icon": "fa-solid fa-clipboard-check"
-    }
-  ],
-  "publications": [
-    {
-      "name": "Zur Elektrody/namik bewegter Körper",
-      "publisher": "Annalen der Physik",
-      "releaseDate": "1905-06-30",
-      "url": "https://en.wikisource.org/wiki/Translation:On_the_Electrodynamics_of_Moving_Bodies",
-      "summary": "It concerned an interpretation of the Michelson–Morley experiment and the properties of light and time. Special relativity incorporates the principle that the speed of light is the same for all inertial observers regardless of the state of motion of the source."
-    },
-    {
-      "name": "Über einen die Erzeugung und Verwandlung des Lichtes betreffenden heuristischen Gesichtspunkt",
-      "publisher": "Annalen der Physik",
-      "releaseDate": "1905-03-18",
-      "url": "https://de.wikisource.org/wiki/Über_einen_die_Erzeugung_und_Verwandlung_des_Lichtes_betreffenden_heuristischen_Gesichtspunkt",
-      "summary": "In the second paper, he applied the quantum theory to light to explain the photoelectric effect. In particular, he used the idea of light quanta (photons) to explain experimental results, but stressed the importance of the experimental results. The importance of his work on the photoelectric effect earned him the Nobel Prize in Physics in 1921."
-    },
-    {
-      "name": "Die Grundlage der allgemeinen Relativitätstheorie",
-      "publisher": "Annalen der Physik",
-      "releaseDate": "1916-03-20",
-      "url": "https://de.wikisource.org/wiki/Die_Grundlage_der_allgemeinen_Relativitätstheorie",
-      "summary": "The publication of the theory of general relativity made him internationally famous. He was professor of physics at the universities of Zurich (1909–1911) and Prague (1911–1912), before he returned to ETH Zurich (1912–1914)."
+      "name": "Prickly Pairs",
+      "description": "AI-powered study aid for CompTIA certification exams",
+      "highlights": [
+        "Enhanced 2,400+ technical flashcards",
+        "40% reduced certification study time",
+        "Passed three CompTIA exams in 30 days"
+      ],
+      "url": "",
+      "startDate": "2024-05",
+      "endDate": "2024-06"
     }
   ],
   "skills": [
     {
-      "name": "Physics",
-      "level": "Master",
-      "icon": "fa-solid fa-hashtag",
+      "name": "Artificial Intelligence",
+      "level": "Advanced",
       "keywords": [
-        "Quantum Mechanics",
-        "Quantum Computing",
-        "Quantum Information",
-        "Quantum Cryptography",
-        "Quantum Communication",
-        "Quantum Teleportation"
+        "Large Language Models",
+        "Retrieval-Augmented Generation",
+        "Context Handling",
+        "Prompt Engineering",
+        "AI Systems Design"
+      ]
+    },
+    {
+      "name": "Programming",
+      "level": "Intermediate",
+      "keywords": [
+        "Python",
+        "API Integration",
+        "Data Processing",
+        "Shell Scripting",
+        "JSON/YAML"
+      ]
+    },
+    {
+      "name": "Systems Engineering",
+      "level": "Advanced",
+      "keywords": [
+        "Linux Administration",
+        "Cloud Infrastructure",
+        "Enterprise Media Systems",
+        "Networking",
+        "Troubleshooting"
+      ]
+    },
+    {
+      "name": "Cloud & DevOps",
+      "level": "Intermediate",
+      "keywords": [
+        "AWS",
+        "Docker",
+        "VPN Configuration",
+        "DNS Management",
+        "Virtualization"
       ]
     }
   ],
-  "languages": [
+  "work": [
     {
-      "language": "German",
-      "fluency": "Native speaker",
-      "icon": ""
+      "name": "ELEMENTS",
+      "position": "Support and Systems Engineer",
+      "startDate": "2023-08",
+      "endDate": "2025-01",
+      "summary": "High-level technical support and systems engineering for enterprise media solutions.",
+      "highlights": [
+        "Custom API workflow automation",
+        "Enterprise Linux systems management",
+        "Complex media pipeline integration",
+        "International technical problem solving"
+      ]
     },
     {
-      "language": "English",
-      "fluency": "Fluent",
-      "icon": ""
+      "name": "Latido203 Creative LLC",
+      "position": "Systems Engineer",
+      "startDate": "2023-02",
+      "endDate": "2023-07",
+      "summary": "Led technical operations and AI integration for creative agency.",
+      "highlights": [
+        "Led six-figure app development",
+        "Implemented ChatGPT/AutoGen solutions",
+        "AWS cloud infrastructure administration",
+        "Significant AI workflow efficiency gains"
+      ]
+    },
+    {
+      "name": "Brisa Del Mar Strategies",
+      "position": "IT Coordinator",
+      "startDate": "2022-07",
+      "endDate": "2023-01",
+      "summary": "Implemented technical solutions for political campaign organization.",
+      "highlights": [
+        "GPT minutes system, 96% time reduction",
+        "Secure VPN/Docker implementation",
+        "Data-driven campaign optimization",
+        "Critical data recovery execution"
+      ]
+    }
+  ],
+  "education": [
+    {
+      "institution": "California State University, Los Angeles",
+      "area": "Political Science and Government",
+      "studyType": "Bachelor of Arts",
+      "startDate": "2021",
+      "endDate": "2022",
+      "score": "3.9/4.0, summa cum laude",
+      "highlights": [
+        "3.9 GPA, summa cum laude",
+        "Computer Information Systems minor",
+        "National writing competition nominee",
+        "Best undergraduate political science paper"
+      ],
+      "courses": ["CIS 4380", "CIS 3050", "CIS 3010", "CIS 4840"]
+    },
+    {
+      "institution": "Glendale Community College",
+      "area": "Political Science and Government",
+      "studyType": "Associate Degree for Transfer",
+      "startDate": "2016",
+      "endDate": "2021",
+      "highlights": [
+        "Academic Honors at graduation",
+        "Unix/Linux systems coursework",
+        "Cybersecurity/ethical hacking training"
+      ],
+      "courses": ["CS/IS 172", "CS/IS 193"]
+    }
+  ],
+  "certificates": [
+    {
+      "name": "AI/ML Certificate Program",
+      "issuer": "Caltech",
+      "date": "2025-02",
+      "category": "AI/ML"
+    },
+    {
+      "name": "CompTIA Network+",
+      "issuer": "CompTIA",
+      "date": "2024-06",
+      "category": "Systems",
+      "url": "https://www.credly.com/badges/f060a70e-eb73-4c59-a8e9-8feb619a62b1"
+    },
+    {
+      "name": "CompTIA A+",
+      "issuer": "CompTIA",
+      "date": "2024-05",
+      "category": "Systems",
+      "url": "https://www.credly.com/badges/e4163fc6-6cc2-4e3b-9542-13edfaf5fbb6/public_url"
+    },
+    {
+      "name": "AI Strategy",
+      "issuer": "Cornell",
+      "date": "2023-06",
+      "category": "AI/ML"
+    },
+    {
+      "name": "Machine Learning Foundations",
+      "issuer": "Amazon Web Services",
+      "date": "2022-04",
+      "category": "AI/ML",
+      "url": "https://www.credly.com/badges/fb3a3de6-cc1b-4c34-a37e-82774f68488a"
+    }
+  ],
+  "organizations": [
+    {
+      "name": "Association for the Advancement of Artificial Intelligence (AAAI)",
+      "category": "Professional",
+      "startDate": "2024-08",
+      "endDate": "Present",
+      "url": "https://www.aaai.org/"
+    },
+    {
+      "name": "Association for Computing Machinery (ACM)",
+      "category": "Professional",
+      "startDate": "2021-08",
+      "endDate": "Present"
+    },
+    {
+      "name": "Pi Sigma Alpha",
+      "category": "Academic",
+      "startDate": "2021-09",
+      "endDate": "Present"
+    },
+    {
+      "name": "National Eagle Scout Association",
+      "category": "Service",
+      "startDate": "2021-09",
+      "endDate": "Present"
     }
   ],
   "interests": [
     {
-      "name": "Physics",
-      "icon": "fa-solid fa-tag",
+      "name": "AI Research",
       "keywords": [
-        "Quantum Mechanics",
-        "Quantum Computing",
-        "Quantum Information",
-        "Quantum Cryptography",
-        "Quantum Communication",
-        "Quantum Teleportation"
+        "Context Window Optimization",
+        "LLM Architecture",
+        "Knowledge Retrieval Systems"
+      ]
+    },
+    {
+      "name": "Technical Writing",
+      "keywords": [
+        "AI Systems Documentation",
+        "Research Blogging"
       ]
     }
   ],
-  "references": [
+  "awards": [
     {
-      "name": "Professor John Doe",
-      "icon": "fa-solid fa-laptop",
-      "reference": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam condimentum, diam quis convallis euismod, arcu mi ullamcorper lorem, a vestibulum nunc magna at sem. Sed in risus ac felis varius blandit. D"
+      "title": "Best Undergraduate Political Science Paper",
+      "date": "2022",
+      "awarder": "California State University, Los Angeles",
+      "summary": "Faculty-selected outstanding research showcasing superior analytical thinking and methodology."
     },
     {
-      "name": "Professor John Doe",
-      "icon": "fa-solid fa-thumbtack",
-      "reference": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam condimentum, diam quis convallis euismod, arcu mi ullamcorper lorem, a vestibulum nunc magna at sem. Sed in risus ac felis varius blandit. D"
+      "title": "Eagle Scout Rank",
+      "date": "2013",
+      "awarder": "Boy Scouts of America",
+      "summary": "Highest rank achieved by only 4% of scouts, demonstrating exceptional leadership and project execution."
     }
   ],
-  "projects": [
+  "volunteer": [
     {
-      "name": "Quantum Computing",
-      "summary": "Quantum computing is the use of quantum-mechanical phenomena such as superposition and entanglement to perform computation. Computers that perform quantum computations are known as quantum computers.",
-      "highlights": ["Quantum Teleportation", "Quantum Cryptography"],
-      "startDate": "2018-01-01",
-      "endDate": "2018-01-01",
-      "url": "https://example.com"
+      "organization": "Boy Scouts of America",
+      "position": "Eagle Scout Project Leader",
+      "startDate": "2012-04",
+      "endDate": "2012-12",
+      "summary": "Planned and executed a community service project to achieve Eagle Scout rank, demonstrating project management and leadership skills.",
+      "highlights": [
+        "Multi-level approved project plan",
+        "Team-based implementation management",
+        "Successful resource acquisition campaign",
+        "On-spec community project delivery"
+      ]
     }
-  ]
+  ],
+  "publications": [],
+  "references": [],
+  "meta": {
+    "theme": "al-folio"
+  }
 }
