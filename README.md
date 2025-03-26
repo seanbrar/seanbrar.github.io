@@ -10,6 +10,8 @@ Source code for my personal website, hosting my blog and professional informatio
 
 - [Background](#background)
 - [Install](#install)
+- [Features](#features)
+- [Technologies](#technologies)
 - [Credits](#credits)
 - [Contributing](#contributing)
 - [License](#license)
@@ -23,6 +25,22 @@ Rather than self-hosting, this website utilizes GitHub Pages for easy deployment
 ## Install
 
 For detailed installation and deployment instructions, please refer to the INSTALL.md file in this repo. This document provides comprehensive guidance on setting up the project locally and deploying it to GitHub Pages.
+
+## Features
+
+- Responsive design optimized for desktop and mobile viewing
+- Project showcase highlighting my AI research and systems engineering work
+- Comprehensive CV/resume presentation
+- Blog with categorized posts on AI, technology, and research topics
+- Dark/light mode toggle for comfortable reading
+
+## Technologies
+
+- Jekyll static site generator
+- HTML5, SCSS/CSS3, JavaScript
+- GitHub Pages for hosting
+- Cloudflare for DNS and security
+- Font Awesome for icons
 
 ## Credits
 
