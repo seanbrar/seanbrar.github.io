@@ -43,6 +43,15 @@
   border: 0;
 }
 
+/* CV List Indentation */
+.cv {
+  .list-group-item {
+    .items {
+      margin-left: 1.5rem;  /* Only indent the highlights list */
+    }
+  }
+}
+
 /* We don't need the basics-spacer anymore, the scroll-padding handles it */
 .basics-spacer {
   display: none; /* Hide instead of adding height */
@@ -287,5 +296,118 @@ ul.timeline li::before {
         color: var(--global-theme-color);
       }
     }
+  }
+}
+
+/*****************************
+ * CV Organizations styles
+ *****************************/
+
+.organizations-container {
+  padding: 0.5rem 0;
+  margin-left: 1rem;  /* Add left margin to indent entire section */
+}
+
+.org-category {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.category-label {
+  color: var(--global-theme-color);
+  // font-weight: 500;
+}
+
+.category-label i {
+  margin-right: 0.4rem;
+}
+
+.organizations-wrapper {
+  margin-left: 2rem;  /* Keep the additional indent for organizations under their categories */
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem;
+  font-size: 0.9rem;
+}
+
+.organization {
+  display: inline;
+  font-weight: 300;
+}
+
+/* Remove the media query for responsive grid adjustments since we're using a vertical layout */
+
+/*****************************
+ * CV Certificates styles
+ *****************************/
+
+.certificates-container {
+  margin-bottom: 2rem;
+}
+
+.cert-row {
+  margin-bottom: 1.5rem;
+}
+
+.cert-category {
+  width: 100%;
+}
+
+.category-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 0.75rem;
+  font-weight: 500;
+  color: var(--global-theme-color);
+  font-size: 1rem;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  padding-bottom: 0.5rem;
+}
+
+.category-header i {
+  margin-right: 0.5rem;
+  font-size: 1rem;
+}
+
+.cert-items {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1rem;
+}
+
+.cert-item {
+  padding: 0.5rem;
+  background-color: rgba(0, 0, 0, 0.02);
+  border-radius: 4px;
+  border-left: 3px solid var(--global-theme-color);
+}
+
+.cert-name {
+  font-weight: 500;
+  margin-bottom: 0.25rem;
+  font-size: 0.9rem;
+}
+
+.cert-details {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.8rem;
+  color: var(--global-text-color-light);
+}
+
+.cert-issuer {
+  font-weight: 400;
+}
+
+.cert-date {
+  font-weight: 400;
+}
+
+/* Responsive adjustments */
+@media (max-width: 576px) {
+  .cert-items {
+    grid-template-columns: 1fr;
   }
 }
