@@ -55,3 +55,21 @@ body.sticky-bottom-footer {
 *****************************************************************************/
 
 // TODO: redefine projects layout.
+
+// Project-specific h2 styling
+.post {
+  .projects {
+    h2 {
+      margin-top: 2rem;
+    }
+    // Override general h3 margin for projects
+    h3 {
+      margin-top: 1.75rem;
+    }
+
+    // Add consistent bottom margin to tables
+    table {
+      margin-bottom: 1.5rem;
+    }
+  }
+}
