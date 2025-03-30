@@ -15,10 +15,6 @@ body {
   h6 {
     scroll-margin-top: 66px;
   }
-
-  h3 {
-    margin-top: 2.5rem;
-  }
 }
 
 body.fixed-top-nav {
@@ -62,18 +58,26 @@ body.sticky-bottom-footer {
 
 // Project-specific h2 styling
 .post {
-  .projects {
-    h2 {
-      margin-top: 2rem;
-    }
-    // Override general h3 margin for projects
-    h3 {
-      margin-top: 1.75rem;
-    }
+  // Blog post specific h3 margin
+  &.post-content h3 {
+    margin-top: 2.5rem;
+  }
 
-    // Add consistent bottom margin to tables
-    table {
-      margin-bottom: 1.5rem;
+  // Project write-up specific styles
+  &.project-content {
+    .projects {
+      h2 {
+        margin-top: 2rem;
+      }
+      // Override general h3 margin for projects
+      h3 {
+        margin-top: 1.75rem;
+      }
+
+      // Add consistent bottom margin to tables
+      table {
+        margin-bottom: 1.5rem;
+      }
     }
   }
 }
