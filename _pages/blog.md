@@ -59,7 +59,6 @@ pagination:
 {% assign featured_posts = site.posts | where: "featured", "true" %}
 {% if featured_posts.size > 0 %}
 <br>
-
 <div class="container featured-posts">
 {% assign is_even = featured_posts.size | modulo: 2 %}
 <div class="row row-cols-{% if featured_posts.size <= 2 or is_even == 0 %}2{% else %}3{% endif %}">
@@ -123,7 +122,7 @@ pagination:
     <li>
 
 {% if post.thumbnail %}
-<div class="row">
+<div class="row align-items-center">
   <!-- Thumbnail column: 
        - 25% width on desktop (col-sm-3)
        - Left position on desktop (order-sm-1)
