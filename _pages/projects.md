@@ -5,7 +5,7 @@ permalink: /projects/
 description: Research and development in AI, natural language processing, and automation.
 nav: true
 nav_order: 1
-display_categories: [ai research, systems]
+display_categories: [applied ai systems]
 horizontal: false
 ---
 
