@@ -988,7 +988,7 @@ progress {
   position: fixed;
   left: 0;
   top: 56px;
-  z-index: 10;
+  z-index: 100;  // Higher z-index to ensure progress bar appears above book category navigation
 
   /* Dimensions */
   width: 100%;
@@ -1466,5 +1466,218 @@ figure.cover {
   /* mouse over link */
   a.cover-link:hover {
     color: #23212d !important;
+  }
+}
+
+/*******************************************************************************
+ * Bookshelf Styles
+ ******************************************************************************/
+
+/* Global scroll padding for anchor navigation */
+html {
+  scroll-padding-top: 80px; /* Set slightly larger than your nav bar height */
+}
+
+/* Chromium-specific enhancements */
+@supports (-webkit-appearance:none) {
+  .book-category {
+    scroll-margin-top: 80px;
+  }
+}
+
+/* For smaller screens with potentially taller navigation bar */
+@media (max-width: 768px) {
+  html {
+    scroll-padding-top: 100px;
+  }
+  
+  @supports (-webkit-appearance:none) {
+    .book-category {
+      scroll-margin-top: 100px;
+    }
+  }
+}
+
+.books-container {
+  max-width: var(--max-content-width);
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+.category-nav {
+  position: sticky;
+  top: 62px; // Account for navbar height
+  background: var(--global-bg-color);
+  z-index: 5;  // Lower z-index to stay below progress bar while still being above regular content
+  padding: 1rem 0;
+  border-bottom: 1px solid var(--global-divider-color);
+  margin-bottom: 2rem;
+  opacity: 0.95;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s ease;
+}
+
+.category-nav ul {
+  display: flex;
+  flex-wrap: wrap;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  gap: 1rem;
+}
+
+.category-nav a {
+  padding: 0.5rem 0.75rem;
+  color: var(--global-text-color);
+  text-decoration: none;
+  display: inline-block;
+  border-radius: 4px;
+  font-size: 0.9rem;
+  transition: all 0.2s ease;
+
+  &:hover {
+    color: var(--global-theme-color);
+  }
+
+  &.active {
+    color: var(--global-theme-color);
+    background-color: var(--global-card-bg-color);
+  }
+}
+
+.book-category {
+  margin-bottom: 3rem;
+  padding-top: 1rem;
+
+  h2 {
+    color: var(--global-text-color);
+    margin-bottom: 0.5rem;
+  }
+}
+
+.section-description {
+  margin-bottom: 1.5rem;
+  font-style: italic;
+  color: var(--global-text-color-light);
+  max-width: 800px;
+}
+
+.book-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 2rem;
+}
+
+.book-item {
+  background: var(--global-card-bg-color);
+  border: 1px solid var(--global-divider-color);
+  border-radius: 4px;
+  overflow: hidden;
+  transition: transform 0.2s ease;
+
+  &:hover {
+    transform: translateY(-3px);
+  }
+}
+
+.book-link {
+  text-decoration: none;
+  color: inherit;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.book-cover {
+  position: relative;
+  overflow: hidden;
+  height: 280px;
+  background-color: var(--global-card-bg-color);
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}
+
+.status-badge {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 0.7rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  background-color: var(--global-card-bg-color);
+  color: var(--global-text-color);
+}
+
+.book-info {
+  padding: 1rem;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.book-title {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--global-text-color);
+}
+
+.book-author {
+  margin: 0.25rem 0 0;
+  font-size: 0.85rem;
+  color: var(--global-text-color-light);
+}
+
+.book-description {
+  margin-top: 0.5rem;
+  font-size: 0.8rem;
+  color: var(--global-text-color-light);
+  line-height: 1.5;
+}
+
+@media (max-width: 768px) {
+  .category-nav {
+    top: 62px; // Keep the same top spacing as desktop
+    padding: 0.75rem 0; // Slightly reduce padding on mobile
+  }
+  
+  .category-nav ul {
+    overflow-x: auto;
+    padding-bottom: 0.5rem;
+    -webkit-overflow-scrolling: touch; // Smooth scrolling on iOS
+    scrollbar-width: none; // Hide scrollbar on Firefox
+    -ms-overflow-style: none; // Hide scrollbar on IE/Edge
+    
+    &::-webkit-scrollbar {
+      display: none; // Hide scrollbar on Chrome/Safari
+    }
+  }
+  
+  .book-grid {
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    gap: 1.5rem;
+  }
+  
+  .book-cover {
+    height: 220px;
+  }
+}
+
+// Add an extra breakpoint for very small screens
+@media (max-width: 576px) {
+  .category-nav {
+    padding: 0.5rem 0; // Further reduce padding on very small screens
+  }
+  
+  .category-nav a {
+    padding: 0.4rem 0.6rem; // Slightly reduce padding on links
+    font-size: 0.85rem; // Slightly smaller font size
   }
 }
