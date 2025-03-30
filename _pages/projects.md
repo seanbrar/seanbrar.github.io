@@ -2,7 +2,7 @@
 layout: page
 title: projects
 permalink: /projects/
-description: Research and development in AI, natural language processing, and automation.
+description: Applied AI systems for information retrieval, research discovery, and knowledge enhancement.
 nav: true
 nav_order: 1
 display_categories: [applied ai systems]
