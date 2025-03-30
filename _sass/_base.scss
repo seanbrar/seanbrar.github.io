@@ -172,6 +172,10 @@ ul.task-list input[type="checkbox"] {
   .card-img {
     width: 100%;
     padding-top: 1.25rem;
+    aspect-ratio: 3/2;
+    object-fit: cover;
+    height: auto;
+    max-width: 2496px;
   }
 
   .card-title {
@@ -642,8 +646,26 @@ footer.sticky-bottom {
   li {
     border-bottom: 1px solid var(--global-divider-color);
     list-style: none;
-    padding-top: 2rem;
+    padding-top: .34rem;
     padding-bottom: 2rem;
+
+    .row {
+      margin: 0;
+      align-items: flex-start;
+
+      .col-sm-3 {
+        padding-top: 1.66rem;
+      }
+    }
+
+    .card-img {
+      width: 100%;
+      aspect-ratio: 3/2;
+      object-fit: cover;
+      height: auto;
+      margin: 0;
+      padding: 0;
+    }
 
     .post-meta {
       color: var(--global-text-color-light);
