@@ -27,7 +27,7 @@ layout: default
       </p>
     {% endif %}
 
-    {% if page.started or page.finished or page.stars %}
+    {% if page.started or page.finished or page.stars or page.olid or page.isbn %}
       <p class="post-meta">
         {% if page.started %}
           <i class="fa-solid fa-play fa-sm" style="color: var(--global-tip-block) !important"></i> <em>{{ page.started }}</em>
@@ -62,12 +62,26 @@ layout: default
             </a>
           {% endif %}
         {% endif %}
-        {% if page.buy_link %}
+        {% if page.olid or page.isbn %}
           {% if page.started or page.finished or page.stars %}
             &nbsp;&middot;&nbsp;
           {% endif %}
-          <a target="_blank" href="{{ page.buy_link }}"
-            ><i class="fa-solid fa-cart-shopping"></i>
+          {% if page.olid %}
+            <a target="_blank" href="https://openlibrary.org/olid/{{ page.olid }}" title="Open Library" class="open-library-link">
+              <i class="fa-solid fa-book-open fa-sm"></i>
+            </a>
+          {% elsif page.isbn %}
+            <a target="_blank" href="https://openlibrary.org/isbn/{{ page.isbn }}" title="Open Library" class="open-library-link">
+              <i class="fa-solid fa-book-open fa-sm"></i>
+            </a>
+          {% endif %}
+        {% endif %}
+        {% if page.buy_link %}
+          {% if page.started or page.finished or page.stars or page.olid or page.isbn %}
+            &nbsp;&middot;&nbsp;
+          {% endif %}
+          <a target="_blank" href="{{ page.buy_link }}" title="Amazon">
+            <i class="fa-solid fa-cart-shopping"></i>
             {% assign is_amazon_link = page.buy_link | slice: 0, 19 %}
             {% if is_amazon_link == 'https://www.amazon.' %}
               <i class="fa-brands fa-amazon"></i>
