@@ -6,44 +6,87 @@ layout: page
 {% if page.collection and page.collection.size > 0 %}
   {% assign collection = site[page.collection] %}
   {% if collection and collection.size > 0 %}
-    {% for item in collection reversed %}
-      {% assign current_year = item.date | date: '%Y' %}
-      {% if current_year != year %}
-        {% unless forloop.first %}
-          </ul>
-        {% endunless %}
-        <h1 id="y{{item.date | date: "%Y"}}">
-          <a href="{{ current_year | prepend: '/books/' | relative_url }}">{{ current_year }}</a>
-        </h1>
+    
+    {% comment %} Define category mappings with explicit navigation labels using pipes as separators {% endcomment %}
+    {% assign category_data = 
+      "math-foundations:Mathematical Foundations:Building the rigorous mathematical foundation essential for advanced work in AI and algorithm development.:Foundations|
+       current-math:Current Mathematical Studies:Texts supporting my ongoing self-study work as I build toward advanced AI research capabilities.:Current Studies|
+       advanced-math:Advanced Mathematics Trajectory:The mathematical journey ahead as I prepare for graduate-level work in AI and machine learning.:Advanced|
+       cs-tech:Computer Science & Technology:Core technical knowledge spanning from algorithmic foundations to emerging AI systems and their implications.:Computer Science|
+       interdisciplinary:Interdisciplinary Perspectives:Works that enrich my technical perspective with insights from philosophy, history, and cognitive science.:Interdisciplinary|
+       influential:Influential Works:Books that have shaped my thinking, creativity, and approach to complex systems in unexpected ways.:Influential Works"
+    %}
+    
+    {% assign categories = category_data | split: "|" %}
+    
+    <div class="books-container">
+      <!-- Category Navigation -->
+      <div class="category-nav">
         <ul>
-          {% assign year = current_year %}
-      {% endif %}
-
-      <figure class="cover">
-        <a class="cover-link" href="{{ item.url | relative_url }}">
-          {% if item.cover %}
-            <img alt="{{ item.title }} cover" src="{{ item.cover | prepend: page.covers | relative_url }}" style="height:200px">
-          {% elsif item.olid %}
-            <img alt="{{ item.title }} cover" src="http://covers.openlibrary.org/b/olid/{{ item.olid }}-L.jpg?default=false" style="height:200px">
-          {% elsif item.isbn %}
-            <img alt="{{ item.title }} cover" src="http://covers.openlibrary.org/b/isbn/{{ item.isbn }}-L.jpg?default=false" style="height:200px">
-          {% endif %}
-          {% if item.status %}
-            {% assign statuses = 'abandoned,finished,interested,paused,queued,reading,reread' | split: ',' %}
-            {% assign status = item.status | downcase | strip %}
-            {% if statuses contains status %}
-              <figcaption class="{{ status | downcase }}">{{ status | upcase }}</figcaption>
-            {% else %}
-              <figcaption class="uncategorized">UNCATEGORIZED</figcaption>
-            {% endif %}
-          {% else %}
-            <figcaption class="uncategorized">UNCATEGORIZED</figcaption>
-          {% endif %}
-        </a>
-      </figure>
-      {% if forloop.last %}
+          {% for item in categories %}
+            {% assign cat_info = item | split: ":" %}
+            {% assign cat_id = cat_info[0] | strip %}
+            {% assign nav_label = cat_info[3] | strip %}
+            <li><a href="#{{ cat_id }}" {% if forloop.first %}class="active"{% endif %}>{{ nav_label }}</a></li>
+          {% endfor %}
         </ul>
-      {% endif %}
-    {% endfor %}
+      </div>
+
+      {% comment %} Render each category section {% endcomment %}
+      {% for item in categories %}
+        {% assign cat_info = item | split: ":" %}
+        {% assign cat_id = cat_info[0] | strip %}
+        {% assign cat_title = cat_info[1] | strip %}
+        {% assign cat_desc = cat_info[2] | strip %}
+        {% assign position_field = "position_" | append: cat_id | replace: "-", "_" %}
+        
+        <section id="{{ cat_id }}" class="book-category">
+          <h2>{{ cat_title }}</h2>
+          <p class="section-description">{{ cat_desc }}</p>
+          
+          <div class="book-grid">
+            {% comment %} Handle special case for CS/Tech section with multiple categories {% endcomment %}
+            {% if cat_id == "cs-tech" %}
+              {% assign filtered_items = collection | where_exp: "item", "item.categories contains 'cs' or item.categories contains 'ai' or item.categories contains 'data'" %}
+            {% elsif cat_id == "interdisciplinary" %}
+              {% assign filtered_items = collection | where_exp: "item", "item.categories contains 'philosophy' or item.categories contains 'history' or item.categories contains 'biography' or item.categories contains 'interdisciplinary'" %}
+            {% else %}
+              {% assign filtered_items = collection | where_exp: "item", "item.categories contains cat_id" %}
+            {% endif %}
+            
+            {% comment %} Sort by position field, then by title {% endcomment %}
+            {% assign sorted_items = filtered_items | sort: "title" | sort: position_field %}
+            
+            {% for item in sorted_items %}
+              <div class="book-item">
+                <a class="book-link" href="{{ item.url | relative_url }}">
+                  <div class="book-cover">
+                    {% if item.cover %}
+                      <img alt="{{ item.title }} cover" src="{{ item.cover | prepend: page.covers | relative_url }}">
+                    {% elsif item.olid %}
+                      <img alt="{{ item.title }} cover" src="http://covers.openlibrary.org/b/olid/{{ item.olid }}-L.jpg?default=false">
+                    {% elsif item.isbn %}
+                      <img alt="{{ item.title }} cover" src="http://covers.openlibrary.org/b/isbn/{{ item.isbn }}-L.jpg?default=false">
+                    {% endif %}
+                    
+                    {% if item.status %}
+                      {% assign status = item.status | downcase | strip %}
+                      <div class="status-badge {{ status }}">{{ status }}</div>
+                    {% endif %}
+                  </div>
+                  <div class="book-info">
+                    <h3 class="book-title">{{ item.title }}</h3>
+                    <p class="book-author">{{ item.author }}</p>
+                    {% if item.description_short %}
+                      <p class="book-description">{{ item.description_short }}</p>
+                    {% endif %}
+                  </div>
+                </a>
+              </div>
+            {% endfor %}
+          </div>
+        </section>
+      {% endfor %}
+    </div>
   {% endif %}
 {% endif %}
