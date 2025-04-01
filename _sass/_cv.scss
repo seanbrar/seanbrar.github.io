@@ -48,6 +48,14 @@
   .list-group-item {
     .items {
       margin-left: 1.5rem;  /* Only indent the highlights list */
+      
+      &.highlights-list {
+        .highlight-item {
+          font-size: 0.9rem;
+          display: inline-block;
+          line-height: 1.4;
+        }
+      }
     }
   }
 }
