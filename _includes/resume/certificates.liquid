@@ -1,89 +1,111 @@
 {% assign certificates = data[1] | sort: 'date' | reverse %}
 
-<div class="certificates-container font-weight-light">
-  {% assign ai_certs = certificates | where_exp: "cert", "cert.category == 'AI/ML'" %}
-  {% assign systems_certs = certificates | where_exp: "cert", "cert.category == 'Systems'" %}
-  {% assign other_certs = certificates | where_exp: "cert", "cert.category == null or cert.category != 'AI/ML' and cert.category != 'Systems'" %}
+{% assign ai_certs = certificates | where_exp: "cert", "cert.category == 'AI/ML'" %}
+{% assign systems_certs = certificates | where_exp: "cert", "cert.category == 'Systems'" %}
+{% assign other_certs = certificates | where_exp: "cert", "cert.category == null or cert.category != 'AI/ML' and cert.category != 'Systems'" %}
 
-  <div class="cert-row">
-    <div class="cert-category">
-      <div class="category-header">
-        <i class="fas fa-brain"></i>
-        <span>AI & Machine Learning</span>
-      </div>
-      
-      <div class="cert-items">
-        {% for cert in ai_certs %}
-          <div class="cert-item">
-            <div class="cert-name font-weight-bold">
-              {% if cert.url and cert.url != "" %}
-                <a href="{{ cert.url }}" target="_blank" rel="noopener noreferrer">{{ cert.name }}</a>
-              {% else %}
-                {{ cert.name }}
-              {% endif %}
-            </div>
-            <div class="cert-details">
-              <span class="cert-issuer">{{ cert.issuer }}</span>
-              <span class="cert-date">{{ cert.date | slice: 0, 7 }}</span>
-            </div>
-          </div>
-        {% endfor %}
-      </div>
+<div class="certificates-container">
+  {% if ai_certs.size > 0 %}
+  <div class="cert-category">
+    <div class="category-header">
+      <i class="fas fa-brain"></i>
+      <span>AI & Machine Learning</span>
+    </div>
+    
+    <div class="cert-items">
+      {% for cert in ai_certs %}
+        <div class="cert-item">
+          <table class="cert-table">
+            <tr>
+              <td class="cert-icon">
+                <i class="fas fa-certificate"></i>
+              </td>
+              <td class="cert-name" colspan="2">
+                {% if cert.url and cert.url != "" %}
+                  <a href="{{ cert.url }}" target="_blank" rel="noopener noreferrer">{{ cert.name }}</a>
+                {% else %}
+                  {{ cert.name }}
+                {% endif %}
+              </td>
+            </tr>
+            <tr>
+              <td></td>
+              <td class="cert-issuer">{{ cert.issuer }}</td>
+              <td class="cert-date">{{ cert.date | date: "%b %Y" }}</td>
+            </tr>
+          </table>
+        </div>
+      {% endfor %}
     </div>
   </div>
+  {% endif %}
   
-  <div class="cert-row">
-    <div class="cert-category">
-      <div class="category-header">
-        <i class="fas fa-server"></i>
-        <span>Systems & Infrastructure</span>
-      </div>
-      
-      <div class="cert-items">
-        {% for cert in systems_certs %}
-          <div class="cert-item">
-            <div class="cert-name font-weight-bold">
-              {% if cert.url and cert.url != "" %}
-                <a href="{{ cert.url }}" target="_blank" rel="noopener noreferrer">{{ cert.name }}</a>
-              {% else %}
-                {{ cert.name }}
-              {% endif %}
-            </div>
-            <div class="cert-details">
-              <span class="cert-issuer">{{ cert.issuer }}</span>
-              <span class="cert-date">{{ cert.date | slice: 0, 7 }}</span>
-            </div>
-          </div>
-        {% endfor %}
-      </div>
+  {% if systems_certs.size > 0 %}
+  <div class="cert-category">
+    <div class="category-header">
+      <i class="fas fa-server"></i>
+      <span>Systems & Infrastructure</span>
+    </div>
+    
+    <div class="cert-items">
+      {% for cert in systems_certs %}
+        <div class="cert-item">
+          <table class="cert-table">
+            <tr>
+              <td class="cert-icon">
+                <i class="fas fa-certificate"></i>
+              </td>
+              <td class="cert-name" colspan="2">
+                {% if cert.url and cert.url != "" %}
+                  <a href="{{ cert.url }}" target="_blank" rel="noopener noreferrer">{{ cert.name }}</a>
+                {% else %}
+                  {{ cert.name }}
+                {% endif %}
+              </td>
+            </tr>
+            <tr>
+              <td></td>
+              <td class="cert-issuer">{{ cert.issuer }}</td>
+              <td class="cert-date">{{ cert.date | date: "%b %Y" }}</td>
+            </tr>
+          </table>
+        </div>
+      {% endfor %}
     </div>
   </div>
+  {% endif %}
   
   {% if other_certs.size > 0 %}
-  <div class="cert-row">
-    <div class="cert-category">
-      <div class="category-header">
-        <i class="fas fa-certificate"></i>
-        <span>Additional Certifications</span>
-      </div>
-      
-      <div class="cert-items">
-        {% for cert in other_certs %}
-          <div class="cert-item">
-            <div class="cert-name font-weight-bold">
-              {% if cert.url and cert.url != "" %}
-                <a href="{{ cert.url }}" target="_blank" rel="noopener noreferrer">{{ cert.name }}</a>
-              {% else %}
-                {{ cert.name }}
-              {% endif %}
-            </div>
-            <div class="cert-details">
-              <span class="cert-issuer">{{ cert.issuer }}</span>
-              <span class="cert-date">{{ cert.date | slice: 0, 7 }}</span>
-            </div>
-          </div>
-        {% endfor %}
-      </div>
+  <div class="cert-category">
+    <div class="category-header">
+      <i class="fas fa-certificate"></i>
+      <span>Additional Certifications</span>
+    </div>
+    
+    <div class="cert-items">
+      {% for cert in other_certs %}
+        <div class="cert-item">
+          <table class="cert-table">
+            <tr>
+              <td class="cert-icon">
+                <i class="fas fa-certificate"></i>
+              </td>
+              <td class="cert-name" colspan="2">
+                {% if cert.url and cert.url != "" %}
+                  <a href="{{ cert.url }}" target="_blank" rel="noopener noreferrer">{{ cert.name }}</a>
+                {% else %}
+                  {{ cert.name }}
+                {% endif %}
+              </td>
+            </tr>
+            <tr>
+              <td></td>
+              <td class="cert-issuer">{{ cert.issuer }}</td>
+              <td class="cert-date">{{ cert.date | date: "%b %Y" }}</td>
+            </tr>
+          </table>
+        </div>
+      {% endfor %}
     </div>
   </div>
   {% endif %}
