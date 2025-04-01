@@ -116,41 +116,33 @@ layout: default
   </header>
 
   <article class="book-review-content">
-    {% if content == '' %}
-      <div class="book-review-wrapper">
+    {% comment %} Book Cover HTML {% endcomment %}
+    {% capture book_cover %}
+      <div class="review-cover">
+        {% if page.cover %}
+          <img class="review-cover-img" alt="Cover of {{ page.title }}" src="{{ site.baseurl }}/{{ page.cover }}">
+          <div class="review-cover-source">Cover image</div>
+        {% elsif page.olid %}
+          <img class="review-cover-img" alt="Cover of {{ page.title }}" src="http://covers.openlibrary.org/b/olid/{{ page.olid }}-L.jpg?default=false">
+          <div class="review-cover-source">Cover from <a href="https://openlibrary.org/olid/{{ page.olid }}" target="_blank">Open Library</a></div>
+        {% elsif page.isbn %}
+          <img class="review-cover-img" alt="Cover of {{ page.title }}" src="http://covers.openlibrary.org/b/isbn/{{ page.isbn }}-L.jpg?default=false">
+          <div class="review-cover-source">Cover from <a href="https://openlibrary.org/isbn/{{ page.isbn }}" target="_blank">Open Library</a></div>
+        {% endif %}
+      </div>
+    {% endcapture %}
+    
+    <div class="book-review-wrapper">
+      {{ book_cover }}
+      
+      {% if content == blank %}
         <div class="empty-review">
-          <div class="review-cover">
-            {% if page.cover %}
-              <img class="review-cover-img" alt="Cover of {{ page.title }}" src="{{ site.baseurl }}/{{ page.cover }}">
-              <div class="review-cover-source">Cover image</div>
-            {% elsif page.olid %}
-              <img class="review-cover-img" alt="Cover of {{ page.title }}" src="http://covers.openlibrary.org/b/olid/{{ page.olid }}-L.jpg?default=false">
-              <div class="review-cover-source">Cover from <a href="https://openlibrary.org/olid/{{ page.olid }}" target="_blank">Open Library</a></div>
-            {% elsif page.isbn %}
-              <img class="review-cover-img" alt="Cover of {{ page.title }}" src="http://covers.openlibrary.org/b/isbn/{{ page.isbn }}-L.jpg?default=false">
-              <div class="review-cover-source">Cover from <a href="https://openlibrary.org/isbn/{{ page.isbn }}" target="_blank">Open Library</a></div>
-            {% endif %}
+          {% assign status = page.status | upcase %}
+          <div class="clearfix">
+            <h4>{{ status }}</h4>
           </div>
         </div>
-        {% assign status = page.status | upcase %}
-        <div class="clearfix">
-          <h4>{{ status }}</h4>
-        </div>
-      </div>
-    {% else %}
-      <div class="book-review-wrapper">
-        <div class="review-cover">
-          {% if page.cover %}
-            <img class="review-cover-img" alt="Cover of {{ page.title }}" src="{{ site.baseurl }}/{{ page.cover }}">
-            <div class="review-cover-source">Cover image</div>
-          {% elsif page.olid %}
-            <img class="review-cover-img" alt="Cover of {{ page.title }}" src="http://covers.openlibrary.org/b/olid/{{ page.olid }}-L.jpg?default=false">
-            <div class="review-cover-source">Cover from <a href="https://openlibrary.org/olid/{{ page.olid }}" target="_blank">Open Library</a></div>
-          {% elsif page.isbn %}
-            <img class="review-cover-img" alt="Cover of {{ page.title }}" src="http://covers.openlibrary.org/b/isbn/{{ page.isbn }}-L.jpg?default=false">
-            <div class="review-cover-source">Cover from <a href="https://openlibrary.org/isbn/{{ page.isbn }}" target="_blank">Open Library</a></div>
-          {% endif %}
-        </div>
+      {% else %}
         <div class="book-content">
           <h4>
             {% if page.start %} Start Date: {{ page.start | date: '%-d %B %Y' }}. {% endif %}
