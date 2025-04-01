@@ -4,20 +4,44 @@
 {% assign academic_orgs = organizations | where_exp: "item", "item.category == 'Academic'" %}
 {% assign service_orgs = organizations | where_exp: "item", "item.category == 'Service'" %}
 
-<div class="organizations-container font-weight-light">
+<div class="organizations-container">
   {% if professional_orgs.size > 0 %}
   <div class="org-category">
-    <div class="category-label">
-      <i class="fas fa-briefcase me-2"></i>Professional
+    <div class="category-header">
+      <i class="fas fa-briefcase"></i>
+      <span>Professional</span>
     </div>
-    <div class="organizations-wrapper">
+    
+    <div class="orgs-list">
       {% for org in professional_orgs %}
-        <div class="organization">
-          {% if org.url and org.url != "" %}
-            <a href="{{ org.url }}" class="org-link" target="_blank" rel="noopener noreferrer">{{ org.name }}</a>{% unless forloop.last %},{% endunless %}
-          {% else %}
-            {{ org.name }}{% unless forloop.last %},{% endunless %}
-          {% endif %}
+        <div class="org-item">
+          <table class="org-table">
+            <tr>
+              <td class="org-icon">
+                <i class="fas fa-building"></i>
+              </td>
+              <td class="org-name">
+                {% if org.url and org.url != "" %}
+                  <a href="{{ org.url }}" target="_blank" rel="noopener noreferrer">{{ org.name }}</a>
+                {% else %}
+                  {{ org.name }}
+                {% endif %}
+              </td>
+              <td class="org-years">
+                {% if org.startDate %}
+                  {% assign startYear = org.startDate | slice: 0, 4 %}
+                  {% if org.endDate == "Present" %}
+                    {{ startYear }}-PRES
+                  {% elsif org.endDate %}
+                    {% assign endYear = org.endDate | slice: 0, 4 %}
+                    {{ startYear }}-{{ endYear }}
+                  {% else %}
+                    {{ startYear }}
+                  {% endif %}
+                {% endif %}
+              </td>
+            </tr>
+          </table>
         </div>
       {% endfor %}
     </div>
@@ -26,17 +50,41 @@
   
   {% if academic_orgs.size > 0 %}
   <div class="org-category">
-    <div class="category-label">
-      <i class="fas fa-graduation-cap me-2"></i>Academic
+    <div class="category-header">
+      <i class="fas fa-graduation-cap"></i>
+      <span>Academic</span>
     </div>
-    <div class="organizations-wrapper">
+    
+    <div class="orgs-list">
       {% for org in academic_orgs %}
-        <div class="organization">
-          {% if org.url and org.url != "" %}
-            <a href="{{ org.url }}" class="org-link" target="_blank" rel="noopener noreferrer">{{ org.name }}</a>{% unless forloop.last %},{% endunless %}
-          {% else %}
-            {{ org.name }}{% unless forloop.last %},{% endunless %}
-          {% endif %}
+        <div class="org-item">
+          <table class="org-table">
+            <tr>
+              <td class="org-icon">
+                <i class="fas fa-university"></i>
+              </td>
+              <td class="org-name">
+                {% if org.url and org.url != "" %}
+                  <a href="{{ org.url }}" target="_blank" rel="noopener noreferrer">{{ org.name }}</a>
+                {% else %}
+                  {{ org.name }}
+                {% endif %}
+              </td>
+              <td class="org-years">
+                {% if org.startDate %}
+                  {% assign startYear = org.startDate | slice: 0, 4 %}
+                  {% if org.endDate == "Present" %}
+                    {{ startYear }}-PRES
+                  {% elsif org.endDate %}
+                    {% assign endYear = org.endDate | slice: 0, 4 %}
+                    {{ startYear }}-{{ endYear }}
+                  {% else %}
+                    {{ startYear }}
+                  {% endif %}
+                {% endif %}
+              </td>
+            </tr>
+          </table>
         </div>
       {% endfor %}
     </div>
@@ -45,17 +93,41 @@
   
   {% if service_orgs.size > 0 %}
   <div class="org-category">
-    <div class="category-label">
-      <i class="fas fa-hands-helping me-2"></i>Service
+    <div class="category-header">
+      <i class="fas fa-hands-helping"></i>
+      <span>Service</span>
     </div>
-    <div class="organizations-wrapper">
+    
+    <div class="orgs-list">
       {% for org in service_orgs %}
-        <div class="organization">
-          {% if org.url and org.url != "" %}
-            <a href="{{ org.url }}" class="org-link" target="_blank" rel="noopener noreferrer">{{ org.name }}</a>{% unless forloop.last %},{% endunless %}
-          {% else %}
-            {{ org.name }}{% unless forloop.last %},{% endunless %}
-          {% endif %}
+        <div class="org-item">
+          <table class="org-table">
+            <tr>
+              <td class="org-icon">
+                <i class="fas fa-heart"></i>
+              </td>
+              <td class="org-name">
+                {% if org.url and org.url != "" %}
+                  <a href="{{ org.url }}" target="_blank" rel="noopener noreferrer">{{ org.name }}</a>
+                {% else %}
+                  {{ org.name }}
+                {% endif %}
+              </td>
+              <td class="org-years">
+                {% if org.startDate %}
+                  {% assign startYear = org.startDate | slice: 0, 4 %}
+                  {% if org.endDate == "Present" %}
+                    {{ startYear }}-PRES
+                  {% elsif org.endDate %}
+                    {% assign endYear = org.endDate | slice: 0, 4 %}
+                    {{ startYear }}-{{ endYear }}
+                  {% else %}
+                    {{ startYear }}
+                  {% endif %}
+                {% endif %}
+              </td>
+            </tr>
+          </table>
         </div>
       {% endfor %}
     </div>
