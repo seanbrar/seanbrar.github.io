@@ -2,70 +2,72 @@
 layout: default
 ---
 {% assign year = page.started | date: '%Y' %}
-{% assign tags = page.tags | join: '' %}
-{% assign categories = page.categories | join: '' %}
 
 {% if page._styles %}
-  <!-- Page/Post style -->
-  <style type="text/css">
-    {{ page._styles }}
-  </style>
+  <style type="text/css">{{ page._styles }}</style>
 {% endif %}
 
 <div class="post">
   <header class="post-header">
     <h1 class="post-title">{{ page.title }}</h1>
+    
+    {% comment %} Author and Release Date {% endcomment %}
     {% if page.author or page.released %}
       <p class="post-meta">
-        {% if page.author %}
-          {{ page.author }}
-        {% endif %}
+        {% if page.author %}{{ page.author }}{% endif %}
         {% if page.author and page.released %} &nbsp;&middot;&nbsp; {% endif %}
-        {% if page.released %}
-          {{ page.released }}
-        {% endif %}
+        {% if page.released %}{{ page.released }}{% endif %}
       </p>
     {% endif %}
 
-    {% if page.started or page.finished or page.stars or page.olid or page.isbn %}
+    {% comment %} Reading Metadata and Links {% endcomment %}
+    {% assign has_any_meta = false %}
+    {% if page.started != blank or page.finished != blank or page.stars != blank or page.olid != blank or page.isbn != blank or page.buy_link != blank %}
+      {% assign has_any_meta = true %}
+    {% endif %}
+    
+    {% if has_any_meta %}
       <p class="post-meta">
-        {% if page.started %}
+        {% assign prev_item = false %}
+        
+        {% if page.started != blank %}
           <i class="fa-solid fa-play fa-sm" style="color: var(--global-tip-block) !important"></i> <em>{{ page.started }}</em>
+          {% assign prev_item = true %}
         {% endif %}
-        {% if page.finished %}
-          {% if page.started %}
-            &nbsp;&middot;&nbsp;
-          {% endif %}
+        
+        {% if page.finished != blank %}
+          {% if prev_item %}&nbsp;&middot;&nbsp;{% endif %}
           <i class="fa-solid fa-stop fa-sm" style="color: #e56565 !important"></i> <em>{{ page.finished }}</em>
+          {% assign prev_item = true %}
         {% endif %}
-        {% if page.stars %}
-          {% if page.started or page.finished %}
-            &nbsp;&middot;&nbsp;
-          {% endif %}
+        
+        {% comment %} Star Rating {% endcomment %}
+        {% if page.stars != blank %}
+          {% if prev_item %}&nbsp;&middot;&nbsp;{% endif %}
+          
+          {% comment %} Goodreads link wrapper {% endcomment %}
           {% if page.goodreads_review %}
-            <a target="_blank" href="https://www.goodreads.com/review/show/{{ page.goodreads_review }}"><i class="fa-brands fa-goodreads-g"></i>
+            <a target="_blank" href="https://www.goodreads.com/review/show/{{ page.goodreads_review }}">
+            <i class="fa-brands fa-goodreads-g"></i>
           {% endif %}
+          
+          {% comment %} Generate star icons {% endcomment %}
           {% assign full_stars = page.stars | floor %}
           {% assign half_star = page.stars | minus: full_stars %}
           {% assign empty_stars = 5 | minus: full_stars %}
-          {% if half_star > 0 %}
-            {% assign empty_stars = empty_stars | minus: 1 %}
-          {% endif %}
-          {% for i in (1..full_stars) -%}
-            <i class="fa-solid fa-star fa-sm"></i>
-          {%- endfor -%}
-          {%- if half_star > 0 %}<i class="fa-solid fa-star-half-stroke fa-sm"></i>{% endif -%}
-          {%- for i in (1..empty_stars) -%}
-            <i class="fa-regular fa-star fa-sm"></i>
-          {%- endfor -%}
-          {% if page.goodreads_review %}
-            </a>
-          {% endif %}
+          {% if half_star > 0 %}{% assign empty_stars = empty_stars | minus: 1 %}{% endif %}
+          
+          {% for i in (1..full_stars) %}<i class="fa-solid fa-star fa-sm"></i>{% endfor %}
+          {% if half_star > 0 %}<i class="fa-solid fa-star-half-stroke fa-sm"></i>{% endif %}
+          {% for i in (1..empty_stars) %}<i class="fa-regular fa-star fa-sm"></i>{% endfor %}
+          
+          {% if page.goodreads_review %}</a>{% endif %}
+          {% assign prev_item = true %}
         {% endif %}
-        {% if page.olid or page.isbn %}
-          {% if page.started or page.finished or page.stars %}
-            &nbsp;&middot;&nbsp;
-          {% endif %}
+        
+        {% comment %} Open Library Link {% endcomment %}
+        {% if page.olid != blank or page.isbn != blank %}
+          {% if prev_item %}&nbsp;&middot;&nbsp;{% endif %}
           {% if page.olid %}
             <a target="_blank" href="https://openlibrary.org/olid/{{ page.olid }}" title="Open Library" class="open-library-link">
               <i class="fa-solid fa-book-open fa-sm"></i>
@@ -75,11 +77,12 @@ layout: default
               <i class="fa-solid fa-book-open fa-sm"></i>
             </a>
           {% endif %}
+          {% assign prev_item = true %}
         {% endif %}
-        {% if page.buy_link %}
-          {% if page.started or page.finished or page.stars or page.olid or page.isbn %}
-            &nbsp;&middot;&nbsp;
-          {% endif %}
+        
+        {% comment %} Buy Link {% endcomment %}
+        {% if page.buy_link != blank %}
+          {% if prev_item %}&nbsp;&middot;&nbsp;{% endif %}
           <a target="_blank" href="{{ page.buy_link }}" title="Amazon">
             <i class="fa-solid fa-cart-shopping"></i>
             {% assign is_amazon_link = page.buy_link | slice: 0, 19 %}
@@ -90,25 +93,30 @@ layout: default
         {% endif %}
       </p>
     {% endif %}
+    
+    {% comment %} Tags and Categories {% endcomment %}
     <p class="post-tags">
-      <a href="{{ year | prepend: '/books/' | relative_url }}"> <i class="fa-solid fa-calendar fa-sm"></i> {{ year }}</a>
-      {% if tags != '' %}
-        &nbsp;&middot;&nbsp;
+      {% assign prev_item = false %}
+      
+      {% if year != blank %}
+        <a href="{{ year | prepend: '/books/' | relative_url }}"><i class="fa-solid fa-calendar fa-sm"></i> {{ year }}</a>
+        {% assign prev_item = true %}
+      {% endif %}
+      
+      {% if page.tags.size > 0 %}
+        {% if prev_item %}&nbsp;&middot;&nbsp;{% endif %}
         {% for tag in page.tags %}
-          <a href="{{ tag | slugify | prepend: '/books/tag/' | relative_url }}"> <i class="fa-solid fa-hashtag fa-sm"></i> {{ tag }}</a>
-          {% unless forloop.last %}
-            &nbsp;
-          {% endunless %}
+          <a href="{{ tag | slugify | prepend: '/books/tag/' | relative_url }}"><i class="fa-solid fa-hashtag fa-sm"></i> {{ tag }}</a>
+          {% unless forloop.last %}&nbsp;{% endunless %}
         {% endfor %}
+        {% assign prev_item = true %}
       {% endif %}
 
-      {% if categories != '' %}
-        &nbsp;&middot;&nbsp;
+      {% if page.categories.size > 0 %}
+        {% if prev_item %}&nbsp;&middot;&nbsp;{% endif %}
         {% for category in page.categories %}
-          <a href="{{ category | slugify | prepend: '/books/category/' | relative_url }}"> <i class="fa-solid fa-tag fa-sm"></i> {{ category }}</a>
-          {% unless forloop.last %}
-            &nbsp;
-          {% endunless %}
+          <a href="{{ category | slugify | prepend: '/books/category/' | relative_url }}"><i class="fa-solid fa-tag fa-sm"></i> {{ category }}</a>
+          {% unless forloop.last %}&nbsp;{% endunless %}
         {% endfor %}
       {% endif %}
     </p>
