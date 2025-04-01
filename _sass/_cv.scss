@@ -334,6 +334,14 @@ td.list-group-link {
   padding-left: 0.5rem;
 }
 
+.list-groups {
+  .list-group {
+    td.list-group-name {
+      font-weight: 500;
+    }
+  }
+}
+
 /*****************************
  * CV TOC styles
  *****************************/
