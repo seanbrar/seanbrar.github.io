@@ -302,8 +302,8 @@ td.list-group-category-icon {
 }
 
 td.list-group-name {
-  // Preserve the original 0.8rem size
   font-size: $font-size-small;
+  font-weight: bold;
 }
 
 td.list-group-level {
@@ -457,7 +457,7 @@ ul.timeline li::before {
 
 .organization {
   display: inline;
-  font-weight: 300;
+  font-weight: bold;
 }
 
 .org-link {
@@ -552,13 +552,13 @@ ul.timeline li::before {
 .cert-details {
   display: flex;
   justify-content: space-between;
-  // Preserve the original 0.8rem size
   font-size: $font-size-small;
+  font-weight: bold;
   color: var(--global-text-color-light);
 }
 
 .cert-issuer {
-  font-weight: 400;
+  font-weight: bold;
 }
 
 .cert-date {
