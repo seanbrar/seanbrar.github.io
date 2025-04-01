@@ -43,6 +43,25 @@
   border: 0;
 }
 
+/* Common badge styles */
+.badge.danger-color-dark {
+  min-width: 75px;
+}
+
+/* Common text formatting */
+.secondary-text {
+  font-size: 0.95rem;
+}
+
+.summary-text {
+  font-size: 0.95rem;
+  font-style: italic;
+}
+
+.small-text {
+  font-size: 0.8rem;
+}
+
 /* CV List Indentation */
 .cv {
   .list-group-item {
@@ -470,6 +489,40 @@ ul.timeline li::before {
   text-decoration: underline;
 }
 
+/* Position, organization, institution info */
+.cv {
+  .position-info,
+  .organization-info,
+  .institution-info {
+    @extend .secondary-text;
+    margin-left: 1rem;
+    margin-left: 1rem;
+  
+    @media (min-width: 768px) {
+      margin-left: 4rem;
+    }
+  }
+  
+  .summary-info {
+    @extend .summary-text;
+    margin-left: 1rem;
+    
+    @media (min-width: 768px) {
+      margin-left: 4rem;
+    }
+  }
+  
+  .courses-info {
+    font-size: 0.8rem;
+    margin-top: 0.5rem;
+    margin-left: 1rem;
+    
+    @media (min-width: 768px) {
+      margin-left: 4rem;
+    }
+  }
+}
+
 /*****************************
  * CV Projects styles
  *****************************/
@@ -486,4 +539,14 @@ ul.timeline li::before {
 
 .project-title a:hover {
   text-decoration: underline;
+}
+
+/*****************************
+ * Date column styles
+ *****************************/
+
+.date-column {
+  .badge {
+    min-width: 75px;
+  }
 }
