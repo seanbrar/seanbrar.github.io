@@ -1,8 +1,19 @@
 /*****************************
+ * Typography Variables
+ *****************************/
+
+// Define consistent font sizes across all sections
+$font-size-section-header: 1.25rem;   // Section titles
+$font-size-primary: 1.1rem;           // Job titles, project names
+$font-size-secondary: 1rem;           // Employers, dates, organizations
+$font-size-details: 0.9rem;           // Description points, details
+$font-size-small: 0.8rem;             // Skills, interests, certificate details
+
+/*****************************
  * Global Scroll Behaviors
  *****************************/
 
- html {
+html {
   /* Cross-browser scroll padding for anchor navigation */
   scroll-padding-top: 80px; /* Set slightly larger than your nav bar height */
 }
@@ -28,6 +39,43 @@
 }
 
 /*****************************
+ * Typography Utility Classes
+ *****************************/
+
+.section-header {
+  font-size: $font-size-section-header;
+  font-weight: bold;
+  color: var(--global-theme-color);
+  margin-bottom: 1rem;
+}
+
+.primary-item {
+  font-size: $font-size-primary;
+  font-weight: 500; // Medium/Bold
+  color: var(--global-theme-color);
+}
+
+.secondary-item {
+  font-size: $font-size-secondary;
+  font-weight: normal;
+}
+
+.detail-item {
+  font-size: $font-size-details;
+  font-weight: normal;
+}
+
+.small-item {
+  font-size: $font-size-small;
+  font-weight: normal;
+}
+
+// Common formatting variations
+.italic-text {
+  font-style: italic;
+}
+
+/*****************************
  * CV shared styles
  *****************************/
 
@@ -48,32 +96,81 @@
   min-width: 75px;
 }
 
-/* Common text formatting */
-.secondary-text {
-  font-size: 0.95rem;
-}
-
-.summary-text {
-  font-size: 0.95rem;
-  font-style: italic;
-}
-
-.small-text {
-  font-size: 0.8rem;
-}
-
 /* CV List Indentation */
 .cv {
+  // Section headers
+  .section-title {
+    @extend .section-header;
+  }
+  
+  // Title elements (job titles, project names)
+  .title, .project-title {
+    @extend .primary-item;
+    margin-left: 1rem;
+    
+    @media (min-width: 768px) {
+      margin-left: 4rem;
+    }
+    
+    a {
+      color: inherit;
+      text-decoration: none;
+      
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+  
+  // Secondary information (organizations, companies)
+  .position-info, 
+  .organization-info, 
+  .institution-info {
+    @extend .secondary-item;
+    margin-left: 1rem;
+    
+    @media (min-width: 768px) {
+      margin-left: 4rem;
+    }
+  }
+  
+  // Summary and description text
+  .summary-info {
+    @extend .detail-item;
+    @extend .italic-text;
+    margin-left: 1rem;
+    
+    @media (min-width: 768px) {
+      margin-left: 4rem;
+    }
+  }
+  
+  // Courses information
+  .courses-info {
+    @extend .small-item;
+    margin-top: 0.5rem;
+    margin-left: 1rem;
+    
+    @media (min-width: 768px) {
+      margin-left: 4rem;
+    }
+  }
+  
+  // List item styling
   .list-group-item {
     .items {
-      margin-left: 1.5rem;  /* Only indent the highlights list */
+      margin-left: 1.5rem;
       
       &.highlights-list {
         .highlight-item {
-          font-size: 0.9rem;
+          @extend .detail-item;
           display: inline-block;
           line-height: 1.4;
         }
+      }
+      
+      .item {
+        @extend .detail-item;
       }
     }
   }
@@ -194,6 +291,7 @@ div.list-group {
 td.list-group-category {
   color: var(--global-theme-color);
   margin-bottom: 0.5rem;
+  @extend .secondary-item;
 }
 
 td.list-group-category-icon {
@@ -204,11 +302,12 @@ td.list-group-category-icon {
 }
 
 td.list-group-name {
-  font-size: 0.8rem;
+  // Preserve the original 0.8rem size
+  font-size: $font-size-small;
 }
 
 td.list-group-level {
-  font-size: 0.8rem;
+  font-size: $font-size-small;
   padding-left: 0.5rem;
 }
 
@@ -278,14 +377,14 @@ ul.timeline li::before {
 
 .basics {
   .name {
-    font-size: 2.5rem;
+    font-size: 2.5rem;  // Special size for name
     font-weight: bold;
     margin-bottom: 0.5rem;
     color: var(--global-text-color);
   }
 
   .label {
-    font-size: 1.5rem;
+    font-size: 1.5rem;  // Special size for label
     color: var(--global-theme-color);
     margin-bottom: 1rem;
   }
@@ -293,6 +392,7 @@ ul.timeline li::before {
   .location {
     margin-bottom: 1rem;
     color: var(--global-text-color-light);
+    @extend .secondary-item;
     
     i {
       margin-right: 0.5rem;
@@ -308,6 +408,7 @@ ul.timeline li::before {
       margin-right: 1.5rem;
       color: var(--global-text-color);
       text-decoration: none;
+      @extend .secondary-item;
       
       &:hover {
         color: var(--global-theme-color);
@@ -339,7 +440,7 @@ ul.timeline li::before {
 
 .category-label {
   color: var(--global-theme-color);
-  // font-weight: 500;
+  @extend .secondary-item;
 }
 
 .category-label i {
@@ -351,7 +452,7 @@ ul.timeline li::before {
   display: flex;
   flex-wrap: wrap;
   gap: 0.25rem;
-  font-size: 0.9rem;
+  @extend .small-item;  // Use smaller text size
 }
 
 .organization {
@@ -382,8 +483,6 @@ ul.timeline li::before {
   vertical-align: text-top;
 }
 
-/* Remove the media query for responsive grid adjustments since we're using a vertical layout */
-
 /*****************************
  * CV Certificates styles
  *****************************/
@@ -408,6 +507,7 @@ ul.timeline li::before {
   color: var(--global-theme-color);
   border-bottom: 1px solid rgba(0, 0, 0, 0.1);
   padding-bottom: 0.5rem;
+  @extend .secondary-item;
 }
 
 .category-header i {
@@ -437,7 +537,7 @@ ul.timeline li::before {
 .cert-name {
   color: var(--global-theme-color);
   margin-bottom: 0.25rem;
-  font-size: 0.9rem;
+  @extend .primary-item;
 }
 
 .cert-name a {
@@ -452,7 +552,8 @@ ul.timeline li::before {
 .cert-details {
   display: flex;
   justify-content: space-between;
-  font-size: 0.8rem;
+  // Preserve the original 0.8rem size
+  font-size: $font-size-small;
   color: var(--global-text-color-light);
 }
 
@@ -487,40 +588,6 @@ ul.timeline li::before {
 
 .title a:hover {
   text-decoration: underline;
-}
-
-/* Position, organization, institution info */
-.cv {
-  .position-info,
-  .organization-info,
-  .institution-info {
-    @extend .secondary-text;
-    margin-left: 1rem;
-    margin-left: 1rem;
-  
-    @media (min-width: 768px) {
-      margin-left: 4rem;
-    }
-  }
-  
-  .summary-info {
-    @extend .summary-text;
-    margin-left: 1rem;
-    
-    @media (min-width: 768px) {
-      margin-left: 4rem;
-    }
-  }
-  
-  .courses-info {
-    font-size: 0.8rem;
-    margin-top: 0.5rem;
-    margin-left: 1rem;
-    
-    @media (min-width: 768px) {
-      margin-left: 4rem;
-    }
-  }
 }
 
 /*****************************
