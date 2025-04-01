@@ -11,4 +11,4 @@ collection: books
 >
 > -- Carl Sagan, Cosmos, Part 11: The Persistence of Memory (1980)
 
-## Books that I am reading, have read, or will read
+Books have been essential to my intellectual journey - from mathematical foundations that support my transition to AI research to works that challenge my thinking about technology's role in society. This collection reflects both my current path and future aspirations. Each selection has shaped my approach to problem-solving, systems thinking, and the ethical dimensions of emerging technologies. While my mathematical texts form the core of my current studies, the interdisciplinary works and stories featured here provide the context and creative inspiration that inform my technical work.
