@@ -33,7 +33,7 @@
       "name": "ContextRAG",
       "description": "A system for context-aware retrieval processing in large language models",
       "highlights": [
-        "23% improved RAG retrieval accuracy",
+        "Adaptive processing by document length",
         "30% reduced token consumption",
         "Multi-framework compatible architecture"
       ],
@@ -57,7 +57,7 @@
       "description": "Tool for automated academic paper filtering and summarization",
       "highlights": [
         "300+ papers/hour processing system",
-        "95% precision extraction algorithm",
+        "85% relevance precision filtering",
         "30-page to 2-page summarization"
       ],
       "url": "https://github.com/seanbrar/paperweight",
@@ -86,7 +86,7 @@
         "Retrieval-Augmented Generation",
         "Context Handling",
         "Prompt Engineering",
-        "AI Systems Design"
+        "Vector Databases"
       ]
     },
     {
@@ -95,7 +95,7 @@
       "keywords": [
         "Python",
         "API Integration",
-        "Data Processing",
+        "LLM API Optimization",
         "Shell Scripting",
         "JSON/YAML"
       ]
@@ -175,8 +175,8 @@
       "highlights": [
         "3.9 GPA, summa cum laude",
         "Computer Information Systems minor",
-        "National writing competition nominee",
-        "Best undergraduate political science paper"
+        "National writing nominee",
+        "Best political science paper"
       ],
       "courses": ["CIS 4380", "CIS 3050", "CIS 3010", "CIS 4840"]
     },
@@ -189,7 +189,7 @@
       "highlights": [
         "Academic Honors at graduation",
         "Unix/Linux systems coursework",
-        "Cybersecurity/ethical hacking training"
+        "Cybersecurity training"
       ],
       "courses": ["CS/IS 172", "CS/IS 193"]
     }
@@ -198,7 +198,7 @@
     {
       "name": "AI/ML Certificate Program",
       "issuer": "Caltech",
-      "date": "2025-02",
+      "date": "2025-02-01",
       "category": "AI/ML"
     },
     {
