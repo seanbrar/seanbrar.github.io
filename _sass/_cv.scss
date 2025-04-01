@@ -9,6 +9,12 @@ $font-size-secondary: 1rem;           // Employers, dates, organizations
 $font-size-details: 0.9rem;           // Description points, details
 $font-size-small: 0.8rem;             // Skills, interests, certificate details
 
+// Add new shared visual elements
+$border-radius-standard: 4px;
+$transition-standard: all 0.2s ease;
+$section-indent: 2rem;
+$badge-min-width: 75px;
+
 /*****************************
  * Global Scroll Behaviors
  *****************************/
@@ -618,4 +624,37 @@ ul.timeline li::before {
   .badge {
     min-width: 75px;
   }
+}
+
+/*****************************
+ * Common Interactive Elements
+ *****************************/
+
+// Consolidated hover effects for all interactive links
+.primary-item a, 
+.cert-name a, 
+.org-link {
+  position: relative;
+  text-decoration: none;
+  
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 1px;
+    background-color: var(--global-theme-color);
+    transition: width 0.3s ease;
+  }
+  
+  &:hover::after {
+    width: 100%;
+  }
+}
+
+.badge.font-weight-bold.danger-color-dark.text-uppercase {
+  display: inline-block;
+  min-width: $badge-min-width;
+  text-align: center;
 }
