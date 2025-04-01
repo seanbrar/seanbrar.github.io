@@ -144,14 +144,16 @@ layout: default
         </div>
       {% else %}
         <div class="book-content">
-          <h4>
-            {% if page.start %} Start Date: {{ page.start | date: '%-d %B %Y' }}. {% endif %}
-            {% if page.end %} End Date: {{ page.end | date: '%-d %B %Y' }}. {% endif %}
-          </h4>
+          {% if page.start != blank or page.end != blank %}
+            <h4>
+              {% if page.start != blank %}Start Date: {{ page.start | date: '%-d %B %Y' }}.{% endif %}
+              {% if page.end != blank %}{% if page.start != blank %} {% endif %}End Date: {{ page.end | date: '%-d %B %Y' }}.{% endif %}
+            </h4>
+          {% endif %}
           {{ content }}
         </div>
-      </div>
-    {% endif %}
+      {% endif %}
+    </div>
   </article>
 
   {% if site.giscus and page.giscus_comments %}
