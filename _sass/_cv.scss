@@ -517,12 +517,20 @@ ul.timeline li::before {
 }
 
 .cert-icon {
-  width: 24px;
+  width: 30px;
+  padding-right: 6px;
   color: var(--global-theme-color);
-  opacity: 0.7;
-  font-size: 0.9rem;
+  opacity: 0.85;
+  font-size: $font-size-small;
   vertical-align: top;
   padding-top: 0.15rem;
+  text-align: center;
+}
+
+.issuer-icon {
+  margin-right: 6px;
+  opacity: 0.6;
+  color: var(--global-text-color);
 }
 
 .cert-name {
@@ -545,6 +553,7 @@ ul.timeline li::before {
 .cert-issuer {
   font-size: $font-size-small;
   // font-weight: bold;
+  // font-weight: $font-weight-medium;
   color: var(--global-text-color);
 }
 
