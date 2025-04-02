@@ -18,7 +18,9 @@
           <table class="cert-table">
             <tr>
               <td class="cert-icon">
-                <i class="fas fa-certificate"></i>
+                {% if cert.icon %}
+                  <i class="{{ cert.icon }}"></i>
+                {% endif %}
               </td>
               <td class="cert-name" colspan="2">
                 {% if cert.url and cert.url != "" %}
@@ -30,7 +32,14 @@
             </tr>
             <tr>
               <td></td>
-              <td class="cert-issuer">{{ cert.issuer }}</td>
+              <td class="cert-issuer">
+                {% if cert.issuerIcon %}
+                <span class="issuer-icon">
+                  <i class="{{ cert.issuerIcon }} fa-sm"></i>
+                </span>
+                {% endif %}
+                {{ cert.issuer }}
+              </td>
               <td class="cert-date">{{ cert.date | date: "%b %Y" }}</td>
             </tr>
           </table>
@@ -53,7 +62,9 @@
           <table class="cert-table">
             <tr>
               <td class="cert-icon">
-                <i class="fas fa-certificate"></i>
+                {% if cert.icon %}
+                  <i class="{{ cert.icon }}"></i>
+                {% endif %}
               </td>
               <td class="cert-name" colspan="2">
                 {% if cert.url and cert.url != "" %}
@@ -65,7 +76,14 @@
             </tr>
             <tr>
               <td></td>
-              <td class="cert-issuer">{{ cert.issuer }}</td>
+              <td class="cert-issuer">
+                {% if cert.issuerIcon %}
+                <span class="issuer-icon">
+                  <i class="{{ cert.issuerIcon }} fa-sm"></i>
+                </span>
+                {% endif %}
+                {{ cert.issuer }}
+              </td>
               <td class="cert-date">{{ cert.date | date: "%b %Y" }}</td>
             </tr>
           </table>
@@ -88,7 +106,9 @@
           <table class="cert-table">
             <tr>
               <td class="cert-icon">
-                <i class="fas fa-certificate"></i>
+                {% if cert.icon %}
+                  <i class="{{ cert.icon }}"></i>
+                {% endif %}
               </td>
               <td class="cert-name" colspan="2">
                 {% if cert.url and cert.url != "" %}
@@ -100,7 +120,14 @@
             </tr>
             <tr>
               <td></td>
-              <td class="cert-issuer">{{ cert.issuer }}</td>
+              <td class="cert-issuer">
+                {% if cert.issuerIcon %}
+                <span class="issuer-icon">
+                  <i class="{{ cert.issuerIcon }} fa-sm"></i>
+                </span>
+                {% endif %}
+                {{ cert.issuer }}
+              </td>
               <td class="cert-date">{{ cert.date | date: "%b %Y" }}</td>
             </tr>
           </table>
