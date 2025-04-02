@@ -115,6 +115,10 @@ html {
   display: flex;
   flex-direction: column;
   height: 100%;
+  
+  &:hover {
+    text-decoration: none;
+  }
 }
 
 .book-cover {
@@ -159,6 +163,12 @@ html {
   font-size: 1rem;
   font-weight: bold;
   color: var(--global-text-color);
+  
+  .book-item:hover & {
+    color: var(--global-theme-color);
+    text-decoration: underline;
+    // text-decoration-color: var(--global-theme-color);
+  }
 }
 
 .book-author {
