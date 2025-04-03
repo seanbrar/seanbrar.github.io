@@ -199,34 +199,39 @@
       "name": "AI/ML Certificate Program",
       "issuer": "Caltech",
       "date": "2025-02-01",
-      "category": "AI/ML"
+      "category": "AI/ML",
+      "icon": "fas fa-graduation-cap"
     },
     {
       "name": "CompTIA Network+",
       "issuer": "CompTIA",
       "date": "2024-06-01",
       "category": "Systems",
-      "url": "https://www.credly.com/badges/f060a70e-eb73-4c59-a8e9-8feb619a62b1"
+      "url": "https://www.credly.com/badges/f060a70e-eb73-4c59-a8e9-8feb619a62b1",
+      "icon": "fas fa-network-wired"
     },
     {
       "name": "CompTIA A+",
       "issuer": "CompTIA",
       "date": "2024-05-01",
       "category": "Systems",
-      "url": "https://www.credly.com/badges/e4163fc6-6cc2-4e3b-9542-13edfaf5fbb6/public_url"
+      "url": "https://www.credly.com/badges/e4163fc6-6cc2-4e3b-9542-13edfaf5fbb6/public_url",
+      "icon": "fas fa-laptop-code"
     },
     {
       "name": "AI Strategy",
       "issuer": "Cornell",
       "date": "2023-06-01",
-      "category": "AI/ML"
+      "category": "AI/ML",
+      "icon": "fas fa-chess"
     },
     {
       "name": "Machine Learning Foundations",
       "issuer": "Amazon Web Services",
       "date": "2022-04-01",
       "category": "AI/ML",
-      "url": "https://www.credly.com/badges/fb3a3de6-cc1b-4c34-a37e-82774f68488a"
+      "url": "https://www.credly.com/badges/fb3a3de6-cc1b-4c34-a37e-82774f68488a",
+      "icon": "fas fa-robot"
     }
   ],
   "organizations": [
