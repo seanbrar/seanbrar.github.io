@@ -12,7 +12,7 @@ layout: page
       "math-foundations:Mathematical Foundations:Building the rigorous mathematical foundation essential for advanced work in AI and algorithm development.:Foundations|
        current-math:Current Mathematical Studies:Texts supporting my ongoing self-study work as I build toward advanced AI research capabilities.:Current Studies|
        advanced-math:Advanced Mathematics Trajectory:The mathematical journey ahead as I prepare for graduate-level work in AI and machine learning.:Advanced|
-       cs-tech:Computer Science & Technology:Core technical knowledge spanning from algorithmic foundations to emerging AI systems and their implications.:Computer Science|
+       cs:Computer Science & Technology:Core technical knowledge spanning from algorithmic foundations to emerging AI systems and their implications.:Computer Science|
        interdisciplinary:Interdisciplinary Perspectives:Works that enrich my technical perspective with insights from philosophy, history, and cognitive science.:Interdisciplinary|
        influential:Influential Works:Books that have shaped my thinking, creativity, and approach to complex systems in unexpected ways.:Influential Works"
     %}
@@ -45,14 +45,8 @@ layout: page
           <p class="section-description">{{ cat_desc }}</p>
           
           <div class="book-grid">
-            {% comment %} Handle special case for CS/Tech section with multiple categories {% endcomment %}
-            {% if cat_id == "cs-tech" %}
-              {% assign filtered_items = collection | where_exp: "item", "item.categories contains 'cs' or item.categories contains 'ai' or item.categories contains 'data'" %}
-            {% elsif cat_id == "interdisciplinary" %}
-              {% assign filtered_items = collection | where_exp: "item", "item.categories contains 'philosophy' or item.categories contains 'history' or item.categories contains 'biography' or item.categories contains 'interdisciplinary'" %}
-            {% else %}
-              {% assign filtered_items = collection | where_exp: "item", "item.categories contains cat_id" %}
-            {% endif %}
+            {% comment %} Handle category filtering {% endcomment %}
+            {% assign filtered_items = collection | where_exp: "item", "item.categories contains cat_id" %}
             
             {% comment %} Sort by position field, then by title {% endcomment %}
             {% assign sorted_items = filtered_items | sort: "title" | sort: position_field %}
