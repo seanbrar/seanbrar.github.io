@@ -17,7 +17,7 @@ buy_link: https://a.co/d/aUVUjq2
 
 # Reading status
 started: 2025-03-15
-# finished: 
+# finished:
 released: 1886
 stars: 5
 status: Reference
@@ -30,4 +30,4 @@ This book is part of my reference collection for mathematical exploration beyond
 
 **Why it's in my collection:** Carr's compendium fascinates me as both a mathematical resource and a historical artifact. I appreciate how it presents results without the artificial boundaries of modern course divisions, revealing unexpected connections between topics. I often browse it when stuck on a problem, finding that these historical perspectives frequently suggest elegant approaches that aren't emphasized in contemporary texts. It serves as a reminder that mathematics is a continuously evolving human endeavor rather than a fixed body of knowledge.
 
-*As a reference work, this book serves as an ongoing resource rather than a text to be worked through sequentially.*
+_As a reference work, this book serves as an ongoing resource rather than a text to be worked through sequentially._

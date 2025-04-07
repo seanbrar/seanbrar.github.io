@@ -16,10 +16,10 @@ position_current_math: 2
 buy_link: https://a.co/d/0q7jvRM
 
 # Reading status
-started: 
-# finished: 
+started:
+# finished:
 released: 2019
-stars: 
+stars:
 status: Queued
 
 # Description
@@ -30,4 +30,4 @@ This book is part of my planned reading in preparation for advanced work in comp
 
 **Why it's in my collection:** I selected Epp's text specifically for its rigorous treatment of discrete structures that form the backbone of algorithm analysis. Having researched various discrete math textbooks, I found this one strikes the right balance between theoretical depth and relevant applications. I'm particularly interested in the sections on recurrence relations and graph theory, as these directly relate to algorithm complexity analysis and neural network structure - knowledge I'll need as I move deeper into AI research.
 
-*A detailed reflection will be added after I complete this book.*
+_A detailed reflection will be added after I complete this book._

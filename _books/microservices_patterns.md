@@ -30,4 +30,4 @@ This book is part of my curated collection highlighting systems architecture kno
 
 **Why it's in my collection:** Richardson's practical patterns for microservice design significantly influenced my thinking about system architecture. I particularly value the book's approach to decomposing complex systems into manageable, independently deployable components with clear boundaries and APIs. These principles directly inform how I think about structuring machine learning workflows - from data ingestion and preprocessing to model training and deployment - as a collection of loosely coupled, maintainable services rather than monolithic pipelines.
 
-*A more detailed reflection on this book will be added as I continue developing this section of my site.*
+_A more detailed reflection on this book will be added as I continue developing this section of my site._

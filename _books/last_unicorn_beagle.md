@@ -30,4 +30,4 @@ This book is part of my personally influential works that have shaped how I thin
 
 **Why it's in my collection:** Beagle's novel has stayed with me since I first read it, not just for its story but for how it achieves its effects. What strikes me most is how technical mastery in language creates something that feels effortless rather than labored. Every word serves both precision and feeling simultaneously. This integration of technical excellence with emotional resonance is something I aspire to in my own work - creating systems that achieve their functional goals while remaining deeply human in their design and impact.
 
-*A more detailed reflection on this book will be added as I continue developing this section of my site.*
+_A more detailed reflection on this book will be added as I continue developing this section of my site._

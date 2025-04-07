@@ -30,4 +30,4 @@ This book is part of my active studies in developing rigorous mathematical think
 
 **Why it's in my collection:** Velleman's step-by-step method for breaking down complex proofs has been invaluable in developing my analytical thinking. I've found his techniques for working backward from what needs to be proven particularly useful when approaching algorithm correctness problems. The book's treatment of induction has significantly improved my ability to reason about recursive algorithms and iterative processes - skills directly applicable to understanding convergence in neural network training and reinforcement learning algorithms.
 
-*A detailed reflection will be added as I progress through this book.*
+_A detailed reflection will be added as I progress through this book._

@@ -17,7 +17,7 @@ buy_link: https://a.co/d/6yoHCWX
 
 # Reading status
 started: 2025-03-05
-# finished: 
+# finished:
 released: 2024
 stars: 4
 status: Reading
@@ -30,4 +30,4 @@ This book is part of my current reading on human-AI collaboration and augmentati
 
 **Why it's in my collection:** I'm finding Mollick's perspective on human-AI collaboration particularly relevant as I consider how to position my own research interests. Rather than viewing AI systems as autonomous agents, the book presents compelling arguments for designing tools that enhance human capabilities through complementary strengths. I'm especially interested in the book's exploration of maintaining human judgment and creativity while leveraging AI's computational power and pattern recognition - a framework that aligns with my own aspirations for responsible AI development.
 
-*A detailed reflection will be added as I complete this book.*
+_A detailed reflection will be added as I complete this book._

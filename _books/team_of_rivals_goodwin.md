@@ -30,4 +30,4 @@ This book is part of my curated collection highlighting leadership and collabora
 
 **Why it's in my collection:** Goodwin's account of Lincoln's cabinet management contains surprisingly relevant lessons for technical collaboration. Lincoln's willingness to include former opponents and critics in his inner circle exemplifies an approach I strive for in my own work - seeking out perspectives that challenge my assumptions rather than confirm them. In emerging fields like AI where conventional wisdom is frequently overturned, this approach to intellectual diversity and constructive disagreement creates stronger outcomes than echo chambers of agreement.
 
-*A more detailed reflection on this book will be added as I continue developing this section of my site.*
+_A more detailed reflection on this book will be added as I continue developing this section of my site._

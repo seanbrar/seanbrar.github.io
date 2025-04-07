@@ -30,4 +30,4 @@ This book is part of my collection highlighting unexpected connections between d
 
 **Why it's in my collection:** Burchard's exploration of how 18th-century decorative arts influenced Disney animation exemplifies what I find most exciting about innovation - the cross-pollination between seemingly unrelated domains. The book documents how Disney's artists transformed static designs from a completely different era and medium into principles of movement and character. This interdisciplinary approach mirrors what I find most valuable in AI research, where breakthroughs often come from applying concepts from fields like neuroscience, economics, or philosophy to computational problems.
 
-*A more detailed reflection on this book will be added as I continue developing this section of my site.*
+_A more detailed reflection on this book will be added as I continue developing this section of my site._

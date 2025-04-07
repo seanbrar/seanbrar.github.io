@@ -17,7 +17,7 @@ buy_link: https://a.co/d/38SqIDo
 
 # Reading status
 started: 2025-02-18
-# finished: 
+# finished:
 released: 2015
 stars: 4
 status: Reading
@@ -30,4 +30,4 @@ This book is part of my active mathematical studies preparing me for advanced co
 
 **Why it's in my collection:** Stewart's text serves as my systematic refresher on the algebraic and trigonometric foundations needed for calculus. I particularly appreciate how the book balances computational practice with conceptual explanations, helping me rebuild my mathematical intuition after focusing on other areas. The function transformations and analytical techniques I'm remastering here directly support my planned work in optimization theory and differential equations - areas I know are foundational to machine learning algorithms I'll need to understand deeply.
 
-*A detailed reflection will be added as I progress through this book.*
+_A detailed reflection will be added as I progress through this book._

@@ -30,4 +30,4 @@ This book is part of my curated collection highlighting technical skills that tr
 
 **Why it's in my collection:** My background in forensic analysis provided unexpected preparation for AI work. Easttom's structured approach to investigating digital systems taught me to construct testable hypotheses when diagnosing complex problems - a skill I've found directly transferable to troubleshooting machine learning pipelines. Techniques like controlled variable testing and chain-of-evidence documentation parallel best practices in experimental design and model development, reinforcing the methodical problem-solving mindset essential for research work.
 
-*A more detailed reflection on this book will be added as I continue developing this section of my site.*
+_A more detailed reflection on this book will be added as I continue developing this section of my site._

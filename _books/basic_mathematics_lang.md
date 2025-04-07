@@ -30,4 +30,4 @@ This book is part of my foundational mathematics collection that underpins my jo
 
 **Why it's in my collection:** Lang's approach fundamentally shifted my perspective from viewing mathematics as a collection of formulas to seeing it as a coherent logical system. His emphasis on first principles and axiomatic development gave me the mental framework to approach more advanced topics with confidence. This text served as the bridge I needed between computational mathematics and the abstract reasoning required for theoretical AI work, particularly in understanding algorithm correctness and convergence properties.
 
-*A more detailed reflection on this book will be added as I continue developing this section of my site.*
+_A more detailed reflection on this book will be added as I continue developing this section of my site._

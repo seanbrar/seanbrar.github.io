@@ -16,10 +16,10 @@ position_advanced_math: 3
 buy_link: https://a.co/d/eGWMLwI
 
 # Reading status
-started: 
-# finished: 
+started:
+# finished:
 released: 2002
-stars: 
+stars:
 status: Queued
 
 # Description
@@ -30,4 +30,4 @@ This book is part of my planned mathematical study essential for machine learnin
 
 **Why it's in my collection:** I selected Friedberg's text specifically for its theoretical approach to linear algebra after researching alternatives like Strang and Axler. Linear algebra forms the mathematical backbone of most machine learning techniques, and I want to understand these concepts at a fundamental level rather than just their applications. I'm particularly interested in developing a deeper intuition for eigendecomposition and singular value decomposition, as these techniques appear repeatedly in dimensionality reduction and recommendation systems I hope to work with.
 
-*A detailed reflection will be added after I complete this book.*
+_A detailed reflection will be added after I complete this book._

@@ -16,10 +16,10 @@ position_advanced_math: 4
 buy_link: https://a.co/d/5t4WT61
 
 # Reading status
-started: 
-# finished: 
+started:
+# finished:
 released: 2013
-stars: 
+stars:
 status: Queued
 
 # Description
@@ -30,4 +30,4 @@ This book is part of my planned progression toward advanced mathematical analysi
 
 **Why it's in my collection:** Ross's text will be my bridge between computational calculus and the more abstract world of real analysis. I've positioned this in my self-study sequence to build upon the intuition developed in earlier calculus work while introducing the formal definitions and proof techniques of analysis. Understanding concepts like uniform convergence and continuity at this level will give me the theoretical foundation to approach research papers on neural network approximation theory and optimization algorithm convergence with confidence.
 
-*A detailed reflection will be added after I complete this book.*
+_A detailed reflection will be added after I complete this book._

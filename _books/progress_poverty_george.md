@@ -30,4 +30,4 @@ This book is part of my curated collection exploring the relationship between te
 
 **Why it's in my collection:** George's 19th-century analysis feels startlingly relevant to today's technological landscape. His central question - why does advancing technology often fail to reduce poverty? - parallels contemporary discussions about AI's distributional effects. My political science training taught me to recognize patterns across historical technological transitions, and George's systematic approach to analyzing economic structures offers valuable perspective on how technological benefits might be more broadly distributed. This historical context informs how I think about responsible AI development.
 
-*A more detailed reflection on this book will be added as I continue developing this section of my site.*
+_A more detailed reflection on this book will be added as I continue developing this section of my site._

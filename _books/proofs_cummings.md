@@ -16,10 +16,10 @@ position_current_math: 3
 buy_link: https://a.co/d/3H1thyX
 
 # Reading status
-started: 
-# finished: 
+started:
+# finished:
 released: 2021
-stars: 
+stars:
 status: Queued
 
 # Description
@@ -30,4 +30,4 @@ This book is part of my planned reading to further develop mathematical rigor fo
 
 **Why it's in my collection:** Cummings' text came highly recommended for its accessible approach to proof techniques. While I'm working through more formal texts like Velleman's "How to Prove It," I've added this complementary resource for its different perspective and problem sets. Mathematical proof is a skill that improves with varied practice, and I expect the additional examples and explanations here to strengthen my ability to construct rigorous arguments about algorithm correctness and model behavior - skills essential for theoretical AI work.
 
-*A detailed reflection will be added after I complete this book.*
+_A detailed reflection will be added after I complete this book._

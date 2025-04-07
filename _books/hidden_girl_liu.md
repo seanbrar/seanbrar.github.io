@@ -30,4 +30,4 @@ This book is part of my collection of works exploring the human dimensions of te
 
 **Why it's in my collection:** Liu's stories resonated deeply with me for how they examine technology not just as technical achievement but as a mirror reflecting human values and choices. His exploration of digital consciousness, memory, and identity helped crystallize my thinking about the profound questions that emerge as AI advances. What particularly impresses me is Liu's ability to maintain technical plausibility while focusing primarily on human impact - a balance I believe is essential for responsible work in AI development.
 
-*A more detailed reflection on this book will be added as I continue developing this section of my site.*
+_A more detailed reflection on this book will be added as I continue developing this section of my site._

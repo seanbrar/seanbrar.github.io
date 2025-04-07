@@ -30,4 +30,4 @@ This book is part of my curated collection highlighting the importance of clear 
 
 **Why it's in my collection:** Tufte's work fundamentally altered how I approach data visualization. His principle of maximizing the "data-ink ratio" - essentially removing everything that doesn't contribute to understanding - has become a guiding constraint in how I design both visualizations and technical explanations. I particularly value his emphasis on respecting the audience's intelligence while still making complex information accessible, a balance I strive for in my own technical communication.
 
-*A more detailed reflection on this book will be added as I continue developing this section of my site.*
+_A more detailed reflection on this book will be added as I continue developing this section of my site._

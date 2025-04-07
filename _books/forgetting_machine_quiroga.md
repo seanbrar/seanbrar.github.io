@@ -30,4 +30,4 @@ This book is part of my curated collection on cognitive processes that inform co
 
 **Why it's in my collection:** Quiroga's exploration of memory changed my understanding of what "good" information processing looks like. The human brain's selective forgetting isn't a bug but a feature - enabling generalization by discarding specifics. This perspective offers a fascinating contrast to traditional computer systems designed for perfect recall. As I explore more advanced AI systems that learn over time, this biological inspiration suggests different approaches to problems like catastrophic forgetting and transfer learning than purely computational perspectives might.
 
-*A more detailed reflection on this book will be added as I continue developing this section of my site.*
+_A more detailed reflection on this book will be added as I continue developing this section of my site._

@@ -30,4 +30,4 @@ This book is part of my curated collection highlighting the intersection of tech
 
 **Why it's in my collection:** Isaacson's portrayal of Jobs reveals something I consider essential but often overlooked in technical fields: the critical importance of simplicity and focus. Unlike many technical biographies that celebrate complexity, this book documents Jobs' relentless pursuit of clarity and user-centered design - his understanding that technical capability alone doesn't create value. This perspective influences how I approach AI development, reminding me that the most sophisticated models are worthless if they don't address real human needs in accessible ways.
 
-*A more detailed reflection on this book will be added as I continue developing this section of my site.*
+_A more detailed reflection on this book will be added as I continue developing this section of my site._

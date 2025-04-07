@@ -17,7 +17,7 @@ buy_link: https://a.co/d/ckVrPAw
 
 # Reading status
 started: 2025-03-10
-# finished: 
+# finished:
 released: 1988
 stars: 4
 status: Reading
@@ -30,4 +30,4 @@ This book is part of my active studies in mathematical foundations essential for
 
 **Why it's in my collection:** Lang and Murrow's approach to geometry resonates with me because it builds intuition through careful construction rather than memorization. As I work through their elegant proof sequences, I'm developing a stronger grasp of spatial relationships that directly inform how I think about neural network architecture and data representation. The book's emphasis on transformations is particularly relevant to my interest in generative AI systems, where geometric transformations in latent space produce meaningful variations in output.
 
-*A detailed reflection will be added as I progress through this book.*
+_A detailed reflection will be added as I progress through this book._

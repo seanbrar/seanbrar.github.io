@@ -16,10 +16,10 @@ position_advanced_math: 2
 buy_link: https://a.co/d/aWTMey5
 
 # Reading status
-started: 
-# finished: 
+started:
+# finished:
 released: 2008
-stars: 
+stars:
 status: Queued
 
 # Description
@@ -30,4 +30,4 @@ This book is part of my planned progression into theoretical mathematics essenti
 
 **Why it's in my collection:** After developing computational fluency, I'll tackle Spivak's text as my introduction to rigorous mathematical analysis. I've placed this book deliberately after Briggs in my sequence based on advice from mathematicians who suggested building intuition before diving into abstraction. Spivak's proofs-based approach will help me develop the mathematical maturity needed to understand convergence theorems and limit behavior - concepts fundamental to understanding why certain AI algorithms work rather than just how to implement them.
 
-*A detailed reflection will be added after I complete this book.*
+_A detailed reflection will be added after I complete this book._

@@ -30,4 +30,4 @@ This book is part of my curated collection exploring human cognition and its imp
 
 **Why it's in my collection:** Kahneman's work on dual-process thinking provided me with language and frameworks for understanding cognitive patterns I had observed but couldn't articulate. His systematic documentation of predictable cognitive biases has direct implications for AI systems that either support human decision-making or operate autonomously. Understanding these patterns helps me consider how AI systems might either complement human cognition by compensating for our blind spots or inadvertently amplify our biases through training data and design choices.
 
-*A more detailed reflection on this book will be added as I continue developing this section of my site.*
+_A more detailed reflection on this book will be added as I continue developing this section of my site._

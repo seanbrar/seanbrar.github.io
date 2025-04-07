@@ -30,4 +30,4 @@ This book is part of my curated collection highlighting philosophical foundation
 
 **Why it's in my collection:** Mill's defense of liberty has shaped my thinking about technology and society in unexpected ways. His argument that protecting minority viewpoints is essential for discovering truth resonates with my concerns about how AI systems might inadvertently narrow intellectual discourse. While my political science background originally led me to Mill, I now find his principles directly relevant to questions about algorithmic content filtering, recommender systems, and the preservation of human autonomy in increasingly automated decision environments.
 
-*A more detailed reflection on this book will be added as I continue developing this section of my site.*
+_A more detailed reflection on this book will be added as I continue developing this section of my site._

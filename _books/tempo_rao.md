@@ -30,4 +30,4 @@ This book is part of my collection on decision frameworks relevant to technical 
 
 **Why it's in my collection:** Rao's exploration of decision-making under time constraints resonated with me as someone who has worked in both political analysis and technical fields. His concept of "narrative rationality" - how we make decisions when we lack sufficient information for formal optimization - provides a framework I find useful when navigating research priorities and design choices in complex domains. The book bridges my background in political theory with my current technical interests in a way that enriches both perspectives.
 
-*A more detailed reflection on this book will be added as I continue developing this section of my site.*
+_A more detailed reflection on this book will be added as I continue developing this section of my site._

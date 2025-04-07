@@ -30,4 +30,4 @@ This book is part of my curated collection highlighting my technical background 
 
 **Why it's in my collection:** My experience as a systems engineer was fundamentally shaped by this text's framework for understanding network architecture. The book's approach to analyzing security boundaries and data flow patterns gave me a systematic way to think about distributed systems. This background directly influences how I approach AI deployment challenges, particularly in thinking about data pipelines, system boundaries, and fault tolerance in machine learning infrastructure. The network perspective remains valuable even when working with higher-level abstractions.
 
-*A more detailed reflection on this book will be added as I continue developing this section of my site.*
+_A more detailed reflection on this book will be added as I continue developing this section of my site._

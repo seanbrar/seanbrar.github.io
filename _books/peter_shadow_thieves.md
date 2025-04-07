@@ -30,4 +30,4 @@ This book is part of my personally influential works that connect back to founda
 
 **Why it's in my collection:** I first read this series as a child, and it has remained significant to me for how it transformed familiar elements into something new and unexpected. Barry and Pearson didn't simply retell Peter Pan; they reimagined its logic and systems from first principles. This approach to creative problem-solving - looking at established ideas with fresh eyes rather than accepting conventional frameworks - continues to influence how I approach technical challenges. Some of the most interesting advancements come not from incremental improvements but from fundamentally rethinking the problem space.
 
-*A more detailed reflection on this book will be added as I continue developing this section of my site.*
+_A more detailed reflection on this book will be added as I continue developing this section of my site._
