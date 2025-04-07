@@ -64,20 +64,18 @@ body.sticky-bottom-footer {
   }
 
   // Project write-up specific styles
-  &.project-content {
-    .projects {
-      h2 {
-        margin-top: 2rem;
-      }
-      // Override general h3 margin for projects
-      h3 {
-        margin-top: 1.75rem;
-      }
+  .project-content {
+    h2 {
+      margin-top: 2rem;
+    }
+    // Override general h3 margin for projects
+    h3 {
+      margin-top: 1.75rem;
+    }
 
-      // Add consistent bottom margin to tables
-      table {
-        margin-bottom: 1.5rem;
-      }
+    // Add consistent bottom margin to tables
+    table {
+      margin-bottom: 0.75rem;
     }
   }
 }
