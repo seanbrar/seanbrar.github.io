@@ -32,11 +32,7 @@
     {
       "name": "ContextRAG",
       "description": "A system for context-aware retrieval processing in large language models",
-      "highlights": [
-        "Adaptive processing by document length",
-        "30% reduced token consumption",
-        "Multi-framework compatible architecture"
-      ],
+      "highlights": ["Adaptive processing by document length", "30% reduced token consumption", "Multi-framework compatible architecture"],
       "url": "https://github.com/seanbrar/ContextRAG",
       "startDate": "2024",
       "endDate": "Present"
@@ -44,22 +40,14 @@
     {
       "name": "Traffic Object Detection Model",
       "description": "Capstone project for Caltech AI/ML certificate program",
-      "highlights": [
-        "Benchmarked 8 detection architectures",
-        "18% higher minority class detection",
-        "Achieved 76% mAP performance"
-      ],
+      "highlights": ["Benchmarked 8 detection architectures", "18% higher minority class detection", "Achieved 76% mAP performance"],
       "startDate": "2025-01",
       "endDate": "2025-02"
     },
     {
       "name": "paperweight",
       "description": "Tool for automated academic paper filtering and summarization",
-      "highlights": [
-        "300+ papers/hour processing system",
-        "85% relevance precision filtering",
-        "30-page to 2-page summarization"
-      ],
+      "highlights": ["300+ papers/hour processing system", "85% relevance precision filtering", "30-page to 2-page summarization"],
       "url": "https://github.com/seanbrar/paperweight",
       "startDate": "2024",
       "endDate": "Present"
@@ -67,11 +55,7 @@
     {
       "name": "Prickly Pairs",
       "description": "AI-powered study aid for CompTIA certification exams",
-      "highlights": [
-        "Enhanced 2,400+ technical flashcards",
-        "40% reduced certification study time",
-        "Passed three CompTIA exams in 30 days"
-      ],
+      "highlights": ["Enhanced 2,400+ technical flashcards", "40% reduced certification study time", "Passed three CompTIA exams in 30 days"],
       "url": "",
       "startDate": "2024-05",
       "endDate": "2024-06"
@@ -81,46 +65,22 @@
     {
       "name": "Artificial Intelligence",
       "level": "Advanced",
-      "keywords": [
-        "Large Language Models",
-        "Retrieval-Augmented Generation",
-        "Context Handling",
-        "Prompt Engineering",
-        "Vector Databases"
-      ]
+      "keywords": ["Large Language Models", "Retrieval-Augmented Generation", "Context Handling", "Prompt Engineering", "Vector Databases"]
     },
     {
       "name": "Programming",
       "level": "Intermediate",
-      "keywords": [
-        "Python",
-        "API Integration",
-        "LLM API Optimization",
-        "Shell Scripting",
-        "JSON/YAML"
-      ]
+      "keywords": ["Python", "API Integration", "LLM API Optimization", "Shell Scripting", "JSON/YAML"]
     },
     {
       "name": "Systems Engineering",
       "level": "Advanced",
-      "keywords": [
-        "Linux Administration",
-        "Cloud Infrastructure",
-        "Enterprise Media Systems",
-        "Networking",
-        "Troubleshooting"
-      ]
+      "keywords": ["Linux Administration", "Cloud Infrastructure", "Enterprise Media Systems", "Networking", "Troubleshooting"]
     },
     {
       "name": "Cloud & DevOps",
       "level": "Intermediate",
-      "keywords": [
-        "AWS",
-        "Docker",
-        "VPN Configuration",
-        "DNS Management",
-        "Virtualization"
-      ]
+      "keywords": ["AWS", "Docker", "VPN Configuration", "DNS Management", "Virtualization"]
     }
   ],
   "work": [
@@ -172,12 +132,7 @@
       "startDate": "2021",
       "endDate": "2022",
       "score": "3.9/4.0, summa cum laude",
-      "highlights": [
-        "3.9 GPA, summa cum laude",
-        "Computer Information Systems minor",
-        "National writing nominee",
-        "Best political science paper"
-      ],
+      "highlights": ["3.9 GPA, summa cum laude", "Computer Information Systems minor", "National writing nominee", "Best political science paper"],
       "courses": ["CIS 4380", "CIS 3050", "CIS 3010", "CIS 4840"]
     },
     {
@@ -186,11 +141,7 @@
       "studyType": "Associate Degree for Transfer",
       "startDate": "2016",
       "endDate": "2021",
-      "highlights": [
-        "Academic Honors at graduation",
-        "Unix/Linux systems coursework",
-        "Cybersecurity training"
-      ],
+      "highlights": ["Academic Honors at graduation", "Unix/Linux systems coursework", "Cybersecurity training"],
       "courses": ["CS/IS 172", "CS/IS 193"]
     }
   ],
@@ -264,18 +215,11 @@
   "interests": [
     {
       "name": "AI Research",
-      "keywords": [
-        "Context Window Optimization",
-        "LLM Architecture",
-        "Knowledge Retrieval Systems"
-      ]
+      "keywords": ["Context Window Optimization", "LLM Architecture", "Knowledge Retrieval Systems"]
     },
     {
       "name": "Technical Writing",
-      "keywords": [
-        "AI Systems Documentation",
-        "Research Blogging"
-      ]
+      "keywords": ["AI Systems Documentation", "Research Blogging"]
     }
   ],
   "awards": [
