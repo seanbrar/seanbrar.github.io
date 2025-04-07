@@ -1,0 +1,103 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600">
+  <!-- Background -->
+  <rect width="800" height="600" fill="#0a1929" />
+  
+  <!-- Grid Lines -->
+  <g stroke="#193354" stroke-width="1.5" opacity="0.5">
+    <line x1="0" y1="150" x2="800" y2="150" />
+    <line x1="0" y1="300" x2="800" y2="300" />
+    <line x1="0" y1="450" x2="800" y2="450" />
+    <line x1="200" y1="0" x2="200" y2="600" />
+    <line x1="400" y1="0" x2="400" y2="600" />
+    <line x1="600" y1="0" x2="600" y2="600" />
+  </g>
+  
+  <!-- Title -->
+  <text x="400" y="50" font-family="Arial, sans-serif" font-size="34" fill="#ffffff" text-anchor="middle" font-weight="bold">Prickly Pairs Architecture</text>
+  
+  <!-- Study Materials (Left Side) -->
+  <g transform="translate(25, 175)">
+    <rect x="0" y="0" width="150" height="260" rx="12" fill="#132b4a" stroke="#3a7bd5" stroke-width="4" />
+    <text x="75" y="40" font-family="Arial, sans-serif" font-size="20" fill="#ffffff" text-anchor="middle">Study</text>
+    <text x="75" y="65" font-family="Arial, sans-serif" font-size="20" fill="#ffffff" text-anchor="middle">Materials</text>
+
+    <!-- Simple Q&A Card Visualization -->
+    <g transform="translate(25, 110)">
+      <rect x="0" y="0" width="100" height="120" rx="6" fill="#254980" stroke="#3a7bd5" stroke-width="2" />
+      <line x1="0" y1="40" x2="100" y2="40" stroke="#3a7bd5" stroke-width="2" />
+      
+      <!-- Question Area -->
+      <text x="50" y="25" font-family="Arial, sans-serif" font-size="14" fill="#ffffff" text-anchor="middle">Question</text>
+      
+      <!-- Answer Area -->
+      <text x="50" y="65" font-family="Arial, sans-serif" font-size="14" fill="#ffffff" text-anchor="middle">Answer</text>
+      <line x1="20" y1="80" x2="80" y2="80" stroke="#6badfb" stroke-width="1.5" />
+      <line x1="20" y1="95" x2="80" y2="95" stroke="#6badfb" stroke-width="1.5" />
+      <line x1="20" y1="110" x2="60" y2="110" stroke="#6badfb" stroke-width="1.5" />
+    </g>
+  </g>
+  
+  <!-- Central Processing System -->
+  <g transform="translate(225, 150)">
+    <!-- Main Container -->
+    <rect x="0" y="0" width="350" height="320" rx="20" fill="#132b4a" stroke="#3a7bd5" stroke-width="5" />
+    
+    <!-- Enhancement Engine Layer -->
+    <g transform="translate(20, 30)">
+      <rect x="0" y="0" width="310" height="110" rx="10" fill="#183869" stroke="#3a7bd5" stroke-width="2.5" />
+      <text x="155" y="35" font-family="Arial, sans-serif" font-size="22" fill="#ffffff" text-anchor="middle" font-weight="bold">Enhancement Engine</text>
+      
+      <!-- Context Enhancement (LLM) -->
+      <rect x="30" y="55" width="250" height="40" rx="5" fill="#254980" stroke="#ffb454" stroke-width="2" />
+      <text x="155" y="80" font-family="Arial, sans-serif" font-size="16" fill="#ffffff" text-anchor="middle">Context Enhancement (LLM)</text>
+    </g>
+    
+    <!-- Flashcard Generator -->
+    <g transform="translate(20, 160)">
+      <rect x="0" y="0" width="310" height="110" rx="10" fill="#183869" stroke="#3a7bd5" stroke-width="2.5" />
+      <text x="155" y="35" font-family="Arial, sans-serif" font-size="22" fill="#ffffff" text-anchor="middle" font-weight="bold">Flashcard Generator</text>
+      
+      <!-- Anki Integration -->
+      <rect x="30" y="55" width="250" height="40" rx="5" fill="#254980" stroke="#ffb454" stroke-width="2" />
+      <text x="155" y="80" font-family="Arial, sans-serif" font-size="16" fill="#ffffff" text-anchor="middle">Anki Integration</text>
+    </g>
+    
+    <!-- LLM Bar -->
+    <rect x="40" y="285" width="270" height="20" rx="10" fill="#0a1929" stroke="#ffb454" stroke-width="2.5" />
+    <text x="175" y="300" font-family="Arial, sans-serif" font-size="12" fill="#ffffff" text-anchor="middle">LLM Model — GPT-4o</text>
+  </g>
+
+  <!-- Enhanced Flashcards (Right Side) -->
+  <g transform="translate(625, 175)">
+    <rect x="0" y="0" width="150" height="260" rx="12" fill="#132b4a" stroke="#3a7bd5" stroke-width="4" />
+    <text x="75" y="40" font-family="Arial, sans-serif" font-size="20" fill="#ffffff" text-anchor="middle">Enhanced</text>
+    <text x="75" y="65" font-family="Arial, sans-serif" font-size="20" fill="#ffffff" text-anchor="middle">Flashcards</text>
+    
+    <!-- Enhanced Flashcard Visualization -->
+    <g transform="translate(25, 100)">
+      <rect x="0" y="0" width="100" height="140" rx="6" fill="#254980" stroke="#ffb454" stroke-width="2" />
+      <line x1="0" y1="40" x2="100" y2="40" stroke="#ffb454" stroke-width="2" />
+      
+      <!-- Question Area -->
+      <text x="50" y="25" font-family="Arial, sans-serif" font-size="14" fill="#ffffff" text-anchor="middle">Question</text>
+      
+      <!-- Answer + Context Area -->
+      <text x="50" y="60" font-family="Arial, sans-serif" font-size="14" fill="#ffffff" text-anchor="middle">Answer</text>
+      <rect x="15" y="70" width="70" height="60" rx="4" fill="#183869" stroke="#6badfb" stroke-width="1.5" />
+      <text x="50" y="90" font-family="Arial, sans-serif" font-size="12" fill="#ffffff" text-anchor="middle">Context</text>
+      <text x="50" y="105" font-family="Arial, sans-serif" font-size="12" fill="#ffffff" text-anchor="middle">&amp;</text>
+      <text x="50" y="120" font-family="Arial, sans-serif" font-size="12" fill="#ffffff" text-anchor="middle">Explanation</text>
+    </g>
+  </g>
+  
+  <!-- Flow Arrows -->
+  <g stroke="#6badfb" stroke-width="5" fill="none">
+    <!-- Left to Center - Study Materials to Processing -->
+    <path d="M 175 300 L 211 300" />
+    <polygon points="210,295 215,300 210,305" fill="#6badfb" stroke="none" />
+    
+    <!-- Center to Right - Processing to Enhanced Flashcards -->
+    <path d="M 575 300 L 611 300" />
+    <polygon points="610,295 615,300 610,305" fill="#6badfb" stroke="none" />
+  </g>
+</svg>
