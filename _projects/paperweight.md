@@ -73,7 +73,7 @@ def fetch_arxiv_papers(category: str, start_date: date, max_results: Optional[in
 
     response = requests.get(base_url, params=params)
     response.raise_for_status()
-    
+
     # Parse XML response and extract paper metadata
     # ...
 ```
@@ -95,28 +95,28 @@ def calculate_paper_score(paper, config):
     """Calculate a relevance score for a paper based on configured criteria."""
     score = 0
     score_breakdown = {}
-    
+
     # Keyword matching with different weights for different sections
     title_keywords = count_keywords(paper["title"], config["keywords"])
     abstract_keywords = count_keywords(paper["abstract"], config["keywords"])
     content_keywords = count_keywords(paper["content"], config["keywords"])
-    
+
     # Maximum scores for each section with diminishing returns
     max_title_score = 50
     max_abstract_score = 50
     max_content_score = 25
-    
+
     # Calculate weighted scores
     title_score = min(title_keywords * config["title_keyword_weight"], max_title_score)
     abstract_score = min(abstract_keywords * config["abstract_keyword_weight"], max_abstract_score)
     content_score = min(content_keywords * config["content_keyword_weight"], max_content_score)
-    
+
     # Apply section-specific weighting
     score += title_score + abstract_score + content_score
-    
+
     # Additional scoring factors
     # ...
-    
+
     return max(score, 0), score_breakdown
 ```
 
@@ -128,37 +128,37 @@ paperweight leverages large language models (LLMs) to generate concise summaries
 
 The summarization logic is implemented in `analyzer.py`:
 
-```python
+````python
 @retry(stop=stop_after_attempt(3), wait=wait_exponential(multiplier=1, min=4, max=10))
 def summarize_paper(paper: Dict[str, Any], config: Dict[str, Any]) -> str:
     """Generate a summary of a paper using an LLM."""
     llm_provider = config.get("analyzer", {}).get("llm_provider", "openai").lower()
     api_key = config.get("analyzer", {}).get("api_key")
-    
+
     if llm_provider not in ["openai", "gemini"] or not api_key:
         logger.warning(f"No valid LLM provider or API key available for {llm_provider}. Falling back to abstract.")
         return paper["abstract"]
-    
+
     try:
         # Initialize LLM
         provider = LLMProvider[llm_provider.upper()]
         model_name = "gpt-4o-mini" if provider == LLMProvider.OPENAI else "gemini-1.5-flash"
         llm_instance = LLM.create(provider=provider, model_name=model_name, api_key=api_key)
-        
+
         # Generate summary with contextual prompt
         prompt = f"Write a concise, accurate summary of the following paper's content in about 3-5 sentences:\n\n```{paper['content']}```"
-        
+
         # Track token usage for optimization
         input_tokens = count_tokens(prompt)
         response = llm_instance.generate_response(prompt=prompt)
         output_tokens = count_tokens(response)
-        
+
         return response
     except Exception as e:
         # Fallback to abstract if summarization fails
         logger.error(f"Error summarizing paper: {e}", exc_info=True)
         return paper["abstract"]
-```
+````
 
 The system implements several key optimizations for summarization:
 
@@ -200,16 +200,19 @@ While paperweight provides effective solutions for research discovery, several l
 Current development efforts are focused on addressing these limitations through several key innovations:
 
 1. **Machine Learning Integration**:
+
    - Replacing keyword-based filtering with embedding similarity scoring
    - Implementing personalized paper recommendations based on user feedback
    - Developing citation impact prediction for emerging papers
 
 2. **Expanded Data Sources**:
+
    - Adding support for multiple academic repositories (PubMed, IEEE, etc.)
    - Implementing a unified metadata schema across different sources
    - Developing cross-repository deduplication
 
 3. **Context Management**:
+
    - Implementing intelligent document chunking for papers exceeding token limits
    - Developing hierarchical summarization for extremely long papers
    - Creating semantic sectioning to prioritize important paper components

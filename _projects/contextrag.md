@@ -109,7 +109,7 @@ def compute_similarity(files_dict, checksums, cache):
                 embedding = response.data[0].embedding
                 embeddings.append(embedding)
                 cache[checksum] = embedding
-    
+
     # Normalize the embeddings before computing the cosine similarity
     normalized_embeddings = normalize(np.array(embeddings))
     similarity_matrix = cosine_similarity(normalized_embeddings)
@@ -129,11 +129,11 @@ These optimizations enable efficient similarity computation even for large docum
 
 A core innovation in ContextRAG is its differentiated processing strategies based on document characteristics. The system employs distinct approaches for documents of varying lengths, optimizing both computational efficiency and semantic coherence.
 
-| Document Type | Token Range | Processing Approach | Implementation Details |
-|---------------|-------------|---------------------|------------------------|
-| **Short** | ≤3,500 | Full-context embedding | Direct embedding with text-embedding-3-large (3072 dims) |
-| **Medium** | 3,500-15,000 | Model adaptation | Uses GPT-3.5-Turbo-16K for processing |
-| **Long** | >15,000 | Specialized handling | Custom chunking and hierarchical embedding |
+| Document Type | Token Range  | Processing Approach    | Implementation Details                                   |
+| ------------- | ------------ | ---------------------- | -------------------------------------------------------- |
+| **Short**     | ≤3,500       | Full-context embedding | Direct embedding with text-embedding-3-large (3072 dims) |
+| **Medium**    | 3,500-15,000 | Model adaptation       | Uses GPT-3.5-Turbo-16K for processing                    |
+| **Long**      | >15,000      | Specialized handling   | Custom chunking and hierarchical embedding               |
 
 This approach is reflected in the model selection logic in `src/markdown_grouping/category_assignment.py`:
 
@@ -168,6 +168,7 @@ def query(self, query_texts, n_results=3):
 ```
 
 This implementation enables:
+
 1. **Scalable vector storage** - Efficient handling of large document collections
 2. **Fast similarity search** - Optimized retrieval of relevant documents
 3. **Distance-based ranking** - Documents ranked by semantic similarity
@@ -215,11 +216,11 @@ elif 3500 < token_count < 15000:
 
 Recent advances in model architecture have dramatically increased context windows:
 
-| Time Period | Leading Models                                  | Typical Context Windows     |
-|-------------|-------------------------------------------------|-----------------------------|
-| 2022–2023   | GPT-3.5, Claude 1, LLaMA 1                      | 2K–16K tokens               |
-| 2023–2024   | GPT-4, Claude 2, LLaMA 2                        | 4K–32K tokens               |
-| 2024–2025   | GPT-4o, Gemini 1.5 Pro, LLaMA 3, DeepSeek-V3    | 128K–2M tokens              |
+| Time Period | Leading Models                               | Typical Context Windows |
+| ----------- | -------------------------------------------- | ----------------------- |
+| 2022–2023   | GPT-3.5, Claude 1, LLaMA 1                   | 2K–16K tokens           |
+| 2023–2024   | GPT-4, Claude 2, LLaMA 2                     | 4K–32K tokens           |
+| 2024–2025   | GPT-4o, Gemini 1.5 Pro, LLaMA 3, DeepSeek-V3 | 128K–2M tokens          |
 
 Despite these advances, context limitations remain relevant for several reasons:
 

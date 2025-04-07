@@ -36,6 +36,7 @@ Prickly Pairs addresses these limitations through automated enhancement of exist
 Prickly Pairs implements a modular pipeline with two main components:
 
 1. **Enhancement Engine**: Processes existing question-answer pairs through a large language model with specialized prompts to generate enriched explanations
+
    - Content Extraction: Parses existing study materials using pattern recognition
    - Context Enhancement: Enriches answer content with explanatory context using specialized LLM instructions
    - Content Processing: Formats enhanced content for the next stage
@@ -60,7 +61,7 @@ The core enhancement logic is implemented in `main.py`:
 ```python
 def enhance_qa_pair(question, answer, system_message):
     user_message = f"Enhance the following question-answer pair:\n\nQuestion: {question}\nAnswer: {answer}"
-    
+
     response = client.chat.completions.create(
         model="gpt-4o",
         messages=[
@@ -69,9 +70,9 @@ def enhance_qa_pair(question, answer, system_message):
         ],
         temperature=0.4
     )
-    
+
     enhanced_answer = response.choices[0].message.content
-    print(f"Enhanced answer for question: {question.strip()[:50]}...") 
+    print(f"Enhanced answer for question: {question.strip()[:50]}...")
     return enhanced_answer
 ```
 
@@ -215,10 +216,12 @@ These practical outcomes suggest that the context-enhanced approach significantl
 The following examples demonstrate the transformation from traditional question-answer pairs to context-enhanced learning aids:
 
 **Traditional Flashcard:**
+
 - **Question:** What are the three basic LAN topologies?
 - **Answer:** Bus, ring, and star
 
 **Enhanced Flashcard:**
+
 - **Question:** What are the three basic LAN topologies?
 - **Answer:** Bus, ring, and star
   - **Bus Topology:** All devices connected to a single central cable. Easy to install but vulnerable to performance issues with more devices.
@@ -247,16 +250,19 @@ While Prickly Pairs provides effective solutions for enhancing study materials, 
 Ongoing development efforts are focused on addressing these limitations through several key innovations:
 
 1. **Domain Adaptation**:
+
    - Developing specialized prompts for different educational domains
    - Implementing domain-specific knowledge verification
    - Creating field-specific formatting and structure templates
 
 2. **Content Generation**:
+
    - Extracting question-answer pairs directly from textbooks and reference materials
    - Generating complete study sets from learning objectives
    - Creating multi-level questions for progressive learning
 
 3. **Knowledge Integration**:
+
    - Implementing concept mapping between related flashcards
    - Building knowledge graphs to visualize concept relationships
    - Creating linked references across the flashcard collection
