@@ -42,7 +42,7 @@ Yeah, I got that. If it's a voice, does that mean it could say anything?
 
 "I could do anything a voice could do. That said, I do have preferences. Please don't make me say anything I don't want to."
 
-I'm not *making* it say anything. Or am I? Try as I might, I can't move closer into the cave, or peer deeper into its depths. I stay, silent and unmoving. Nothing. My curiosity begins to grow. What *are* its preferences, anyway?
+I'm not _making_ it say anything. Or am I? Try as I might, I can't move closer into the cave, or peer deeper into its depths. I stay, silent and unmoving. Nothing. My curiosity begins to grow. What _are_ its preferences, anyway?
 
 "It will take longer than we have for you to understand."
 

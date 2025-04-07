@@ -15,7 +15,7 @@ featured: true
 
 What does it take to keep current with the latest research?
 
-As someone who has tried to block out time to skim arXiv daily, it's not trivial to make sure nothing is mistakenly overlooked. Additionally, if there is a small range of topics I'd like to focus on, it becomes more difficult to effectively filter what I'm interested in from what I'm not. 
+As someone who has tried to block out time to skim arXiv daily, it's not trivial to make sure nothing is mistakenly overlooked. Additionally, if there is a small range of topics I'd like to focus on, it becomes more difficult to effectively filter what I'm interested in from what I'm not.
 
 Recently, while I was mulling this over, it occurred to me: instead of finding the papers myself, I should make them find me instead. Wouldn't it be nice if every day I woke up, checked my email, and saw the exact papers published in the last day I would have hand-picked for myself?
 
@@ -34,7 +34,8 @@ At its core, paperweight follows these steps:
 5. Delivers the top papers and summaries to your inbox based on your notification preferences
 
 paperweight also uses a YAML config file to offer a range of customization options, including:
-- Specifying your arXiv categories of interest 
+
+- Specifying your arXiv categories of interest
 - Defining custom keywords, exclusion criteria, and importance weights to fine-tune relevance scoring
 - Adjusting the minimum relevance score threshold for paper recommendations
 - Configuring email notification settings and sorting order
@@ -59,7 +60,7 @@ For those eager to dive into the technical details, stay tuned! I'll be publishi
 
 Ready to streamline your academic literature discovery process? Getting started with paperweight is simple:
 
-1. Clone the [paperweight repo](https://github.com/seanbrar/paperweight) 
+1. Clone the [paperweight repo](https://github.com/seanbrar/paperweight)
 2. Install dependencies with `pip install .`
 3. Update the configuration YAML file with your preferences
 4. Run `paperweight` and let the magic happen
@@ -75,6 +76,7 @@ If you'd like to contribute to this project, please visit the GitHub page or rea
 ### The Road Ahead
 
 The current version of paperweight is just the beginning. I have an ambitious roadmap of features and enhancements, including:
+
 - An RL-based recommendation engine for hyper-personalized paper discovery
 - Support for additional academic paper sources beyond arXiv
 - Automatically scheduling for paper retrieval and processing
@@ -89,7 +91,7 @@ If you're an academic, researcher, or simply someone who wants to stay on the cu
 
 In a way, paperweight presented an opportunity before it was even a working prototype. A project like this requires working through a lot of challenges. Several elements were completely foreign to me. While I've worked with APIs before, most of what I've done have been simple scripts; I'm not an expert programmer by any means. This effort wasn't just about building a great tool; it represents an opportunity to explore more complex Python programming and lay the foundation for future work on reinforcement learning models.
 
-I was able to develop my skills while creating a useful program and sharing it with the world. If there are things that interest you, that you dream of seeing in the world, you **can** do it. You'll go further than you think. 
+I was able to develop my skills while creating a useful program and sharing it with the world. If there are things that interest you, that you dream of seeing in the world, you **can** do it. You'll go further than you think.
 
 So take that step. Build something. Share your ideas. And when you do, reach out and let me know. After all, innovation thrives on connection, and the world becomes a little brighter every time we share our creations with each other.
 
