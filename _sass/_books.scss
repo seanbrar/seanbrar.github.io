@@ -8,7 +8,7 @@ html {
 }
 
 /* Chromium-specific enhancements */
-@supports (-webkit-appearance:none) {
+@supports (-webkit-appearance: none) {
   .book-category {
     scroll-margin-top: 80px;
   }
@@ -19,8 +19,8 @@ html {
   html {
     scroll-padding-top: 100px;
   }
-  
-  @supports (-webkit-appearance:none) {
+
+  @supports (-webkit-appearance: none) {
     .book-category {
       scroll-margin-top: 100px;
     }
@@ -37,7 +37,7 @@ html {
   position: sticky;
   top: 62px; // Account for navbar height
   background: var(--global-bg-color);
-  z-index: 5;  // Lower z-index to stay below progress bar while still being above regular content
+  z-index: 5; // Lower z-index to stay below progress bar while still being above regular content
   padding: 1rem 0;
   border-bottom: 1px solid var(--global-divider-color);
   margin-bottom: 2rem;
@@ -115,7 +115,7 @@ html {
   display: flex;
   flex-direction: column;
   height: 100%;
-  
+
   &:hover {
     text-decoration: none;
   }
@@ -163,7 +163,7 @@ html {
   font-size: 1rem;
   font-weight: bold;
   color: var(--global-text-color);
-  
+
   .book-item:hover & {
     color: var(--global-theme-color);
     text-decoration: underline;
@@ -189,24 +189,24 @@ html {
     top: 62px; // Keep the same top spacing as desktop
     padding: 0.75rem 0; // Slightly reduce padding on mobile
   }
-  
+
   .category-nav ul {
     overflow-x: auto;
     padding-bottom: 0.5rem;
     -webkit-overflow-scrolling: touch; // Smooth scrolling on iOS
     scrollbar-width: none; // Hide scrollbar on Firefox
     -ms-overflow-style: none; // Hide scrollbar on IE/Edge
-    
+
     &::-webkit-scrollbar {
       display: none; // Hide scrollbar on Chrome/Safari
     }
   }
-  
+
   .book-grid {
     grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
     gap: 1.5rem;
   }
-  
+
   .book-cover {
     height: 220px;
   }
@@ -217,7 +217,7 @@ html {
   .category-nav {
     padding: 0.5rem 0; // Further reduce padding on very small screens
   }
-  
+
   .category-nav a {
     padding: 0.4rem 0.6rem; // Slightly reduce padding on links
     font-size: 0.85rem; // Slightly smaller font size
@@ -237,7 +237,7 @@ html {
 }
 
 /* Book cover styles - avoids conflicts with bookshelf class names */
-.review-cover, 
+.review-cover,
 .empty-review {
   position: relative;
   margin-bottom: 1.5rem;
@@ -294,20 +294,20 @@ html {
     margin: 1rem 0 1.5rem 0; /* Added top margin for spacing */
     padding: 0 40px 0 0; /* Right padding */
   }
-  
+
   .review-cover {
     float: right;
     width: 300px;
     margin: 1rem 0 1.5rem 2rem; /* Top, right, bottom, left */
     padding: 0;
   }
-  
+
   .review-cover-source {
     text-align: left;
   }
-  
-  .mobile-break { 
-    display: none; 
+
+  .mobile-break {
+    display: none;
   }
 }
 
@@ -325,8 +325,8 @@ html {
 .open-library-link {
   text-decoration: none;
   color: var(--global-theme-color);
-  
+
   &:hover {
     text-decoration: none;
   }
-} 
+}

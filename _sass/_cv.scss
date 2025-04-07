@@ -3,14 +3,14 @@
  *****************************/
 
 // Define consistent font sizes across all sections
-$font-size-section-header: 1.25rem;   // Section titles
-$font-size-primary: 1.1rem;           // Job titles, project names
-$font-size-secondary: 1rem;           // Employers, dates, organizations
-$font-size-details: 0.9rem;           // Description points, details
-$font-size-small: 0.8rem;             // Skills, interests, certificate details
+$font-size-section-header: 1.25rem; // Section titles
+$font-size-primary: 1.1rem; // Job titles, project names
+$font-size-secondary: 1rem; // Employers, dates, organizations
+$font-size-details: 0.9rem; // Description points, details
+$font-size-small: 0.8rem; // Skills, interests, certificate details
 
 // Font weights
-$font-weight-medium: 500;             // Semi-bold text for secondary headings
+$font-weight-medium: 500; // Semi-bold text for secondary headings
 
 // Add new shared visual elements
 $border-radius-standard: 4px;
@@ -28,7 +28,7 @@ html {
 }
 
 /* Chromium-specific enhancements */
-@supports (-webkit-appearance:none) {
+@supports (-webkit-appearance: none) {
   #basics.anchor {
     top: -80px !important; /* Stronger offset specifically for Chromium */
   }
@@ -39,8 +39,8 @@ html {
   html {
     scroll-padding-top: 100px;
   }
-  
-  @supports (-webkit-appearance:none) {
+
+  @supports (-webkit-appearance: none) {
     #basics.anchor {
       top: -100px !important;
     }
@@ -63,7 +63,7 @@ html {
   font-weight: $font-weight-medium;
   color: var(--global-theme-color);
   transition: $transition-standard;
-  
+
   a {
     color: inherit;
     text-decoration: none;
@@ -117,67 +117,68 @@ html {
   .section-title {
     @extend .section-header;
   }
-  
+
   // Title elements (job titles, project names)
-  .title, .project-title {
+  .title,
+  .project-title {
     @extend .primary-item;
     margin-left: 1rem;
-    
+
     @media (min-width: 768px) {
       margin-left: 4rem;
     }
-    
+
     a {
       color: inherit;
       text-decoration: none;
-      
+
       &:hover {
         text-decoration: underline;
       }
     }
   }
-  
+
   // Secondary information (organizations, companies)
-  .position-info, 
-  .organization-info, 
+  .position-info,
+  .organization-info,
   .institution-info {
     @extend .secondary-item;
     margin-left: 1rem;
-    
+
     @media (min-width: 768px) {
       margin-left: 4rem;
     }
   }
-  
+
   // Summary and description text
   .summary-info {
     @extend .detail-item;
     @extend .italic-text;
     margin-left: 1rem;
-    
+
     @media (min-width: 768px) {
       margin-left: 4rem;
     }
   }
-  
+
   // Courses information
   .courses-info {
     @extend .small-item;
     margin-top: 0.5rem;
     margin-left: 1rem;
-    
+
     @media (min-width: 768px) {
       margin-left: 4rem;
     }
   }
-  
+
   // List item styling
   .list-group-item {
     padding: 1.25rem;
-    
+
     .items {
       margin-left: 1.5rem;
-      
+
       &.highlights-list {
         .highlight-item {
           @extend .detail-item;
@@ -185,7 +186,7 @@ html {
           line-height: 1.4;
         }
       }
-      
+
       .item {
         @extend .detail-item;
       }
@@ -402,14 +403,14 @@ ul.timeline li::before {
 
 .basics {
   .name {
-    font-size: 2.5rem;  // Special size for name
+    font-size: 2.5rem; // Special size for name
     font-weight: bold;
     margin-bottom: 0.5rem;
     color: var(--global-text-color);
   }
 
   .label {
-    font-size: 1.5rem;  // Special size for label
+    font-size: 1.5rem; // Special size for label
     color: var(--global-theme-color);
     margin-bottom: 1rem;
   }
@@ -418,7 +419,7 @@ ul.timeline li::before {
     margin-bottom: 1rem;
     color: var(--global-text-color-light);
     @extend .secondary-item;
-    
+
     i {
       margin-right: 0.5rem;
       color: var(--global-theme-color);
@@ -427,18 +428,18 @@ ul.timeline li::before {
 
   .profiles {
     margin-bottom: 1rem;
-    
+
     .profile-link {
       display: inline-block;
       margin-right: 1.5rem;
       color: var(--global-text-color);
       text-decoration: none;
       @extend .secondary-item;
-      
+
       &:hover {
         color: var(--global-theme-color);
       }
-      
+
       i {
         margin-right: 0.5rem;
         color: var(--global-theme-color);
@@ -459,11 +460,11 @@ ul.timeline li::before {
   border-bottom: 1px solid rgba(0, 0, 0, 0.1);
   padding-bottom: 0.2rem;
   @extend .secondary-item;
-  
+
   i {
     margin-right: 0.5rem;
   }
-  
+
   span {
     color: var(--global-theme-color);
   }
@@ -487,7 +488,7 @@ ul.timeline li::before {
   grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
   gap: 1rem;
   margin-left: 1rem;
-  
+
   @media (min-width: 768px) {
     margin-left: 2rem;
   }
@@ -499,7 +500,7 @@ ul.timeline li::before {
   border-radius: $border-radius-standard;
   border: 1px solid rgba(0, 0, 0, 0.05);
   transition: $transition-standard;
-  
+
   // &:hover {
   //   transform: translateY(-1px);
   //   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.03);
@@ -510,7 +511,7 @@ ul.timeline li::before {
 .cert-table {
   width: 100%;
   border-collapse: collapse;
-  
+
   td {
     padding: 0;
   }
@@ -538,12 +539,12 @@ ul.timeline li::before {
   font-weight: $font-weight-medium;
   color: var(--global-theme-color);
   padding-bottom: 0.4rem;
-  
+
   a {
     color: inherit;
     // text-decoration: none;
     transition: color 0.2s ease;
-    
+
     // &:hover {
     //   text-decoration: underline;
     // }
@@ -587,7 +588,7 @@ ul.timeline li::before {
 
 .orgs-list {
   margin-left: 1rem;
-  
+
   @media (min-width: 768px) {
     margin-left: 2rem;
   }
@@ -598,7 +599,7 @@ ul.timeline li::before {
   margin-bottom: 0.5rem;
   border-radius: $border-radius-standard;
   transition: $transition-standard;
-  
+
   // &:hover {
   //   background-color: rgba(0, 0, 0, 0.02);
   // }
@@ -607,7 +608,7 @@ ul.timeline li::before {
 .org-table {
   width: 100%;
   border-collapse: collapse;
-  
+
   td {
     padding: 0;
   }
@@ -624,12 +625,12 @@ ul.timeline li::before {
   @extend .small-item;
   // font-weight: bold;
   font-weight: $font-weight-medium;
-  
+
   a {
     color: inherit;
     text-decoration: none;
     transition: color 0.2s ease;
-    
+
     &:hover {
       color: var(--global-theme-color);
       text-decoration: underline;
@@ -696,14 +697,14 @@ ul.timeline li::before {
  *****************************/
 
 // Consolidated hover effects for all interactive links
-.primary-item a, 
-.cert-name a, 
+.primary-item a,
+.cert-name a,
 .org-link {
   position: relative;
   text-decoration: none;
-  
+
   &::after {
-    content: '';
+    content: "";
     position: absolute;
     bottom: -2px;
     left: 0;
@@ -712,7 +713,7 @@ ul.timeline li::before {
     background-color: var(--global-theme-color);
     transition: width 0.3s ease;
   }
-  
+
   &:hover::after {
     width: 100%;
   }

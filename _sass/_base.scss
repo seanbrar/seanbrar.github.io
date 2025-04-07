@@ -646,7 +646,7 @@ footer.sticky-bottom {
   li {
     border-bottom: 1px solid var(--global-divider-color);
     list-style: none;
-    padding-top: .34rem;
+    padding-top: 0.34rem;
     padding-bottom: 2rem;
 
     .row {
@@ -1010,7 +1010,7 @@ progress {
   position: fixed;
   left: 0;
   top: 56px;
-  z-index: 100;  // Higher z-index to ensure progress bar appears above book category navigation
+  z-index: 100; // Higher z-index to ensure progress bar appears above book category navigation
 
   /* Dimensions */
   width: 100%;
@@ -1490,5 +1490,3 @@ figure.cover {
     color: #23212d !important;
   }
 }
-
-
