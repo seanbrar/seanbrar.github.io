@@ -4,7 +4,7 @@
       {% if data[1].name %}
         <h1 class="name" data-toc-skip>{{ data[1].name }}</h1>
       {% endif %}
-      
+
       {% if data[1].label %}
         <h2 class="label" data-toc-skip>{{ data[1].label }}</h2>
       {% endif %}
@@ -12,7 +12,9 @@
       {% if data[1].location %}
         <div class="location">
           <i class="fa-solid fa-location-dot"></i>
-          {{ data[1].location.city }}{% if data[1].location.region %}, {{ data[1].location.region }}{% endif %}{% if data[1].location.countryCode %}, {{ data[1].location.countryCode }}{% endif %}
+          {{ data[1].location.city -}}
+          {%- if data[1].location.region %}, {{ data[1].location.region }}{% endif -%}
+          {%- if data[1].location.countryCode %}, {{ data[1].location.countryCode }}{% endif %}
         </div>
       {% endif %}
 
@@ -20,11 +22,11 @@
         <div class="profiles">
           {% for profile in data[1].profiles %}
             <a href="{{ profile.url }}" target="_blank" rel="noopener noreferrer" class="profile-link">
-              {% if profile.network == "GitHub" %}
+              {% if profile.network == 'GitHub' %}
                 <i class="fab fa-github"></i>
-              {% elsif profile.network == "LinkedIn" %}
+              {% elsif profile.network == 'LinkedIn' %}
                 <i class="fab fa-linkedin"></i>
-              {% elsif profile.network == "Website" %}
+              {% elsif profile.network == 'Website' %}
                 <i class="fas fa-globe"></i>
               {% else %}
                 {{ profile.network }}

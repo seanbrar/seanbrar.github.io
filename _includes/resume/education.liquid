@@ -36,7 +36,7 @@
         </div>
         <div class="col-xs-10 cl-sm-10 col-md-10 mt-2 mt-md-0">
           <h6 class="title font-weight-bold ml-1 ml-md-4">
-            {% if content.url and content.url != "" %}
+            {% if content.url and content.url != '' %}
               <a href="{{ content.url }}">{{ content.studyType }}</a>
             {% else %}
               {{ content.studyType }}
@@ -55,7 +55,7 @@
           {% endif %}
           {% if content.courses %}
             <div class="courses-info ml-1 ml-md-4">
-              <span class="list-group-name"><b>Courses:</b> {{ content.courses | join: ", " }}</span>
+              <span class="list-group-name"><b>Courses:</b> {{ content.courses | join: ', ' }}</span>
             </div>
           {% endif %}
         </div>
