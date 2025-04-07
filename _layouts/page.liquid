@@ -14,7 +14,11 @@ layout: default
     <p class="post-description">{{ page.description }}</p>
   </header>
 
-  <article {% if page.category %}class="projects project-content"{% endif %}>
+  <article
+    {% if page.category %}
+      class="projects project-content"
+    {% endif %}
+  >
     {{ content }}
   </article>
 

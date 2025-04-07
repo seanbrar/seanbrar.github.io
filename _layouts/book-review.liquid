@@ -4,13 +4,15 @@ layout: default
 {% assign year = page.started | date: '%Y' %}
 
 {% if page._styles %}
-  <style type="text/css">{{ page._styles }}</style>
+  <style type="text/css">
+    {{ page._styles }}
+  </style>
 {% endif %}
 
 <div class="post">
   <header class="post-header">
     <h1 class="post-title">{{ page.title }}</h1>
-    
+
     {% comment %} Author and Release Date {% endcomment %}
     {% if page.author or page.released %}
       <p class="post-meta">
@@ -22,49 +24,59 @@ layout: default
 
     {% comment %} Reading Metadata and Links {% endcomment %}
     {% assign has_any_meta = false %}
-    {% if page.started != blank or page.finished != blank or page.stars != blank or page.olid != blank or page.isbn != blank or page.buy_link != blank %}
+    {% if page.started != blank
+      or page.finished != blank
+      or page.stars != blank
+      or page.olid != blank
+      or page.isbn != blank
+      or page.buy_link != blank
+    %}
       {% assign has_any_meta = true %}
     {% endif %}
-    
+
     {% if has_any_meta %}
       <p class="post-meta">
         {% assign prev_item = false %}
-        
+
         {% if page.started != blank %}
           <i class="fa-solid fa-play fa-sm" style="color: var(--global-tip-block) !important"></i> <em>{{ page.started }}</em>
           {% assign prev_item = true %}
         {% endif %}
-        
+
         {% if page.finished != blank %}
           {% if prev_item %}&nbsp;&middot;&nbsp;{% endif %}
           <i class="fa-solid fa-stop fa-sm" style="color: #e56565 !important"></i> <em>{{ page.finished }}</em>
           {% assign prev_item = true %}
         {% endif %}
-        
+
         {% comment %} Star Rating {% endcomment %}
         {% if page.stars != blank %}
           {% if prev_item %}&nbsp;&middot;&nbsp;{% endif %}
-          
+
           {% comment %} Goodreads link wrapper {% endcomment %}
           {% if page.goodreads_review %}
             <a target="_blank" href="https://www.goodreads.com/review/show/{{ page.goodreads_review }}">
-            <i class="fa-brands fa-goodreads-g"></i>
+              <i class="fa-brands fa-goodreads-g"></i>
           {% endif %}
-          
+
           {% comment %} Generate star icons {% endcomment %}
           {% assign full_stars = page.stars | floor %}
           {% assign half_star = page.stars | minus: full_stars %}
           {% assign empty_stars = 5 | minus: full_stars %}
           {% if half_star > 0 %}{% assign empty_stars = empty_stars | minus: 1 %}{% endif %}
-          
-          {% for i in (1..full_stars) %}<i class="fa-solid fa-star fa-sm"></i>{% endfor %}
+
+          {% for i in (1..full_stars) -%}
+            <i class="fa-solid fa-star fa-sm"></i>
+          {%- endfor %}
           {% if half_star > 0 %}<i class="fa-solid fa-star-half-stroke fa-sm"></i>{% endif %}
-          {% for i in (1..empty_stars) %}<i class="fa-regular fa-star fa-sm"></i>{% endfor %}
-          
+          {% for i in (1..empty_stars) -%}
+            <i class="fa-regular fa-star fa-sm"></i>
+          {%- endfor %}
+
           {% if page.goodreads_review %}</a>{% endif %}
           {% assign prev_item = true %}
         {% endif %}
-        
+
         {% comment %} Open Library Link {% endcomment %}
         {% if page.olid != blank or page.isbn != blank %}
           {% if prev_item %}&nbsp;&middot;&nbsp;{% endif %}
@@ -79,7 +91,7 @@ layout: default
           {% endif %}
           {% assign prev_item = true %}
         {% endif %}
-        
+
         {% comment %} Buy Link {% endcomment %}
         {% if page.buy_link != blank %}
           {% if prev_item %}&nbsp;&middot;&nbsp;{% endif %}
@@ -93,16 +105,16 @@ layout: default
         {% endif %}
       </p>
     {% endif %}
-    
+
     {% comment %} Tags and Categories {% endcomment %}
     <p class="post-tags">
       {% assign prev_item = false %}
-      
+
       {% if year != blank %}
         <a href="{{ year | prepend: '/books/' | relative_url }}"><i class="fa-solid fa-calendar fa-sm"></i> {{ year }}</a>
         {% assign prev_item = true %}
       {% endif %}
-      
+
       {% if page.tags.size > 0 %}
         {% if prev_item %}&nbsp;&middot;&nbsp;{% endif %}
         {% for tag in page.tags %}
@@ -139,10 +151,10 @@ layout: default
         {% endif %}
       </div>
     {% endcapture %}
-    
+
     <div class="book-review-wrapper">
       {{ book_cover }}
-      
+
       {% if content == blank %}
         <div class="empty-review">
           {% assign status = page.status | upcase %}
@@ -155,7 +167,9 @@ layout: default
           {% if page.start != blank or page.end != blank %}
             <h4>
               {% if page.start != blank %}Start Date: {{ page.start | date: '%-d %B %Y' }}.{% endif %}
-              {% if page.end != blank %}{% if page.start != blank %} {% endif %}End Date: {{ page.end | date: '%-d %B %Y' }}.{% endif %}
+              {% if page.end != blank -%}
+                {%- if page.start != blank %} {% endif %}End Date: {{ page.end | date: '%-d %B %Y' }}.
+              {%- endif %}
             </h4>
           {% endif %}
           {{ content }}
