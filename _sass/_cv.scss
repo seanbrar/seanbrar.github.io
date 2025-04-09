@@ -199,11 +199,11 @@ html {
   .title {
     color: var(--global-theme-color);
     font-weight: $font-weight-medium;
-    
+
     a {
       color: var(--global-theme-color);
       text-decoration: none;
-      
+
       &:hover {
         text-decoration: underline;
       }
@@ -213,14 +213,14 @@ html {
   /*****************************
    * CV Projects styles
    *****************************/
-   .project-title {
+  .project-title {
     color: var(--global-theme-color);
     font-weight: $font-weight-medium;
-    
+
     a {
       color: var(--global-theme-color);
       text-decoration: none;
-      
+
       &::after {
         content: none !important; // Forcefully remove the inherited ::after
       }
