@@ -192,12 +192,476 @@ html {
       }
     }
   }
+
+  /*****************************
+   * CV Work Experience styles
+   *****************************/
+  .title {
+    color: var(--global-theme-color);
+    font-weight: $font-weight-medium;
+    
+    a {
+      color: var(--global-theme-color);
+      text-decoration: none;
+      
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+
+  /*****************************
+   * CV Projects styles
+   *****************************/
+   .project-title {
+    color: var(--global-theme-color);
+    font-weight: $font-weight-medium;
+    
+    a {
+      color: var(--global-theme-color);
+      text-decoration: none;
+      
+      &::after {
+        content: none !important; // Forcefully remove the inherited ::after
+      }
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+
+  /*****************************
+   * CV TIME_TABLE styles
+   *****************************/
+  p.location {
+    font-size: 0.7rem;
+    white-space: nowrap;
+  }
+
+  i.iconlocation {
+    color: var(--global-theme-color);
+    font-size: 0.8rem;
+  }
+
+  i.iconinstitution {
+    color: var(--global-theme-color);
+    font-size: 0.95rem;
+    margin-right: 0.3rem;
+  }
+
+  i.icondepartment {
+    color: var(--global-theme-color);
+    font-size: 0.8rem;
+    margin-right: 0.3rem;
+  }
+
+  table.institution {
+    margin-bottom: 1rem;
+  }
+
+  td.department {
+    font-size: 0.8rem;
+  }
+
+  div.container-links {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: flex-start;
+    margin-top: 1rem;
+    margin-bottom: 0.5rem;
+  }
+
+  /*****************************
+   * CV MAP styles
+   *****************************/
+  div.container-pdf {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: flex-start;
+  }
+
+  /*****************************
+   * CV LIST_GROUPS styles
+   *****************************/
+  div.list-groups {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    flex-direction: row;
+    align-content: center;
+  }
+
+  div.list-group {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-bottom: 2rem;
+  }
+
+  td.list-group-category {
+    color: var(--global-theme-color);
+    margin-bottom: 0.5rem;
+    @extend .secondary-item;
+  }
+
+  td.list-group-category-icon {
+    font-size: 0.8rem;
+    color: var(--global-theme-color);
+    width: 1.4rem;
+    padding-right: 0.4rem;
+  }
+
+  td.list-group-name {
+    font-size: $font-size-small;
+    font-weight: bold;
+  }
+
+  td.list-group-level {
+    font-size: $font-size-small;
+    padding-left: 0.5rem;
+  }
+
+  td.list-group-school {
+    font-size: 0.7rem;
+    padding-left: 0.5rem;
+    text-align: center;
+  }
+
+  p.list-group-time {
+    font-size: 0.7rem;
+    padding-left: 0.5rem;
+  }
+
+  td.list-group-link {
+    padding-left: 0.5rem;
+  }
+
+  .list-groups {
+    .list-group {
+      td.list-group-name {
+        font-weight: $font-weight-medium;
+      }
+    }
+  }
+
+  /*****************************
+   * CV TOC styles
+   *****************************/
+  a.anchor {
+    display: block;
+    position: relative;
+    top: -50px;
+    visibility: hidden;
+  }
+
+  ul.timeline {
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+  }
+
+  ul.timeline li {
+    position: relative;
+    min-height: 2.2rem;
+    color: var(--global-text-color);
+    list-style-position: inside;
+  }
+
+  span.badge-toc {
+    color: var(--global-bg-color);
+    background-color: var(--global-theme-color);
+    border-radius: 0.125rem;
+    padding: 0.125rem 0.5rem 0.125rem 0.5rem;
+    font-weight: 700 !important;
+    display: inline-block;
+    inline-size: fit-content;
+  }
+
+  ul.timeline li::before {
+    content: "";
+    min-height: 2.5rem;
+    width: 1px;
+    background: var(--global-text-color);
+    margin: 0;
+    padding: 0;
+    position: absolute;
+    left: 2px;
+    top: -0.5rem;
+  }
+
+  /*****************************
+   * Basics section styles
+   *****************************/
+  .basics {
+    .name {
+      font-size: 2.5rem; // Special size for name
+      font-weight: bold;
+      margin-bottom: 0.5rem;
+      color: var(--global-text-color);
+    }
+
+    .label {
+      font-size: 1.5rem; // Special size for label
+      color: var(--global-theme-color);
+      margin-bottom: 1rem;
+    }
+
+    .location {
+      margin-bottom: 1rem;
+      color: var(--global-text-color-light);
+      @extend .secondary-item;
+
+      i {
+        margin-right: 0.5rem;
+        color: var(--global-theme-color);
+      }
+    }
+
+    .profiles {
+      margin-bottom: 1rem;
+
+      .profile-link {
+        display: inline-block;
+        margin-right: 1.5rem;
+        color: var(--global-text-color);
+        text-decoration: none;
+        @extend .secondary-item;
+
+        &:hover {
+          color: var(--global-theme-color);
+        }
+
+        i {
+          margin-right: 0.5rem;
+          color: var(--global-theme-color);
+        }
+      }
+    }
+  }
+
+  /*****************************
+   * Shared Category Header
+   *****************************/
+  .category-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 0.75rem;
+    color: var(--global-theme-color);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    padding-bottom: 0.2rem;
+    @extend .secondary-item;
+
+    i {
+      margin-right: 0.5rem;
+    }
+
+    span {
+      color: var(--global-theme-color);
+    }
+  }
+
+  /*****************************
+   * CV Certificates styles
+   *****************************/
+  .certificates-container {
+    margin-bottom: 2rem;
+    margin-left: 1rem;
+  }
+
+  .cert-category {
+    margin-bottom: 1.5rem;
+  }
+
+  .cert-items {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 1rem;
+    margin-left: 1rem;
+
+    @media (min-width: 768px) {
+      margin-left: 2rem;
+    }
+  }
+
+  .cert-item {
+    padding: 0.75rem;
+    border-radius: $border-radius-standard;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    transition: $transition-standard;
+  }
+
+  .cert-table {
+    width: 100%;
+    border-collapse: collapse;
+
+    td {
+      padding: 0;
+    }
+  }
+
+  .cert-icon {
+    width: 30px;
+    padding-right: 6px;
+    color: var(--global-theme-color);
+    opacity: 0.85;
+    font-size: $font-size-small;
+    vertical-align: top;
+    padding-top: 0.15rem;
+    text-align: center;
+  }
+
+  .issuer-icon {
+    margin-right: 6px;
+    opacity: 0.6;
+    color: var(--global-text-color);
+  }
+
+  .cert-name {
+    font-size: $font-size-secondary;
+    font-weight: $font-weight-medium;
+    color: var(--global-theme-color);
+    padding-bottom: 0.4rem;
+
+    a {
+      color: inherit;
+      transition: color 0.2s ease;
+    }
+  }
+
+  .cert-issuer {
+    font-size: $font-size-small;
+    color: var(--global-text-color);
+  }
+
+  .cert-date {
+    font-size: $font-size-small;
+    color: var(--global-text-color-light);
+    text-align: right;
+    white-space: nowrap;
+    font-variant: small-caps;
+  }
+
+  /* Responsive adjustments */
+  @media (max-width: 576px) {
+    .cert-items {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  /*****************************
+   * CV Organizations styles
+   *****************************/
+  .organizations-container {
+    padding: 0.5rem 0;
+    margin-left: 1rem;
+  }
+
+  .org-category {
+    margin-bottom: 1.5rem;
+  }
+
+  .orgs-list {
+    margin-left: 1rem;
+
+    @media (min-width: 768px) {
+      margin-left: 2rem;
+    }
+  }
+
+  .org-item {
+    padding: 0.2rem;
+    margin-bottom: 0.5rem;
+    border-radius: $border-radius-standard;
+    transition: $transition-standard;
+  }
+
+  .org-table {
+    width: 100%;
+    border-collapse: collapse;
+
+    td {
+      padding: 0;
+    }
+  }
+
+  .org-icon {
+    width: 24px;
+    color: var(--global-theme-color);
+    opacity: 0.7;
+    font-size: 0.9rem;
+  }
+
+  .org-name {
+    @extend .small-item;
+    font-weight: $font-weight-medium;
+
+    a {
+      color: inherit;
+      text-decoration: none;
+      transition: color 0.2s ease;
+
+      &:hover {
+        color: var(--global-theme-color);
+        text-decoration: underline;
+      }
+    }
+  }
+
+  .org-years {
+    @extend .small-item;
+    text-align: right;
+    white-space: nowrap;
+    color: var(--global-text-color-light);
+    font-variant: small-caps;
+  }
+
+  /*****************************
+   * Date column styles
+   *****************************/
+  .date-column {
+    .badge {
+      min-width: 75px;
+    }
+  }
+
+  /*****************************
+   * Common Interactive Elements
+   *****************************/
+  .primary-item a,
+  .cert-name a,
+  .org-link {
+    position: relative;
+    text-decoration: none;
+
+    &::after {
+      content: "";
+      position: absolute;
+      bottom: -2px;
+      left: 0;
+      width: 0;
+      height: 1px;
+      background-color: var(--global-theme-color);
+      transition: width 0.3s ease;
+    }
+
+    &:hover::after {
+      width: 100%;
+    }
+  }
+
+  .badge.font-weight-bold.danger-color-dark.text-uppercase {
+    display: inline-block;
+    min-width: $badge-min-width;
+    text-align: center;
+  }
 }
 
-div.container-link-button {
-  margin-right: 0.5rem;
-}
-
+// Global table styles
 table.table-cv {
   background-color: transparent !important;
 
@@ -207,6 +671,7 @@ table.table-cv {
   }
 }
 
+// Global button styles
 a.btncv {
   color: var(--global-text-color) !important;
   border: 1px solid var(--global-text-color) !important;
@@ -228,499 +693,4 @@ a.btncv:hover {
   color: var(--global-theme-color) !important;
   border-color: var(--global-theme-color) !important;
   text-decoration: none !important;
-}
-
-/*****************************
- * CV TIME_TABLE styles
- *****************************/
-
-p.location {
-  font-size: 0.7rem;
-  white-space: nowrap;
-}
-
-i.iconlocation {
-  color: var(--global-theme-color);
-  font-size: 0.8rem;
-}
-
-i.iconinstitution {
-  color: var(--global-theme-color);
-  font-size: 0.95rem;
-  margin-right: 0.3rem;
-}
-
-i.icondepartment {
-  color: var(--global-theme-color);
-  font-size: 0.8rem;
-  margin-right: 0.3rem;
-}
-
-table.institution {
-  margin-bottom: 1rem;
-}
-
-td.department {
-  font-size: 0.8rem;
-}
-
-div.container-links {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: flex-start;
-  margin-top: 1rem;
-  margin-bottom: 0.5rem;
-}
-
-/*****************************
- * CV MAP styles
- *****************************/
-
-div.container-pdf {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: flex-start;
-}
-
-/*****************************
- * CV LIST_GROUPS styles
- *****************************/
-
-div.list-groups {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: flex-start;
-  flex-direction: row;
-  align-content: center;
-}
-
-div.list-group {
-  display: flex;
-  flex-wrap: wrap;
-  flex-direction: column;
-  align-items: flex-start;
-  margin-bottom: 2rem;
-}
-
-td.list-group-category {
-  color: var(--global-theme-color);
-  margin-bottom: 0.5rem;
-  @extend .secondary-item;
-}
-
-td.list-group-category-icon {
-  font-size: 0.8rem;
-  color: var(--global-theme-color);
-  width: 1.4rem;
-  padding-right: 0.4rem;
-}
-
-td.list-group-name {
-  font-size: $font-size-small;
-  font-weight: bold;
-}
-
-td.list-group-level {
-  font-size: $font-size-small;
-  padding-left: 0.5rem;
-}
-
-td.list-group-school {
-  font-size: 0.7rem;
-  padding-left: 0.5rem;
-  text-align: center;
-}
-
-p.list-group-time {
-  font-size: 0.7rem;
-  padding-left: 0.5rem;
-}
-
-td.list-group-link {
-  padding-left: 0.5rem;
-}
-
-.list-groups {
-  .list-group {
-    td.list-group-name {
-      font-weight: $font-weight-medium;
-    }
-  }
-}
-
-/*****************************
- * CV TOC styles
- *****************************/
-
-a.anchor {
-  display: block;
-  position: relative;
-  top: -50px;
-  visibility: hidden;
-}
-
-ul.timeline {
-  margin-top: 2rem;
-  margin-bottom: 2rem;
-}
-
-ul.timeline li {
-  position: relative;
-  min-height: 2.2rem;
-  color: var(--global-text-color);
-  list-style-position: inside;
-}
-
-span.badge-toc {
-  color: var(--global-bg-color);
-  background-color: var(--global-theme-color);
-  border-radius: 0.125rem;
-  padding: 0.125rem 0.5rem 0.125rem 0.5rem;
-  font-weight: 700 !important;
-  display: inline-block;
-  inline-size: fit-content;
-}
-
-ul.timeline li::before {
-  content: "";
-  min-height: 2.5rem;
-  width: 1px;
-  background: var(--global-text-color);
-  margin: 0;
-  padding: 0;
-  position: absolute;
-  left: 2px;
-  top: -0.5rem;
-}
-
-/*****************************
- * Basics section styles
- *****************************/
-
-.basics {
-  .name {
-    font-size: 2.5rem; // Special size for name
-    font-weight: bold;
-    margin-bottom: 0.5rem;
-    color: var(--global-text-color);
-  }
-
-  .label {
-    font-size: 1.5rem; // Special size for label
-    color: var(--global-theme-color);
-    margin-bottom: 1rem;
-  }
-
-  .location {
-    margin-bottom: 1rem;
-    color: var(--global-text-color-light);
-    @extend .secondary-item;
-
-    i {
-      margin-right: 0.5rem;
-      color: var(--global-theme-color);
-    }
-  }
-
-  .profiles {
-    margin-bottom: 1rem;
-
-    .profile-link {
-      display: inline-block;
-      margin-right: 1.5rem;
-      color: var(--global-text-color);
-      text-decoration: none;
-      @extend .secondary-item;
-
-      &:hover {
-        color: var(--global-theme-color);
-      }
-
-      i {
-        margin-right: 0.5rem;
-        color: var(--global-theme-color);
-      }
-    }
-  }
-}
-
-/*****************************
- * Shared Category Header
- *****************************/
-
-.category-header {
-  display: flex;
-  align-items: center;
-  margin-bottom: 0.75rem;
-  color: var(--global-theme-color);
-  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-  padding-bottom: 0.2rem;
-  @extend .secondary-item;
-
-  i {
-    margin-right: 0.5rem;
-  }
-
-  span {
-    color: var(--global-theme-color);
-  }
-}
-
-/*****************************
- * CV Certificates styles
- *****************************/
-
-.certificates-container {
-  margin-bottom: 2rem;
-  margin-left: 1rem;
-}
-
-.cert-category {
-  margin-bottom: 1.5rem;
-}
-
-.cert-items {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-  gap: 1rem;
-  margin-left: 1rem;
-
-  @media (min-width: 768px) {
-    margin-left: 2rem;
-  }
-}
-
-.cert-item {
-  padding: 0.75rem;
-  // background-color: rgba(0, 0, 0, 0.02);
-  border-radius: $border-radius-standard;
-  border: 1px solid rgba(0, 0, 0, 0.05);
-  transition: $transition-standard;
-
-  // &:hover {
-  //   transform: translateY(-1px);
-  //   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.03);
-  //   border-color: rgba(var(--global-theme-color-rgb), 0.15);
-  // }
-}
-
-.cert-table {
-  width: 100%;
-  border-collapse: collapse;
-
-  td {
-    padding: 0;
-  }
-}
-
-.cert-icon {
-  width: 30px;
-  padding-right: 6px;
-  color: var(--global-theme-color);
-  opacity: 0.85;
-  font-size: $font-size-small;
-  vertical-align: top;
-  padding-top: 0.15rem;
-  text-align: center;
-}
-
-.issuer-icon {
-  margin-right: 6px;
-  opacity: 0.6;
-  color: var(--global-text-color);
-}
-
-.cert-name {
-  font-size: $font-size-secondary;
-  font-weight: $font-weight-medium;
-  color: var(--global-theme-color);
-  padding-bottom: 0.4rem;
-
-  a {
-    color: inherit;
-    // text-decoration: none;
-    transition: color 0.2s ease;
-
-    // &:hover {
-    //   text-decoration: underline;
-    // }
-  }
-}
-
-.cert-issuer {
-  font-size: $font-size-small;
-  // font-weight: bold;
-  // font-weight: $font-weight-medium;
-  color: var(--global-text-color);
-}
-
-.cert-date {
-  font-size: $font-size-small;
-  color: var(--global-text-color-light);
-  text-align: right;
-  white-space: nowrap;
-  font-variant: small-caps;
-}
-
-/* Responsive adjustments */
-@media (max-width: 576px) {
-  .cert-items {
-    grid-template-columns: 1fr;
-  }
-}
-
-/*****************************
- * CV Organizations styles
- *****************************/
-
-.organizations-container {
-  padding: 0.5rem 0;
-  margin-left: 1rem;
-}
-
-.org-category {
-  margin-bottom: 1.5rem;
-}
-
-.orgs-list {
-  margin-left: 1rem;
-
-  @media (min-width: 768px) {
-    margin-left: 2rem;
-  }
-}
-
-.org-item {
-  padding: 0.2rem;
-  margin-bottom: 0.5rem;
-  border-radius: $border-radius-standard;
-  transition: $transition-standard;
-
-  // &:hover {
-  //   background-color: rgba(0, 0, 0, 0.02);
-  // }
-}
-
-.org-table {
-  width: 100%;
-  border-collapse: collapse;
-
-  td {
-    padding: 0;
-  }
-}
-
-.org-icon {
-  width: 24px;
-  color: var(--global-theme-color);
-  opacity: 0.7;
-  font-size: 0.9rem;
-}
-
-.org-name {
-  @extend .small-item;
-  // font-weight: bold;
-  font-weight: $font-weight-medium;
-
-  a {
-    color: inherit;
-    text-decoration: none;
-    transition: color 0.2s ease;
-
-    &:hover {
-      color: var(--global-theme-color);
-      text-decoration: underline;
-    }
-  }
-}
-
-.org-years {
-  @extend .small-item;
-  text-align: right;
-  white-space: nowrap;
-  color: var(--global-text-color-light);
-  font-variant: small-caps;
-}
-
-/*****************************
- * CV Work Experience styles
- *****************************/
-
-.title {
-  color: var(--global-theme-color);
-  font-weight: $font-weight-medium;
-}
-
-.title a {
-  color: var(--global-theme-color);
-  text-decoration: none;
-}
-
-.title a:hover {
-  text-decoration: underline;
-}
-
-/*****************************
- * CV Projects styles
- *****************************/
-
-.project-title {
-  color: var(--global-theme-color);
-  font-weight: $font-weight-medium;
-}
-
-.project-title a {
-  color: var(--global-theme-color);
-  text-decoration: none;
-}
-
-.project-title a:hover {
-  text-decoration: underline;
-}
-
-/*****************************
- * Date column styles
- *****************************/
-
-.date-column {
-  .badge {
-    min-width: 75px;
-  }
-}
-
-/*****************************
- * Common Interactive Elements
- *****************************/
-
-// Consolidated hover effects for all interactive links
-.primary-item a,
-.cert-name a,
-.org-link {
-  position: relative;
-  text-decoration: none;
-
-  &::after {
-    content: "";
-    position: absolute;
-    bottom: -2px;
-    left: 0;
-    width: 0;
-    height: 1px;
-    background-color: var(--global-theme-color);
-    transition: width 0.3s ease;
-  }
-
-  &:hover::after {
-    width: 100%;
-  }
-}
-
-.badge.font-weight-bold.danger-color-dark.text-uppercase {
-  display: inline-block;
-  min-width: $badge-min-width;
-  text-align: center;
 }
