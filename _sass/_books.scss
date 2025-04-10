@@ -4,25 +4,32 @@
 
 /* Global scroll padding for anchor navigation */
 html {
-  scroll-padding-top: 80px; /* Set slightly larger than your nav bar height */
+  /* Default fallback */
+  scroll-padding-top: 80px;
+  /* Set dynamically by JS */
+  scroll-padding-top: var(--scroll-padding, 80px);
 }
 
 /* Chromium-specific enhancements */
 @supports (-webkit-appearance: none) {
   .book-category {
-    scroll-margin-top: 80px;
+    /* Match the scroll-padding-top */
+    scroll-margin-top: var(--scroll-padding, 80px);
   }
 }
 
 /* For smaller screens with potentially taller navigation bar */
 @media (max-width: 768px) {
   html {
+    /* Default fallback for small screens */
     scroll-padding-top: 100px;
+    /* Set dynamically by JS */
+    scroll-padding-top: var(--scroll-padding, 100px);
   }
 
   @supports (-webkit-appearance: none) {
     .book-category {
-      scroll-margin-top: 100px;
+      scroll-margin-top: var(--scroll-padding, 100px);
     }
   }
 }
