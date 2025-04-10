@@ -45,7 +45,7 @@ html {
   top: 62px; // Account for navbar height
   background: var(--global-bg-color);
   z-index: 5; // Lower z-index to stay below progress bar while still being above regular content
-  padding: 1rem 0;
+  padding: 0.5rem 0;
   border-bottom: 1px solid var(--global-divider-color);
   margin-bottom: 2rem;
   opacity: 0.95;
