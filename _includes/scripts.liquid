@@ -323,3 +323,8 @@
 {% if site.newsletter.enabled %}
   <script defer src="{{ '/assets/js/newsletter.js' | relative_url | bust_file_cache }}"></script>
 {% endif %}
+
+{% if page.collection == 'books' %}
+  <!-- Book Collection Scripts -->
+  <script defer src="{{ '/assets/js/bookshelf.js' | relative_url | bust_file_cache }}" type="text/javascript"></script>
+{% endif %}
