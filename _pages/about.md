@@ -27,14 +27,14 @@ latest_posts:
   limit: 3 # leave blank to include all the blog posts
 ---
 
-I'm an independent AI researcher focused on large language models, context handling, and retrieval-augmented generation systems.
+I'm an AI researcher focused on foundational machine learning systems, reinforcement learning, and hybrid neural architectures. I've been selected to collaborate with Google DeepMind for Google Summer of Code 2025.
 
-Previously, I worked as a systems engineer at ELEMENTS (an enterprise media solutions provider), where I gained valuable experience working across the technology stack for media production environments.
+My work includes developing [ContextRAG](https://github.com/seanbrar/ContextRAG), a system for context-aware retrieval processing, and [paperweight](https://github.com/seanbrar/paperweight), a tool for academic paper analysis. These projects address core challenges in information processing and representation learning.
 
-I graduated summa cum laude from [CSULA](https://www.calstatela.edu/) with a Bachelor's degree in Political Science and a minor in Computer Information Systems. My technical education has continued with completing a certificate program in AI/ML from Caltech, an AI Strategy certificate from Cornell University, and earning CompTIA A+ and Network+ certifications.
+I graduated summa cum laude from [CSULA](https://www.calstatela.edu/) with a Bachelor's in Political Science and minor in Computer Information Systems. My technical education includes a Caltech AI/ML certificate program and Cornell AI Strategy certification. 
 
-My recent work includes developing [ContextRAG](https://github.com/seanbrar/ContextRAG), a system for context-aware retrieval processing, and [paperweight](https://github.com/seanbrar/paperweight), a tool for automated academic paper filtering and summarization. These projects reflect my passion for creating intelligent systems that can process and understand information at scale.
+Previously, I worked as a systems engineer at ELEMENTS, managing complex technology stacks for enterprise media environments – experience that informs my approach to ML systems implementation.
 
-I take pride in solving complex problems at the intersection of AI research and practical applications. As an active member of the Association for the Advancement of Artificial Intelligence (AAAI) and Association for Computing Machinery (ACM), I remain committed to contributing to the field's advancement.
+As an active member of the Association for the Advancement of Artificial Intelligence (AAAI) and Association for Computing Machinery (ACM), I contribute to advancing theoretical foundations in AI.
 
-I’ve recently started a blog called [Dreaming Ideas](/blog) to explore these interests further.
+I explore these interests further in my [Dreaming Ideas](/blog) blog.
