@@ -23,7 +23,7 @@ stars: 5
 status: Finished
 
 # Description
-description_short: A systems-thinking approach to history that demonstrates how technological capabilities shape societal outcomes.
+description_short: Diamond's thesis is contested, but the method - explaining history through geography, biology, and technology - changed how I think about causation.
 ---
 
 This book is part of my curated collection highlighting interdisciplinary influences on my thinking about technology and society.

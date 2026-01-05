@@ -23,7 +23,7 @@ stars:
 status: Queued
 
 # Description
-description_short: A comprehensive approach to calculus that balances computational techniques with theoretical insights.
+description_short: My current calculus text. Thorough and well-structured, if not exciting.
 ---
 
 This book is part of my planned mathematical progression toward the advanced mathematics required for AI research.

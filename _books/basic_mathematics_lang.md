@@ -23,7 +23,7 @@ stars: 5
 status: Finished
 
 # Description
-description_short: Mathematical foundations that shifted my focus from calculation to structural understanding and proof.
+description_short: Shifted my focus from calculation to structure. This is where I learned that mathematics is about proof, not arithmetic.
 ---
 
 This book is part of my foundational mathematics collection that underpins my journey toward AI research.

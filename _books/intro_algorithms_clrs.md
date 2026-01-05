@@ -23,7 +23,7 @@ stars: 5
 status: Reference
 
 # Description
-description_short: The definitive reference on algorithms covering design, analysis, and computational complexity.
+description_short: The definitive algorithms reference. Everyone owns it; I've actually read most of it.
 ---
 
 This book is part of my technical reference collection for algorithm design and analysis.

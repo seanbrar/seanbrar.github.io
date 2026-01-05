@@ -23,7 +23,7 @@ stars:
 status: Queued
 
 # Description
-description_short: Essential probabilistic reasoning that underpins modern machine learning approaches.
+description_short: The standard probability text. Dense but complete.
 ---
 
 This book is part of my planned study in probabilistic reasoning essential for machine learning and AI.

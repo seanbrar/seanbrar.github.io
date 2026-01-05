@@ -23,7 +23,7 @@ stars: 4
 status: Finished
 
 # Description
-description_short: A systematic analysis of AI risk that shaped my perspective on responsible technology development.
+description_short: The book that made AI risk a serious topic. Dated in some ways, but the core arguments hold.
 ---
 
 This book is part of my curated collection examining the broader implications of advanced AI development.

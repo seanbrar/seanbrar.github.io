@@ -23,7 +23,7 @@ stars: 4
 status: Finished
 
 # Description
-description_short: Practical insights into network architecture that inform my understanding of distributed systems.
+description_short: From my CIS minor. Solid coverage of how networks actually work.
 ---
 
 This book is part of my curated collection highlighting my technical background in systems and networks as it relates to my AI research goals.

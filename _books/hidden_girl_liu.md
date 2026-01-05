@@ -23,7 +23,7 @@ stars: 5
 status: Finished
 
 # Description
-description_short: Thought-provoking examinations of technology's human implications that inform my thinking about AI ethics.
+description_short: Liu writes about technology with a depth most sci-fi authors don't reach. Several of these stories stuck with me for months.
 ---
 
 This book is part of my collection of works exploring the human dimensions of technological advancement.

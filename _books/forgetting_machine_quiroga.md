@@ -23,7 +23,7 @@ stars: 4
 status: Finished
 
 # Description
-description_short: Fascinating exploration of human memory that provides inspiration for computational approaches to information processing.
+description_short: A neuroscientist explains why forgetting is a feature, not a bug. Relevant to anyone thinking about memory systems, biological or artificial.
 ---
 
 This book is part of my curated collection on cognitive processes that inform computational approaches.

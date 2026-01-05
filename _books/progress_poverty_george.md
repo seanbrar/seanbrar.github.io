@@ -23,7 +23,7 @@ stars: 4
 status: Finished
 
 # Description
-description_short: A pioneering analysis of technological progress and economic systems that remains surprisingly relevant to today's world.
+description_short: A 19th-century economist asking why technological progress creates both wealth and poverty. His answer is unfashionable but hard to dismiss.
 ---
 
 This book is part of my curated collection exploring the relationship between technological progress and social outcomes.

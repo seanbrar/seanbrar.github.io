@@ -23,7 +23,7 @@ stars:
 status: Queued
 
 # Description
-description_short: A rigorous treatment of vector spaces that forms the mathematical backbone of machine learning systems.
+description_short: Proof-based linear algebra. This is where the abstract machinery of ML actually lives.
 ---
 
 This book is part of my planned mathematical study essential for machine learning and AI research.

@@ -23,7 +23,7 @@ stars: 5
 status: Finished
 
 # Description
-description_short: A brilliant exploration of adaptation and resourcefulness that continues to inspire my approach to problem-solving.
+description_short: A childhood favorite I still own. The Peter Pan prequel that made me love adventure stories.
 ---
 
 This book is part of my personally influential works that connect back to foundational reading experiences.

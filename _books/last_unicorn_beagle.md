@@ -23,7 +23,7 @@ stars: 5
 status: Finished
 
 # Description
-description_short: A masterpiece of lyrical storytelling that taught me how beauty and technical precision can coexist.
+description_short: The most beautiful prose I've read in fantasy. I reread it every few years.
 ---
 
 This book is part of my personally influential works that have shaped how I think about craft and beauty.

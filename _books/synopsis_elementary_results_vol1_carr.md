@@ -23,7 +23,7 @@ stars: 5
 status: Reference
 
 # Description
-description_short: A fascinating historical compendium that reveals the beautiful interconnectedness of mathematical ideas.
+description_short: The book Ramanujan taught himself from. A dense compendium of results without proofs — you have to fill in the gaps yourself. Strangely compelling.
 ---
 
 This book is part of my reference collection for mathematical exploration beyond standard curricula.

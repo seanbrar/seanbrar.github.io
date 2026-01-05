@@ -23,7 +23,7 @@ stars: 5
 status: Finished
 
 # Description
-description_short: Lessons in leadership and diverse perspective integration that apply directly to collaborative technical work.
+description_short: Lincoln's cabinet of former rivals. A masterclass in managing disagreement productively.
 ---
 
 This book is part of my curated collection highlighting leadership and collaborative principles that inform my approach to technical work.

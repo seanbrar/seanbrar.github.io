@@ -23,7 +23,7 @@ stars:
 status: Queued
 
 # Description
-description_short: Theoretical frameworks that connect statistical learning to practical AI applications.
+description_short: The mathematical theory behind ML. A foundation, not a tutorial.
 ---
 
 This book is part of my planned study in the theoretical underpinnings of machine learning algorithms.

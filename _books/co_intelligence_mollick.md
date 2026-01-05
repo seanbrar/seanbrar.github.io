@@ -23,7 +23,7 @@ stars: 4
 status: Reading
 
 # Description
-description_short: An exploration of how AI will augment human capabilities rather than replace them.
+description_short: The best current book on working with AI systems. Practical and optimistic.
 ---
 
 This book is part of my current reading on human-AI collaboration and augmentation.

@@ -23,7 +23,7 @@ stars:
 status: Queued
 
 # Description
-description_short: The gold standard for theoretical calculus that develops the deep understanding necessary for advanced analysis.
+description_short: The text I'm working toward. Spivak treats calculus as the serious mathematics it is.
 ---
 
 This book is part of my planned progression into theoretical mathematics essential for advanced AI research.

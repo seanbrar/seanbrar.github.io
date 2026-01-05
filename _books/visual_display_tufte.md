@@ -23,7 +23,7 @@ stars: 5
 status: Finished
 
 # Description
-description_short: Design principles that transformed how I approach the visual communication of complex information.
+description_short: Tufte's masterpiece on data visualization. Every chart I make is better because of this book.
 ---
 
 This book is part of my curated collection highlighting the importance of clear communication in technical fields.

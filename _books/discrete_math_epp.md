@@ -23,7 +23,7 @@ stars:
 status: Queued
 
 # Description
-description_short: Essential training in the mathematical structures underlying computer science and algorithmic thinking.
+description_short: The math that actually runs computers: logic, sets, relations, graphs. Epp's explanations are unusually clear.
 ---
 
 This book is part of my planned reading in preparation for advanced work in computer science and AI research.

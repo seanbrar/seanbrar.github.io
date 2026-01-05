@@ -23,7 +23,7 @@ stars: 5
 status: Finished
 
 # Description
-description_short: Classical liberal principles that inform my thinking about society and the role of the individual.
+description_short: The foundational argument for free expression. Evergreen.
 ---
 
 This book is part of my curated collection highlighting philosophical foundations that inform my thinking about technology's societal role.

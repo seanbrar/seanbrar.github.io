@@ -23,7 +23,7 @@ stars: 4
 status: Reading
 
 # Description
-description_short: Elegant demonstrations of spatial reasoning that bridge abstract concepts with concrete visualization.
+description_short: The rare geometry text that treats the subject seriously. Proof-based, not formula-based.
 ---
 
 This book is part of my active studies in mathematical foundations essential for AI research.

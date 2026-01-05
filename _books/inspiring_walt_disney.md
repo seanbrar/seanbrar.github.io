@@ -23,7 +23,7 @@ stars: 5
 status: Finished
 
 # Description
-description_short: A fascinating study of how artistic traditions influenced animation that reminds me of the importance of interdisciplinary thinking in technical innovation.
+description_short: How European decorative arts shaped Disney's visual imagination. A case study in creative influence across fields.
 ---
 
 This book is part of my collection highlighting unexpected connections between disparate fields.

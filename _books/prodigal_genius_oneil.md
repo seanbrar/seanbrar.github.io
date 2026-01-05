@@ -23,7 +23,7 @@ stars: 4
 status: Finished
 
 # Description
-description_short: Tesla's capacity for visualization and mental modeling that inspires my approach to system design.
+description_short: Tesla's biographer describes his ability to visualize machines in full detail before building them. I find this aspirational.
 ---
 
 This book is part of my curated collection highlighting innovative thinkers who inspire my approach to technical work.

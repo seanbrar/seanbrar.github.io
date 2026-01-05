@@ -23,7 +23,7 @@ stars: 5
 status: Finished
 
 # Description
-description_short: An intricate world governed by overlapping systems that demonstrated how complexity can be made accessible through narrative.
+description_short: A heist novel with the plotting of a Swiss watch. It's a lesson in attention to detail, and pure fun.
 ---
 
 This book is part of my personally influential works that have shaped my understanding of how complex systems can be made comprehensible.

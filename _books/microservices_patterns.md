@@ -23,7 +23,7 @@ stars: 4
 status: Finished
 
 # Description
-description_short: Practical approaches to designing and implementing resilient, scalable microservice architectures.
+description_short: Practical patterns for distributed systems. I reference this regularly.
 ---
 
 This book is part of my curated collection highlighting systems architecture knowledge that informs my approach to AI infrastructure.

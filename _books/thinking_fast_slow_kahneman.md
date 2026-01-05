@@ -23,7 +23,7 @@ stars: 5
 status: Finished
 
 # Description
-description_short: Insights into cognitive biases that inform how I design systems to complement human thinking.
+description_short: The book on cognitive bias. I catch myself making the mistakes Kahneman describes.
 ---
 
 This book is part of my curated collection exploring human cognition and its implications for AI development.

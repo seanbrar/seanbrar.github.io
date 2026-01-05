@@ -23,7 +23,7 @@ stars: 4
 status: Finished
 
 # Description
-description_short: A thought-provoking analysis of decision-making and timing that influences how I approach complex technical problems.
+description_short: Strange, dense book about timing and decision-making. I don't fully understand it, but I keep returning to it.
 ---
 
 This book is part of my collection on decision frameworks relevant to technical work.

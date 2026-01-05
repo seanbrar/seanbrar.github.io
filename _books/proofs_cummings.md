@@ -23,7 +23,7 @@ stars:
 status: Queued
 
 # Description
-description_short: A practical guide to constructing mathematical arguments with clarity and precision.
+description_short: A friendlier companion to Velleman. Cummings writes like he's actually talking to you.
 ---
 
 This book is part of my planned reading to further develop mathematical rigor for AI research.

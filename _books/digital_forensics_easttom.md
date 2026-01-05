@@ -23,7 +23,7 @@ stars: 4
 status: Finished
 
 # Description
-description_short: Methodical approaches to system analysis that enhance my debugging and problem-solving capabilities.
+description_short: From my forensics coursework. Teaches you to think like an investigator.
 ---
 
 This book is part of my curated collection highlighting technical skills that transfer to AI research and development.

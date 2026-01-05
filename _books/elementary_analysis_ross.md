@@ -23,7 +23,7 @@ stars:
 status: Queued
 
 # Description
-description_short: The bridge between computational calculus and the theoretical foundations of mathematical analysis.
+description_short: The step after Spivak. Real analysis at an accessible level.
 ---
 
 This book is part of my planned progression toward advanced mathematical analysis required for theoretical AI research.

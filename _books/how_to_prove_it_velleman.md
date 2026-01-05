@@ -23,7 +23,7 @@ stars: 5
 status: Reading
 
 # Description
-description_short: The single most influential text in developing my ability to construct and analyze mathematical arguments.
+description_short: The single most influential book in how I think about mathematical argument. I recommend it constantly.
 ---
 
 This book is part of my active studies in developing rigorous mathematical thinking required for advanced AI research.

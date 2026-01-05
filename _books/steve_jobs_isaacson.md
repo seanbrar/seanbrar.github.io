@@ -23,7 +23,7 @@ stars: 5
 status: Finished
 
 # Description
-description_short: Insights into bridging technical capability with human needs that influence my approach to designing systems.
+description_short: The standard Jobs biography. Complex portrait of someone who refused to separate technology from taste.
 ---
 
 This book is part of my curated collection highlighting the intersection of technical innovation and human-centered design.
