@@ -27,14 +27,12 @@ latest_posts:
   limit: 3 # leave blank to include all the blog posts
 ---
 
-I'm an AI researcher focused on foundational machine learning systems, reinforcement learning, and hybrid neural architectures. I've been selected to collaborate with Google DeepMind for Google Summer of Code 2025.
+I'm an ML systems engineer and Google DeepMind GSoC 2025 alumnus.
 
-My work includes developing [ContextRAG](https://github.com/seanbrar/ContextRAG), a system for context-aware retrieval processing, and [paperweight](https://github.com/seanbrar/paperweight), a tool for academic paper analysis. These projects address core challenges in information processing and representation learning.
+My GSoC project — [Gemini Batch Prediction Framework](https://github.com/seanbrar/gemini-batch-prediction) — is a production async pipeline that reduced API costs 75% through intelligent batching and context caching. It's now used by researchers for scalable multimodal analysis.
 
-I graduated summa cum laude from [CSULA](https://www.calstatela.edu/) with a Bachelor's in Political Science and minor in Computer Information Systems. My technical education includes a Caltech AI/ML certificate program and Cornell AI Strategy certification. 
+Background: BA in Political Science (summa cum laude) from Cal State LA, Caltech AI/ML Certificate, systems engineering at ELEMENTS. Currently pursuing post-bacc CS and Mathematics, preparing for doctoral research.
 
-Previously, I worked as a systems engineer at ELEMENTS, managing complex technology stacks for enterprise media environments – experience that informs my approach to ML systems implementation.
+**Projects:** [Gemini Batch Prediction](https://github.com/seanbrar/gemini-batch-prediction) · [ContextRAG](https://github.com/seanbrar/ContextRAG) · [paperweight](https://github.com/seanbrar/paperweight)
 
-As an active member of the Association for the Advancement of Artificial Intelligence (AAAI) and Association for Computing Machinery (ACM), I contribute to advancing theoretical foundations in AI.
-
-I explore these interests further in my [Dreaming Ideas](/blog) blog.
+Current interests: reinforcement learning, efficient ML systems, and building an RL agent that can actually play Pokémon well.

@@ -1,10 +1,10 @@
 {
   "basics": {
     "name": "Sean Brar",
-    "label": "AI Researcher & Systems Engineer",
+    "label": "ML Systems Engineer",
     "email": "hello@seanbrar.com",
     "url": "https://seanbrar.com",
-    "summary": "AI researcher advancing foundational ML systems and reinforcement learning. Google DeepMind GSoC collaborator developing theoretical approaches to context optimization. Combines mathematical precision with systems engineering to address core challenges in hybrid neural architectures. Focused on sample efficiency and robustness in AI systems.",
+    "summary": "Google DeepMind GSoC '25 Alumnus. Building production infrastructure for ML research. Post-bacc CS & Mathematics.",
     "location": {
       "city": "Los Angeles",
       "region": "California",
@@ -30,24 +30,49 @@
   },
   "projects": [
     {
+      "name": "Gemini Batch Prediction Framework",
+      "description": "Google Summer of Code 2025 with Google DeepMind",
+      "highlights": [
+        "Async pipeline reducing Gemini API costs 75%",
+        "Intelligent batching yields 4-5× fewer API calls",
+        "95%+ test coverage, full documentation suite",
+        "Production use for multimodal research analysis"
+      ],
+      "url": "https://github.com/seanbrar/gemini-batch-prediction",
+      "startDate": "2025-05",
+      "endDate": "2025-09"
+    },
+    {
       "name": "ContextRAG",
       "description": "A system for context-aware retrieval processing in large language models",
-      "highlights": ["Adaptive processing by document length", "30% reduced token consumption", "Multi-framework compatible architecture"],
+      "highlights": [
+        "Adaptive chunking by document length",
+        "30% token reduction vs. fixed strategies",
+        "Compatible with major LLM frameworks"
+      ],
       "url": "https://github.com/seanbrar/ContextRAG",
       "startDate": "2024",
       "endDate": "Present"
     },
     {
       "name": "Traffic Object Detection Model",
-      "description": "Capstone project for Caltech AI/ML certificate program",
-      "highlights": ["Benchmarked 8 detection architectures", "18% higher minority class detection", "Achieved 76% mAP performance"],
+      "description": "Caltech AI/ML Certificate capstone",
+      "highlights": [
+        "Benchmarked 8 architectures (YOLO, SSD, Faster R-CNN)",
+        "18% improvement on minority class detection",
+        "76% mAP on custom traffic dataset"
+      ],
       "startDate": "2025-01",
       "endDate": "2025-02"
     },
     {
       "name": "paperweight",
       "description": "Tool for automated academic paper filtering and summarization",
-      "highlights": ["300+ papers/hour processing system", "85% relevance precision filtering", "30-page to 2-page summarization"],
+      "highlights": [
+        "300+ papers/hour automated discovery",
+        "85% precision on relevance filtering",
+        "30-page → 2-page structured summaries"
+      ],
       "url": "https://github.com/seanbrar/paperweight",
       "startDate": "2024",
       "endDate": "Present"
@@ -55,7 +80,11 @@
     {
       "name": "Prickly Pairs",
       "description": "AI-powered study aid for CompTIA certification exams",
-      "highlights": ["Enhanced 2,400+ technical flashcards", "40% reduced certification study time", "Passed three CompTIA exams in 30 days"],
+      "highlights": [
+        "2,400+ AI-enhanced technical flashcards",
+        "Three CompTIA certifications in 30 days",
+        "OpenAI API for explanation generation"
+      ],
       "url": "",
       "startDate": "2024-05",
       "endDate": "2024-06"
@@ -63,24 +92,19 @@
   ],
   "skills": [
     {
-      "name": "Artificial Intelligence",
+      "name": "ML Engineering",
       "level": "Advanced",
-      "keywords": ["Large Language Models", "Retrieval-Augmented Generation", "Context Handling", "Prompt Engineering", "Vector Databases"]
+      "keywords": ["LLM APIs", "Context Optimization", "RAG Systems", "Async Pipelines", "API Design"]
     },
     {
       "name": "Programming",
-      "level": "Intermediate",
-      "keywords": ["Python", "API Integration", "LLM API Optimization", "Shell Scripting", "JSON/YAML"]
-    },
-    {
-      "name": "Systems Engineering",
       "level": "Advanced",
-      "keywords": ["Linux Administration", "Cloud Infrastructure", "Enterprise Media Systems", "Networking", "Troubleshooting"]
+      "keywords": ["Python", "Async/Await", "Testing (pytest)", "Shell/Bash", "Git"]
     },
     {
-      "name": "Cloud & DevOps",
-      "level": "Intermediate",
-      "keywords": ["AWS", "Docker", "VPN Configuration", "DNS Management", "Virtualization"]
+      "name": "Systems",
+      "level": "Advanced",
+      "keywords": ["Linux Administration", "Networking", "Docker", "AWS", "Troubleshooting"]
     }
   ],
   "work": [
@@ -91,24 +115,24 @@
       "endDate": "2025-01",
       "summary": "High-level technical support and systems engineering for enterprise media solutions.",
       "highlights": [
-        "Custom API workflow automation",
-        "Enterprise Linux systems management",
-        "Complex media pipeline integration",
-        "International technical problem solving"
+        "Tier 2/3 support for enterprise media clients",
+        "Linux CLI troubleshooting and configuration",
+        "Custom API workflow development",
+        "Cross-timezone international collaboration"
       ]
     },
     {
-      "name": "Latido203 Creative LLC",
-      "position": "Systems Engineer",
-      "startDate": "2023-02",
-      "endDate": "2023-07",
-      "summary": "Led technical operations and AI integration for creative agency.",
-      "highlights": [
-        "Led six-figure app development",
-        "Implemented ChatGPT/AutoGen solutions",
-        "AWS cloud infrastructure administration",
-        "Significant AI workflow efficiency gains"
-      ]
+        "name": "Latido203 Creative LLC",
+        "position": "Founder & Systems Engineer",
+        "startDate": "2023-02",
+        "endDate": "2023-07",
+        "summary": "Founded technical consultancy for creative agencies.",
+        "highlights": [
+          "Led six-figure app development initiative",
+          "Deployed ChatGPT and AutoGen automations",
+          "Administered AWS infrastructure (EC2, Route53)",
+          "Continued as technical consultant through 2024"
+        ]
     },
     {
       "name": "Brisa Del Mar Strategies",
@@ -117,14 +141,26 @@
       "endDate": "2023-01",
       "summary": "Implemented technical solutions for political campaign organization.",
       "highlights": [
-        "GPT minutes system, 96% time reduction",
-        "Secure VPN/Docker implementation",
-        "Data-driven campaign optimization",
-        "Critical data recovery execution"
+        "GPT-powered minutes system (96% time savings)",
+        "Wireguard VPN on Raspberry Pi/Docker",
+        "Campaign data analysis and optimization",
+        "Full data recovery after drive failure"
       ]
     }
   ],
   "education": [
+    {
+      "institution": "Glendale Community College",
+      "area": "Computer Science and Mathematics",
+      "studyType": "Post-Baccalaureate Studies",
+      "startDate": "2025",
+      "endDate": "Present",
+      "highlights": [
+        "Data Structures, Discrete Math, Calculus sequence",
+        "Preparing for MSCS admission"
+      ],
+      "courses": ["CS/IS 211", "CS/IS 125", "MATH 103EH", "CS/IS 135"]
+    },
     {
       "institution": "California State University, Los Angeles",
       "area": "Political Science and Government",
@@ -132,7 +168,12 @@
       "startDate": "2021",
       "endDate": "2022",
       "score": "3.9/4.0, summa cum laude",
-      "highlights": ["3.9 GPA, summa cum laude", "Computer Information Systems minor", "National writing nominee", "Best political science paper"],
+      "highlights": [
+        "3.9 GPA, summa cum laude",
+        "Computer Information Systems minor",
+        "Best undergraduate paper award",
+        "National Pi Sigma Alpha writing nominee"
+      ],
       "courses": ["CIS 4380", "CIS 3050", "CIS 3010", "CIS 4840"]
     },
     {
@@ -215,12 +256,12 @@
   ],
   "interests": [
     {
-      "name": "AI Research",
-      "keywords": ["Context Window Optimization", "LLM Architecture", "Knowledge Retrieval Systems"]
+      "name": "Research Interests",
+      "keywords": ["Reinforcement Learning", "Efficient ML Systems", "Context Optimization"]
     },
     {
-      "name": "Technical Writing",
-      "keywords": ["AI Systems Documentation", "Research Blogging"]
+      "name": "Current Projects",
+      "keywords": ["Game-playing RL Agents", "Academic Paper Processing", "LLM Infrastructure"]
     }
   ],
   "awards": [
