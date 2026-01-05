@@ -9,9 +9,9 @@ category: [applied ai systems]
 
 ## Introduction
 
-paperweight is a personalized research delivery system that automates the discovery, filtering, and summarization of academic papers based on user-defined preferences. The system addresses a fundamental challenge in academic research: efficiently identifying relevant publications from the expanding volume of papers published daily across multiple disciplines. By implementing intelligent filtering algorithms and leveraging large language models, paperweight transforms the research discovery process from manual browsing to automated, personalized delivery.
+paperweight automates my daily research discovery workflow. It scrapes arXiv for new papers in categories I care about, scores them against my interests, summarizes the top matches, and emails me the results. What used to take 30-60 minutes of manual browsing now takes 5-10 minutes of reviewing pre-filtered papers.
 
-## Research Motivation
+## Motivation
 
 The exponential growth in academic publishing has created significant challenges for researchers attempting to stay current with developments in their fields. These challenges include:
 
@@ -41,6 +41,10 @@ paperweight implements a modular pipeline architecture with four main components
 4. **Notifier**: Delivers personalized paper selections via email with configurable formatting and sorting
 
 This architecture enables flexible paper processing while maintaining a clear separation of concerns, allowing each component to be optimized or extended independently.
+
+## Daily Workflow
+
+Each morning, I receive an email with 5-10 papers selected from hundreds of new arXiv submissions. Each paper includes: title, authors, relevance score breakdown, and a 3-5 sentence summary. I scan the list in under 10 minutes, flag papers for deeper reading, and move on. The system has surfaced several papers I would have missed through manual browsing.
 
 ## Technical Implementation
 
@@ -173,7 +177,7 @@ These features ensure reliable summarization even when dealing with API limitati
 
 While paperweight was developed as a practical tool rather than a research project with formal benchmarks, its effectiveness can be evaluated through several qualitative measures based on personal usage experience:
 
-1. **Time Efficiency**: Personal experience with the system shows that paperweight reduces research discovery time by approximately 70-80% compared to manual browsing, turning a 30-60 minute daily task into a 5-10 minute review of pre-filtered papers.
+1. **Time Efficiency**: In daily use, paperweight turns a 30-60 minute browsing task into a 5-10 minute review—roughly 80% time savings.
 
 2. **Relevance Precision**: Through regular use and tracking of system outputs, the weighted scoring algorithm demonstrates approximately 85-90% precision in identifying papers matching user interests, as measured through personal feedback on delivered papers.
 

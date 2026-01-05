@@ -9,9 +9,9 @@ category: [applied ai systems]
 
 ## Introduction
 
-Prickly Pairs is an AI-powered system that transforms traditional question-answer study materials into context-rich learning aids using large language models. The system addresses fundamental limitations in conventional flashcard approaches by automatically generating comprehensive explanations alongside answers, enhancing knowledge retention through deeper contextual understanding. By combining natural language processing with educational design principles, Prickly Pairs demonstrates how AI can significantly improve technical learning outcomes.
+Prickly Pairs uses GPT-4 to transform bare question-answer pairs into context-rich flashcards. I built it to study for CompTIA certifications and used it to pass three exams (A+ Core 1 & 2, Network+) in 30 days.
 
-## Research Motivation
+## The Problem
 
 Flashcards represent one of the most enduring and widespread techniques for knowledge acquisition and retention. However, traditional flashcard systems face several significant limitations:
 
@@ -21,6 +21,26 @@ Flashcards represent one of the most enduring and widespread techniques for know
 - **Isolated Facts**: Traditional flashcards present information in isolation, failing to establish connections between related concepts
 
 Prickly Pairs addresses these limitations through automated enhancement of existing question-answer pairs, enabling more efficient study while promoting deeper conceptual understanding through contextual explanations that adapt to the complexity of the subject matter.
+
+## Comparison of Traditional vs. Enhanced Flashcards
+
+The following examples demonstrate the transformation from traditional question-answer pairs to context-enhanced learning aids:
+
+**Traditional Flashcard:**
+
+- **Question:** What are the three basic LAN topologies?
+- **Answer:** Bus, ring, and star
+
+**Enhanced Flashcard:**
+
+- **Question:** What are the three basic LAN topologies?
+- **Answer:** Bus, ring, and star
+  - **Bus Topology:** All devices connected to a single central cable. Easy to install but vulnerable to performance issues with more devices.
+  - **Ring Topology:** Devices connected in a circular fashion. Data travels in one direction until reaching its destination. Efficient but vulnerable to single-point failures.
+  - **Star Topology:** All devices connected to a central hub or switch. Highly reliable and easy to manage, but the central hub represents a single point of failure.
+  - **Comparison:** Star is most scalable, ring and bus become inefficient as networks grow. Star offers higher reliability due to isolated connections.
+
+This transformation demonstrates how basic factual answers are enhanced with explanatory context, comparisons, and practical implications, enabling deeper understanding rather than simple memorization.
 
 ## System Architecture
 
@@ -197,7 +217,7 @@ The Anki integration system includes:
 
 This integration ensures that the enhanced content can be immediately utilized in an established spaced repetition system, maximizing practical utility for learners.
 
-## Experimental Analysis
+## Results
 
 While Prickly Pairs was developed as a practical study tool rather than a formal research project, its effectiveness has been validated through direct application in professional certification preparation:
 
@@ -210,26 +230,6 @@ While Prickly Pairs was developed as a practical study tool rather than a formal
 4. **Knowledge Retention**: During exam preparation, enhanced flashcards noticeably improved recall of related concepts not directly questioned, suggesting improved knowledge integration compared to traditional flashcards. This observation is based on performance in practice scenarios and actual certification exams rather than controlled experiments.
 
 These practical outcomes suggest that the context-enhanced approach significantly improves both the efficiency and effectiveness of flashcard-based study methods, particularly for technical and professional certifications where contextual understanding is critical.
-
-## Comparison of Traditional vs. Enhanced Flashcards
-
-The following examples demonstrate the transformation from traditional question-answer pairs to context-enhanced learning aids:
-
-**Traditional Flashcard:**
-
-- **Question:** What are the three basic LAN topologies?
-- **Answer:** Bus, ring, and star
-
-**Enhanced Flashcard:**
-
-- **Question:** What are the three basic LAN topologies?
-- **Answer:** Bus, ring, and star
-  - **Bus Topology:** All devices connected to a single central cable. Easy to install but vulnerable to performance issues with more devices.
-  - **Ring Topology:** Devices connected in a circular fashion. Data travels in one direction until reaching its destination. Efficient but vulnerable to single-point failures.
-  - **Star Topology:** All devices connected to a central hub or switch. Highly reliable and easy to manage, but the central hub represents a single point of failure.
-  - **Comparison:** Star is most scalable, ring and bus become inefficient as networks grow. Star offers higher reliability due to isolated connections.
-
-This transformation demonstrates how basic factual answers are enhanced with explanatory context, comparisons, and practical implications, enabling deeper understanding rather than simple memorization.
 
 ## Limitations and Future Directions
 
