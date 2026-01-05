@@ -118,8 +118,8 @@ ninja.data = [{
           description: "",
           section: "Books",handler: () => {
               window.location.href = "/books/digital_forensics_easttom/";
-            },},{id: "books-discrete-mathematics-with-applications",
-          title: 'Discrete Mathematics with Applications',
+            },},{id: "books-",
+          title: '',
           description: "",
           section: "Books",handler: () => {
               window.location.href = "/books/discrete_math_epp/";
@@ -203,11 +203,6 @@ ninja.data = [{
           description: "",
           section: "Books",handler: () => {
               window.location.href = "/books/peter_shadow_thieves/";
-            },},{id: "books-precalculus",
-          title: 'Precalculus',
-          description: "",
-          section: "Books",handler: () => {
-              window.location.href = "/books/precalculus_stewart/";
             },},{id: "books-prodigal-genius",
           title: 'Prodigal Genius',
           description: "",
