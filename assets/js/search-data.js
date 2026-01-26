@@ -258,11 +258,21 @@ ninja.data = [{
           description: "",
           section: "Books",handler: () => {
               window.location.href = "/books/visual_display_tufte/";
+            },},{id: "projects-chromaroute",
+          title: 'chromaroute',
+          description: "Provider-agnostic embedding infrastructure for ChromaDB with intelligent fallback",
+          section: "Projects",handler: () => {
+              window.location.href = "/projects/chromaroute/";
             },},{id: "projects-contextrag",
           title: 'ContextRAG',
           description: "Empirical investigation of adaptive chunking strategies in retrieval-augmented generation",
           section: "Projects",handler: () => {
               window.location.href = "/projects/contextrag/";
+            },},{id: "projects-gemini-batch-prediction-framework",
+          title: 'Gemini Batch Prediction Framework',
+          description: "Production-grade multimodal AI pipeline with intelligent batching and context caching",
+          section: "Projects",handler: () => {
+              window.location.href = "/projects/gemini-batch/";
             },},{id: "projects-paperweight",
           title: 'paperweight',
           description: "Personalized research discovery system through intelligent filtering and summarization",
