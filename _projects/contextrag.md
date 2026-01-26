@@ -3,7 +3,7 @@ layout: page
 title: ContextRAG
 description: Empirical investigation of adaptive chunking strategies in retrieval-augmented generation
 img: assets/img/projects/contextrag-thumbnail.png
-importance: 2
+importance: 3
 category: [ml research]
 ---
 
