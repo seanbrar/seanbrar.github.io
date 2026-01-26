@@ -260,7 +260,7 @@ ninja.data = [{
               window.location.href = "/books/visual_display_tufte/";
             },},{id: "projects-contextrag",
           title: 'ContextRAG',
-          description: "A scalable vector database system for semantic search with context-aware processing",
+          description: "Empirical investigation of adaptive chunking strategies in retrieval-augmented generation",
           section: "Projects",handler: () => {
               window.location.href = "/projects/contextrag/";
             },},{id: "projects-paperweight",
