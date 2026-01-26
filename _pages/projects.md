@@ -5,7 +5,7 @@ permalink: /projects/
 description: Applied AI systems for information retrieval, research discovery, and knowledge enhancement.
 nav: true
 nav_order: 1
-display_categories: [applied ai systems]
+# display_categories: [applied ai systems, ml research]
 horizontal: false
 ---
 

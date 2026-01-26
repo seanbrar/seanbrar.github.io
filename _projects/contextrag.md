@@ -1,250 +1,135 @@
 ---
 layout: page
 title: ContextRAG
-description: A scalable vector database system for semantic search with context-aware processing
+description: Empirical investigation of adaptive chunking strategies in retrieval-augmented generation
 img: assets/img/projects/contextrag-thumbnail.png
 importance: 1
-category: [applied ai systems]
+category: [ml research]
 ---
 
-## Introduction
+## Summary
 
-ContextRAG is a retrieval-augmented generation system that adapts its processing strategy based on document length. Rather than applying uniform chunking to all documents, it classifies documents by token count and selects appropriate models and strategies accordingly.
+ContextRAG is an evaluation framework I built to answer a specific research question: **does adaptive chunking—routing documents to different chunk sizes based on length—improve retrieval accuracy in RAG systems?**
 
-## Motivation
+The intuition seemed sound: short documents lose context when chunked unnecessarily, while long documents benefit from finer granularity. I designed a controlled experiment to test this hypothesis.
 
-Large language models have revolutionized many NLP tasks but face significant constraints when processing lengthy documents due to context window limitations. These constraints create several challenges for real-world LLM applications:
+**The finding**: Adaptive chunking provides no measurable improvement over uniform chunking. Both strategies achieve identical precision@5 and recall@5 on a mixed-domain corpus. This null result is itself informative—it suggests that modern embedding models (e.g., OpenAI's text-embedding-3-small) are robust to chunk boundary placement, simplifying RAG system design.
 
-- Loss of semantic coherence across document chunks when traditional uniform chunking strategies are applied
-- Inefficient token utilization in embedding models, leading to higher computational costs
-- Poor retrieval performance for complex hierarchical documents where context and document structure are critical
+## Research Question
 
-ContextRAG addresses these limitations through a novel adaptive processing approach based on document characteristics, enabling more nuanced and contextually relevant information retrieval while optimizing computational resources.
+The hypothesis emerged from a reasonable intuition about semantic coherence:
 
-## System Architecture
+| Document Length | Chunking Strategy | Rationale |
+|-----------------|-------------------|-----------|
+| Short (≤3,500 tokens) | No chunking | Preserve complete semantic context |
+| Medium (3,500–15,000 tokens) | 2,000-token chunks | Balance coherence and retrieval granularity |
+| Long (>15,000 tokens) | 1,000-token chunks | Enable fine-grained retrieval |
 
-<div class="row">
-    <div class="col-sm mt-3 mt-md-0">
-        {% include figure.liquid loading="eager" path="assets/img/diagrams/contextrag-architecture.svg" title="ContextRAG Architecture" class="img-fluid rounded z-depth-1" %}
-    </div>
-</div>
-<div class="caption">
-    ContextRAG's modular architecture enables efficient processing of documents regardless of size through specialized pipelines.
-</div>
+The underlying assumption was that chunk boundaries disrupt semantic units, and that "intelligent" boundary placement should improve retrieval quality. This assumption is common in RAG literature and practitioner discussions.
 
-The system implements a three-stage pipeline:
+## Methodology
 
-1. **Document Ingestion & Classification**: Documents are processed and classified based on length and complexity metrics
-2. **Semantic Analysis & Embedding Generation**: Context-aware embedding strategies are applied based on document classification
-3. **Vector Storage & Retrieval**: Optimized vector representations are stored and retrieved using similarity-based search
+### Corpus
 
-This architecture provides a flexible framework for handling diverse document collections while maintaining retrieval efficiency and semantic precision.
+I constructed a mixed-domain evaluation corpus to test generalization across document types:
 
-## Technical Implementation
+- **Technical documents** (7): IETF RFCs covering email formats, TLS 1.3, HTTP/1.1, HTTP/2, and YANG schema identifiers
+- **Literary texts** (5): Classic short fiction (Poe, O. Henry, Gilman, Doyle) and the Gettysburg Address
 
-The technical implementation of ContextRAG focuses on three key innovations: length-based document classification, optimized semantic similarity computation, and context-aware processing strategies. Each component addresses specific challenges in building effective RAG systems.
+Total: 12 documents, ~493,000 tokens, spanning all three length categories.
 
-### Length-Based Document Classification
+### Evaluation Protocol
 
-The key design decision in ContextRAG is adapting processing strategy based on document token length.
+- **Queries**: 60 factual retrieval questions (5 per document), each with a single ground-truth relevant document
+- **Metrics**: Precision@5 and Recall@5
+- **Runs**: 3 independent runs per strategy to assess variance
+- **Embedding model**: OpenAI text-embedding-3-small
+- **Baseline**: Uniform 1,000-token chunks (standard practice)
+- **Treatment**: Adaptive chunking based on document length (router strategy)
 
-This classification is implemented in `src/data_processing/html_to_markdown.py`:
+The framework logs all artifacts (chunk counts, token distributions, costs) for reproducibility.
 
-```python
-def _get_target_folder(self, content: str) -> Path:
-    """
-    Determine the target folder based on the content length.
-    """
-    if count_tokens(str(content)) <= 3500:
-        return self.folder_path / "short"
-    elif 3500 < count_tokens(str(content)) < 15000:
-        return self.folder_path / "medium"
-    else:
-        return self.folder_path / "long"
+### Strategies Compared
+
+```
+Uniform (baseline):  All documents → 1,000-token chunks
+Router (adaptive):   Short → no chunking | Medium → 2,000-token | Long → 1,000-token
 ```
 
-This classification system enables:
+## Results
 
-1. **Processing Optimization** - Different strategies for different document lengths
-2. **Model Selection** - Appropriate model choice based on token constraints
-3. **Storage Organization** - Efficient document categorization for retrieval
+| Strategy | Precision@5 | Recall@5 | Chunks | Variance |
+|----------|-------------|----------|--------|----------|
+| Uniform | 0.197 | 0.983 | 499 | 0 |
+| Router | 0.197 | 0.983 | 490 | 0 |
 
-The token counting is implemented using the `tiktoken` library for accurate token estimation:
+**Both strategies achieve identical retrieval accuracy.** The router produces 1.8% fewer chunks, but this marginal efficiency gain does not translate to accuracy improvement. Results are deterministic across runs (zero variance), indicating the finding is not due to stochastic variation.
 
-```python
-def count_tokens(text: str) -> int:
-    """Count tokens in a text string using tiktoken."""
-    encoding = tiktoken.get_encoding("cl100k_base")
-    return len(encoding.encode(text))
-```
+## Interpretation
 
-By accurately estimating token counts, the system can make informed decisions about document processing strategies, ensuring optimal use of computational resources while maintaining semantic coherence.
+This null result challenges a common assumption in RAG system design. Three implications:
 
-### Semantic Similarity Computation
+1. **Embedding robustness**: Modern embedding models handle chunk boundaries well. The semantic information captured by text-embedding-3-small appears resilient to arbitrary segmentation—at least for the retrieval task measured here.
 
-ContextRAG implements sophisticated similarity computation using OpenAI embeddings and cosine similarity. The implementation balances embedding quality with computational efficiency through several optimization techniques.
+2. **Complexity cost**: Adaptive chunking adds routing logic, configuration parameters, and testing surface area. If it provides no accuracy benefit, uniform chunking is strictly preferable (simpler, fewer failure modes).
 
-The core similarity computation is implemented in `src/markdown_grouping/file_grouping.py`:
+3. **Hypothesis refinement**: The original intuition conflated "semantic coherence" with "retrieval utility." A chunk can be semantically incomplete yet still contain sufficient signal for embedding-based retrieval. This distinction matters for future chunking research.
 
-```python
-def compute_similarity(files_dict, checksums, cache):
-    """Compute similarity between files using OpenAI embeddings."""
-    embeddings = []
-    client = OpenAI()
-    for filename, content in files_dict.items():
-        checksum = checksums[filename]
-        if checksum in cache:
-            embeddings.append(cache[checksum])
-        else:
-            processed_text = preprocess_text(content)
-            token_count = count_tokens(processed_text)
+### Limitations
 
-            if token_count <= 8000:
-                response = client.embeddings.create(
-                    model="text-embedding-3-large",
-                    input=processed_text,
-                    encoding_format="float",
-                    dimensions=3072,
-                )
-                embedding = response.data[0].embedding
-                embeddings.append(embedding)
-                cache[checksum] = embedding
+This study has clear boundaries:
 
-    # Normalize the embeddings before computing the cosine similarity
-    normalized_embeddings = normalize(np.array(embeddings))
-    similarity_matrix = cosine_similarity(normalized_embeddings)
-    return similarity_matrix
-```
+- **Corpus size**: 12 documents, 60 queries. Sufficient for detecting large effects, but may miss subtle improvements.
+- **Single embedding model**: Results may not generalize to older or smaller embedding models.
+- **Retrieval-only evaluation**: Does not measure downstream generation quality (full RAG pipeline).
+- **Fixed thresholds**: The length boundaries (3.5K, 15K tokens) were not tuned; different thresholds might yield different results.
 
-This implementation includes several key optimizations:
+These limitations are documented for transparency, not as caveats that undermine the finding. The result—no improvement with adaptive chunking—is clear within this experimental scope.
 
-1. **Embedding Caching** - Reuses embeddings for identical content, reducing API calls and computational overhead
-2. **Token Limit Handling** - Ensures content fits within model constraints, preventing truncation issues
-3. **Normalization** - Improves consistency of similarity scores across documents of varying lengths
-4. **High-Dimensional Embeddings** - Uses 3072-dimension embeddings for greater precision in semantic representation
+## Historical Context
 
-These optimizations enable efficient similarity computation even for large document collections, making the system viable for real-world applications with diverse content types.
-
-### Context-Aware Processing Strategy
-
-A core innovation in ContextRAG is its differentiated processing strategies based on document characteristics. The system employs distinct approaches for documents of varying lengths, optimizing both computational efficiency and semantic coherence.
-
-| Document Type | Token Range  | Processing Approach    | Implementation Details                                   |
-| ------------- | ------------ | ---------------------- | -------------------------------------------------------- |
-| **Short**     | ≤3,500       | Full-context embedding | Direct embedding with text-embedding-3-large (3072 dims) |
-| **Medium**    | 3,500-15,000 | Model adaptation       | Uses GPT-3.5-Turbo-16K for processing                    |
-| **Long**      | >15,000      | Specialized handling   | Custom chunking and hierarchical embedding               |
-
-This approach is reflected in the model selection logic in `src/markdown_grouping/category_assignment.py`:
+This project originated in 2022–2023 when GPT-3.5 (4K context) was significantly cheaper than GPT-3.5-16K. The original motivation was cost-based model routing:
 
 ```python
-# Determine the model based on the token count
+# Original model selection logic (2022-2023)
 if token_count <= 3500:
-    model = ChatModels.GPT_3_5_TURBO_1106
-elif 3500 < token_count < 15000:
-    model = ChatModels.GPT_3_5_TURBO_16K
-else:
-    print(f"Skipped {filename} due to excessive token count ({token_count} tokens).")
-    continue
+    model = ChatModels.GPT_3_5_TURBO_1106  # Cheaper, 4K context
+elif token_count < 15000:
+    model = ChatModels.GPT_3_5_TURBO_16K   # More expensive, 16K context
 ```
 
-By selecting models and processing strategies based on document characteristics, ContextRAG achieves better performance and cost efficiency compared to uniform processing approaches.
+As context windows expanded (128K–2M tokens by 2024–2025), the cost-routing motivation became obsolete. The project evolved: first to chunking strategies, then to rigorous evaluation of those strategies.
 
-### Vector Database Integration
+The provider-agnostic embedding infrastructure developed during this work—automatic fallback chains, cost tracking, ChromaDB integration—has been extracted into [chromaroute](https://github.com/seanbrar/chromaroute), a standalone library [available on PyPI](https://pypi.org/project/chromaroute/).
 
-Efficient storage and retrieval of vector embeddings is essential for system performance. ContextRAG integrates ChromaDB, a vector database optimized for similarity search, to enable fast and accurate document retrieval.
+## On Null Results
 
-The vector database integration is implemented in `src/vector_db/main.py`:
+This project reinforced something I believe about research: **null results are results**.
 
-```python
-def query(self, query_texts, n_results=3):
-    """Query the collection for similar documents."""
-    results = self.collection.query(
-        query_texts=query_texts,
-        n_results=n_results,
-        include=["documents", "distances"],
-    )
-    return results
-```
+A well-documented negative finding has value:
+- It prevents others from pursuing unproductive approaches
+- It requires (and demonstrates) rigorous methodology to be convincing
+- It often reveals unexpected insights—here, the robustness of modern embeddings
 
-This implementation enables:
+The temptation with null results is to keep tweaking until something "works." I chose instead to document the finding honestly. The hypothesis was reasonable, the methodology was sound, and the result was clear. That's the output of research, whether or not it confirms the initial intuition.
 
-1. **Scalable vector storage** - Efficient handling of large document collections
-2. **Fast similarity search** - Optimized retrieval of relevant documents
-3. **Distance-based ranking** - Documents ranked by semantic similarity
+## Connection to Further Work
 
-The vector database provides a scalable foundation for the system, enabling efficient retrieval even as document collections grow in size and complexity.
+Concepts from ContextRAG—context management, provider abstraction, cost-aware processing—informed my [Google Summer of Code 2025 project with Google DeepMind](https://github.com/seanbrar/gemini-batch-prediction), which focused on efficient multimodal inference pipelines.
 
-## Observed Outcomes
+## Future Directions
 
-While formal benchmarks are still in development, initial testing of ContextRAG demonstrates several qualitative improvements over traditional RAG approaches:
+Given the null result on adaptive chunking, more promising directions include:
 
-1. **Retrieval Precision** - More accurate document retrieval by preserving semantic context
-2. **Processing Efficiency** - Optimized token usage and model selection
-3. **Scalability** - Effective handling of documents regardless of length or complexity
-
-These improvements are particularly noticeable when processing complex technical documentation, research papers, and hierarchical content where context preservation is critical for accurate retrieval.
-
-The system shows particular promise for applications requiring high retrieval precision, such as:
-
-- Technical documentation search
-- Research literature review
-- Legal document analysis
-- Knowledge base management
-
-## Limitations and Evolution of Context Windows
-
-While ContextRAG provides effective solutions for context management, several limitations and evolving factors should be acknowledged:
-
-### Model Selection Trade-offs
-
-The system currently uses GPT-3.5 Turbo models (4K and 16K context variants) due to favorable cost-performance trade-offs during initial development. This represents a deliberate engineering decision balancing:
-
-- **Latency Requirements** - Larger models typically have higher inference times
-- **Cost Considerations** - Significant cost differences between model tiers
-- **Retrieval Quality** - Diminishing returns beyond certain context sizes
-
-```python
-# Current model selection approach
-if token_count <= 3500:
-    model = ChatModels.GPT_3_5_TURBO_1106  # Lower cost, faster inference
-elif 3500 < token_count < 15000:
-    model = ChatModels.GPT_3_5_TURBO_16K   # Higher cost, manageable latency
-```
-
-### Context Window Evolution
-
-Recent advances in model architecture have dramatically increased context windows:
-
-| Time Period | Leading Models                               | Typical Context Windows |
-| ----------- | -------------------------------------------- | ----------------------- |
-| 2022–2023   | GPT-3.5, Claude 1, LLaMA 1                   | 2K–16K tokens           |
-| 2023–2024   | GPT-4, Claude 2, LLaMA 2                     | 4K–32K tokens           |
-| 2024–2025   | GPT-4o, Gemini 1.5 Pro, LLaMA 3, DeepSeek-V3 | 128K–2M tokens          |
-
-Despite these advances, context limitations remain relevant for several reasons:
-
-1. **Scale Gap** - Many real-world document collections exceed even million-token context windows
-2. **Attention Mechanism Limitations** - Performance degradation with extremely long contexts
-3. **Inference Cost** - Quadratic scaling of computational costs with context length
-4. **Retrieval Precision** - Diminishing quality of retrievals in extremely large contexts
-
-These limitations highlight the continued relevance of intelligent context management systems even as context windows expand.
-
-### Future Research Directions
-
-Current work is focused on:
-
-1. **Adaptive Model Selection** - Dynamic selection of models based on document characteristics and query requirements
-2. **Hierarchical Embedding Strategies** - Developing multi-level embeddings for very long documents
-3. **Cross-Document Context Preservation** - Maintaining relationships between related documents
-4. **Query Optimization** - Intelligent query reformulation based on document characteristics
-5. **Evaluation Framework** - Comprehensive benchmarking against traditional RAG systems
+- **Semantic chunking**: Use model-based boundary detection (e.g., sentence embeddings, topic segmentation) rather than token counts. This addresses the hypothesis more directly than length-based routing.
+- **Hybrid retrieval**: Combine dense embeddings with sparse methods (BM25) to leverage complementary signals.
+- **Downstream evaluation**: Measure generation quality, not just retrieval accuracy, to capture effects that retrieval metrics miss.
+- **Benchmark expansion**: Evaluate on standard IR datasets (BEIR, MTEB) for broader validation.
 
 ## Conclusion
 
-ContextRAG shows that simple document classification, routing documents to different processing strategies based on length, can improve retrieval coherence and reduce unnecessary computation. The approach is straightforward to implement and integrates with existing RAG architectures. By adapting processing approaches based on document characteristics, the system achieves better semantic coherence, more efficient resource utilization, and improved retrieval precision compared to uniform processing approaches.
+ContextRAG tested whether adaptive chunking improves retrieval accuracy in RAG systems. The answer, based on controlled evaluation, is **no**—modern embedding models are robust to chunk boundary placement, and uniform chunking performs equally well with less complexity.
 
-As language models continue to evolve, the principles of context-aware document processing will remain relevant for optimizing retrieval performance and computational efficiency in real-world applications.
+This negative result simplifies RAG system design decisions and suggests that chunking research should focus elsewhere (semantic boundaries, hybrid retrieval) rather than document-length heuristics.
 
-The project is open source and available on [GitHub](https://github.com/seanbrar/ContextRAG). Contributions and feedback from the community is welcome as I continue to develop and refine the system.
+The project is open source: [GitHub](https://github.com/seanbrar/ContextRAG).
