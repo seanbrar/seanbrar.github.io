@@ -3,7 +3,7 @@ layout: page
 title: paperweight
 description: Personalized research discovery system through intelligent filtering and summarization
 img: assets/img/projects/paperweight-thumbnail.png
-importance: 2
+importance: 3
 category: [applied ai systems]
 ---
 

@@ -3,17 +3,17 @@ layout: page
 title: ContextRAG
 description: Empirical investigation of adaptive chunking strategies in retrieval-augmented generation
 img: assets/img/projects/contextrag-thumbnail.png
-importance: 1
+importance: 2
 category: [ml research]
 ---
 
 ## Summary
 
-ContextRAG is an evaluation framework I built to answer a specific research question: **does adaptive chunking—routing documents to different chunk sizes based on length—improve retrieval accuracy in RAG systems?**
+ContextRAG is an evaluation framework I built to answer a specific research question: **does adaptive chunking - routing documents to different chunk sizes based on length - improve retrieval accuracy in RAG systems?**
 
 The intuition seemed sound: short documents lose context when chunked unnecessarily, while long documents benefit from finer granularity. I designed a controlled experiment to test this hypothesis.
 
-**The finding**: Adaptive chunking provides no measurable improvement over uniform chunking. Both strategies achieve identical precision@5 and recall@5 on a mixed-domain corpus. This null result is itself informative—it suggests that modern embedding models (e.g., OpenAI's text-embedding-3-small) are robust to chunk boundary placement, simplifying RAG system design.
+**The finding**: Adaptive chunking provides no measurable improvement over uniform chunking. Both strategies achieve identical precision@5 and recall@5 on a mixed-domain corpus. This null result is itself informative, it suggests that modern embedding models (e.g., OpenAI's text-embedding-3-small) are robust to chunk boundary placement, simplifying RAG system design.
 
 ## Research Question
 
@@ -69,7 +69,7 @@ Router (adaptive):   Short → no chunking | Medium → 2,000-token | Long → 1
 
 This null result challenges a common assumption in RAG system design. Three implications:
 
-1. **Embedding robustness**: Modern embedding models handle chunk boundaries well. The semantic information captured by text-embedding-3-small appears resilient to arbitrary segmentation—at least for the retrieval task measured here.
+1. **Embedding robustness**: Modern embedding models handle chunk boundaries well. The semantic information captured by text-embedding-3-small appears resilient to arbitrary segmentation, at least for the retrieval task measured here.
 
 2. **Complexity cost**: Adaptive chunking adds routing logic, configuration parameters, and testing surface area. If it provides no accuracy benefit, uniform chunking is strictly preferable (simpler, fewer failure modes).
 
@@ -84,7 +84,7 @@ This study has clear boundaries:
 - **Retrieval-only evaluation**: Does not measure downstream generation quality (full RAG pipeline).
 - **Fixed thresholds**: The length boundaries (3.5K, 15K tokens) were not tuned; different thresholds might yield different results.
 
-These limitations are documented for transparency, not as caveats that undermine the finding. The result—no improvement with adaptive chunking—is clear within this experimental scope.
+These limitations are documented for transparency, not as caveats that undermine the finding. The result - no improvement with adaptive chunking - is clear within this experimental scope.
 
 ## Historical Context
 
@@ -100,7 +100,7 @@ elif token_count < 15000:
 
 As context windows expanded (128K–2M tokens by 2024–2025), the cost-routing motivation became obsolete. The project evolved: first to chunking strategies, then to rigorous evaluation of those strategies.
 
-The provider-agnostic embedding infrastructure developed during this work—automatic fallback chains, cost tracking, ChromaDB integration—has been extracted into [chromaroute](https://github.com/seanbrar/chromaroute), a standalone library [available on PyPI](https://pypi.org/project/chromaroute/).
+The provider-agnostic embedding infrastructure developed during this work - automatic fallback chains, cost tracking, ChromaDB integration - has been extracted into [chromaroute](https://github.com/seanbrar/chromaroute), a standalone library [available on PyPI](https://pypi.org/project/chromaroute/).
 
 ## On Null Results
 
@@ -109,13 +109,13 @@ This project reinforced something I believe about research: **null results are r
 A well-documented negative finding has value:
 - It prevents others from pursuing unproductive approaches
 - It requires (and demonstrates) rigorous methodology to be convincing
-- It often reveals unexpected insights—here, the robustness of modern embeddings
+- It often reveals unexpected insights - here, the robustness of modern embeddings
 
 The temptation with null results is to keep tweaking until something "works." I chose instead to document the finding honestly. The hypothesis was reasonable, the methodology was sound, and the result was clear. That's the output of research, whether or not it confirms the initial intuition.
 
 ## Connection to Further Work
 
-Concepts from ContextRAG—context management, provider abstraction, cost-aware processing—informed my [Google Summer of Code 2025 project with Google DeepMind](https://github.com/seanbrar/gemini-batch-prediction), which focused on efficient multimodal inference pipelines.
+Concepts from ContextRAG - context management, provider abstraction, cost-aware processing - informed my [Google Summer of Code 2025 project with Google DeepMind](https://github.com/seanbrar/gemini-batch-prediction), which focused on efficient multimodal inference pipelines.
 
 ## Future Directions
 
@@ -128,7 +128,7 @@ Given the null result on adaptive chunking, more promising directions include:
 
 ## Conclusion
 
-ContextRAG tested whether adaptive chunking improves retrieval accuracy in RAG systems. The answer, based on controlled evaluation, is **no**—modern embedding models are robust to chunk boundary placement, and uniform chunking performs equally well with less complexity.
+ContextRAG tested whether adaptive chunking improves retrieval accuracy in RAG systems. The answer, based on controlled evaluation, is **no**:modern embedding models are robust to chunk boundary placement, and uniform chunking performs equally well with less complexity.
 
 This negative result simplifies RAG system design decisions and suggests that chunking research should focus elsewhere (semantic boundaries, hybrid retrieval) rather than document-length heuristics.
 
