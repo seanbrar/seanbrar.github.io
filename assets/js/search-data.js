@@ -270,7 +270,7 @@ ninja.data = [{
               window.location.href = "/projects/paperweight/";
             },},{id: "projects-prickly-pairs",
           title: 'Prickly Pairs',
-          description: "AI-powered flashcard generation system with context-enriched answers",
+          description: "Personal study tool using GPT-4 to enrich flashcard answers",
           section: "Projects",handler: () => {
               window.location.href = "/projects/pricklypairs/";
             },},{
