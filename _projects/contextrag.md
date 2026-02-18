@@ -1,90 +1,47 @@
 ---
 layout: page
 title: ContextRAG
-description: Empirical investigation of adaptive chunking strategies in retrieval-augmented generation
+description: Evaluation framework for RAG chunking strategies with formal statistical validation
 img: assets/img/projects/contextrag-thumbnail.png
-importance: 3
+importance: 2
 category: [ml research]
 ---
 
-## Summary
+## The Question
 
-ContextRAG is an evaluation framework I built to answer a specific research question: **does adaptive chunking - routing documents to different chunk sizes based on length - improve retrieval accuracy in RAG systems?**
+Does adaptive chunking — routing documents to different chunk sizes based on length — improve retrieval quality in RAG systems?
 
-The intuition seemed sound: short documents lose context when chunked unnecessarily, while long documents benefit from finer granularity. I designed a controlled experiment to test this hypothesis.
+The intuition seems sound: short documents lose context when chunked unnecessarily, while long documents benefit from finer granularity. A length-aware router should outperform a fixed-size strategy. I built ContextRAG to find out whether that intuition holds up under controlled evaluation.
 
-**The finding**: Adaptive chunking provides no measurable improvement over uniform chunking. Both strategies achieve identical precision@5 and recall@5 on a mixed-domain corpus. This null result is itself informative, it suggests that modern embedding models (e.g., OpenAI's text-embedding-3-small) are robust to chunk boundary placement, simplifying RAG system design.
+**The answer is no.** Adaptive chunking is statistically equivalent to uniform chunking within a preregistered nDCG margin of 0.02, confirmed by TOST equivalence testing across three datasets. This null result is itself informative — it suggests that modern embedding models are robust to chunk boundary placement, which simplifies RAG system design considerably.
 
-## Research Question
+## The Evaluation Harness
 
-The hypothesis emerged from a reasonable intuition about semantic coherence:
+ContextRAG is a CLI-driven evaluation pipeline that runs controlled experiments across datasets and applies formal statistical comparison to produce a defensible answer. A single `run_eval` call chains: document loading → token-level chunking via a strategy registry → embedding via [chromaroute](/projects/chromaroute/) → ChromaDB vector indexing → multi-modal retrieval → per-query metric calculation → artifact emission. A separate comparison layer loads paired per-query results and runs a full statistical inference suite.
 
-| Document Length | Chunking Strategy | Rationale |
-|-----------------|-------------------|-----------|
-| Short (≤3,500 tokens) | No chunking | Preserve complete semantic context |
-| Medium (3,500–15,000 tokens) | 2,000-token chunks | Balance coherence and retrieval granularity |
-| Long (>15,000 tokens) | 1,000-token chunks | Enable fine-grained retrieval |
+The framework computes **7 retrieval metrics** per query: precision@k, recall@k, hit@k, hit@1, MRR@k, nDCG@k, and unique_doc_ratio@k. It supports four retrieval modes — dense, BM25 (implemented from scratch), hybrid via reciprocal rank fusion, and dense with token-overlap reranking — enabling comparison across retrieval approaches within a single evaluation framework.
 
-The underlying assumption was that chunk boundaries disrupt semantic units, and that "intelligent" boundary placement should improve retrieval quality. This assumption is common in RAG literature and practitioner discussions.
+## Why Statistical Rigor Matters Here
 
-## Methodology
+Showing that two systems perform *differently* is straightforward: run a significance test, reject the null. Showing that two systems perform *equivalently* is a harder claim. A non-significant difference doesn't prove equivalence — it might just mean you lack statistical power.
 
-### Corpus
+This is why ContextRAG uses **TOST (two one-sided tests) equivalence testing** rather than standard significance testing. TOST requires you to preregister an equivalence margin (here, 0.02 nDCG) and demonstrate that the observed difference falls within that margin with statistical confidence. It's the methodology used in clinical trials when you need to prove a generic drug works the same as the branded version — the burden of proof is on equivalence, not difference.
 
-I constructed a mixed-domain evaluation corpus to test generalization across document types:
+The statistical suite also includes bootstrap confidence intervals, paired randomization tests, Cohen's d and Cliff's delta effect sizes, and **Holm-Bonferroni correction** for multiple comparisons. When you're computing 7 metrics across multiple datasets, controlling Type I error isn't optional — it's the difference between a defensible finding and a p-hacking exercise.
 
-- **Technical documents** (7): IETF RFCs covering email formats, TLS 1.3, HTTP/1.1, HTTP/2, and YANG schema identifiers
-- **Literary texts** (5): Classic short fiction (Poe, O. Henry, Gilman, Doyle) and the Gettysburg Address
+## Reproducibility
 
-Total: 12 documents, ~493,000 tokens, spanning all three length categories.
+Every experiment run emits a **reproducibility manifest** capturing the git SHA, dependency versions, dataset SHA-256 fingerprints, and config hash. This means any result can be traced back to the exact code, data, and configuration that produced it. The framework enforces this: there is no way to generate results without generating a manifest alongside them.
 
-### Evaluation Protocol
+All configuration flows through frozen dataclasses with YAML experiment configs validated before execution — type coercion, range checking, and accumulated error reporting. An experiment matrix runner orchestrates baseline × k sweeps across datasets and generates aggregate comparison dashboards.
 
-- **Queries**: 60 factual retrieval questions (5 per document), each with a single ground-truth relevant document
-- **Metrics**: Precision@5 and Recall@5
-- **Runs**: 3 independent runs per strategy to assess variance
-- **Embedding model**: OpenAI text-embedding-3-small
-- **Baseline**: Uniform 1,000-token chunks (standard practice)
-- **Treatment**: Adaptive chunking based on document length (router strategy)
-
-The framework logs all artifacts (chunk counts, token distributions, costs) for reproducibility.
-
-### Strategies Compared
-
-```
-Uniform (baseline):  All documents → 1,000-token chunks
-Router (adaptive):   Short → no chunking | Medium → 2,000-token | Long → 1,000-token
-```
+60+ experiment runs across 3 datasets (eval-expanded, eval-external, eval-scifact-mini) are archived with their manifests.
 
 ## Results
 
-| Strategy | Precision@5 | Recall@5 | Chunks | Variance |
-|----------|-------------|----------|--------|----------|
-| Uniform | 0.197 | 0.983 | 499 | 0 |
-| Router | 0.197 | 0.983 | 490 | 0 |
+On eval-expanded at k=5, uniform chunking achieves recall@5 of 0.835 versus the router's 0.785 — the adaptive strategy performs *slightly worse*. Across all three datasets, the preregistered null hypothesis holds: adaptive ≈ uniform within the 0.02 nDCG equivalence margin.
 
-**Both strategies achieve identical retrieval accuracy.** The router produces 1.8% fewer chunks, but this marginal efficiency gain does not translate to accuracy improvement. Results are deterministic across runs (zero variance), indicating the finding is not due to stochastic variation.
-
-## Interpretation
-
-This null result challenges a common assumption in RAG system design. Three implications:
-
-1. **Embedding robustness**: Modern embedding models handle chunk boundaries well. The semantic information captured by text-embedding-3-small appears resilient to arbitrary segmentation, at least for the retrieval task measured here.
-
-2. **Complexity cost**: Adaptive chunking adds routing logic, configuration parameters, and testing surface area. If it provides no accuracy benefit, uniform chunking is strictly preferable (simpler, fewer failure modes).
-
-3. **Hypothesis refinement**: The original intuition conflated "semantic coherence" with "retrieval utility." A chunk can be semantically incomplete yet still contain sufficient signal for embedding-based retrieval. This distinction matters for future chunking research.
-
-### Limitations
-
-This study has clear boundaries:
-
-- **Corpus size**: 12 documents, 60 queries. Sufficient for detecting large effects, but may miss subtle improvements.
-- **Single embedding model**: Results may not generalize to older or smaller embedding models.
-- **Retrieval-only evaluation**: Does not measure downstream generation quality (full RAG pipeline).
-- **Fixed thresholds**: The length boundaries (3.5K, 15K tokens) were not tuned; different thresholds might yield different results.
-
-These limitations are documented for transparency, not as caveats that undermine the finding. The result - no improvement with adaptive chunking - is clear within this experimental scope.
+This is a legitimate scientific finding, not an absence of results. The framework was designed to produce a defensible answer regardless of which direction the evidence pointed. It happened to point toward equivalence, which required more statistical machinery to support than a simple difference would have.
 
 ## Historical Context
 
@@ -98,9 +55,7 @@ elif token_count < 15000:
     model = ChatModels.GPT_3_5_TURBO_16K   # More expensive, 16K context
 ```
 
-As context windows expanded (128K–2M tokens by 2024–2025), the cost-routing motivation became obsolete. The project evolved: first to chunking strategies, then to rigorous evaluation of those strategies.
-
-The provider-agnostic embedding infrastructure developed during this work - automatic fallback chains, cost tracking, ChromaDB integration - has been extracted into [chromaroute](https://github.com/seanbrar/chromaroute), a standalone library [available on PyPI](https://pypi.org/project/chromaroute/).
+As context windows expanded (128K–2M tokens by 2024–2025), the cost-routing motivation became obsolete. The project evolved: first to chunking strategies, then to rigorous evaluation of those strategies. The provider-agnostic embedding infrastructure developed during this work was extracted into [chromaroute](https://github.com/seanbrar/chromaroute), a standalone library [available on PyPI](https://pypi.org/project/chromaroute/).
 
 ## On Null Results
 
@@ -109,27 +64,12 @@ This project reinforced something I believe about research: **null results are r
 A well-documented negative finding has value:
 - It prevents others from pursuing unproductive approaches
 - It requires (and demonstrates) rigorous methodology to be convincing
-- It often reveals unexpected insights - here, the robustness of modern embeddings
+- It often reveals unexpected insights — here, the robustness of modern embeddings
 
 The temptation with null results is to keep tweaking until something "works." I chose instead to document the finding honestly. The hypothesis was reasonable, the methodology was sound, and the result was clear. That's the output of research, whether or not it confirms the initial intuition.
 
-## Connection to Further Work
+## Connection to Other Work
 
-Concepts from ContextRAG - context management, provider abstraction, cost-aware processing - informed my [Google Summer of Code 2025 project with Google DeepMind](https://github.com/seanbrar/gemini-batch-prediction), which focused on efficient multimodal inference pipelines.
+ContextRAG is an evaluation harness — it measures whether a system modification produces measurably different outputs using preregistered endpoints, equivalence margins, and formal statistical tests. This is the same fundamental question that runs through my other work: [Pollux](/projects/pollux/) ensures infrastructure-level correctness (deterministic caching, idempotent retries), and [gh-templates](https://github.com/seanbrar/gh-templates) validates that LLM extractions conform to a schema. ContextRAG asks the evaluation version of that question: does this change actually make the system better, and can you prove it?
 
-## Future Directions
-
-Given the null result on adaptive chunking, more promising directions include:
-
-- **Semantic chunking**: Use model-based boundary detection (e.g., sentence embeddings, topic segmentation) rather than token counts. This addresses the hypothesis more directly than length-based routing.
-- **Hybrid retrieval**: Combine dense embeddings with sparse methods (BM25) to leverage complementary signals.
-- **Downstream evaluation**: Measure generation quality, not just retrieval accuracy, to capture effects that retrieval metrics miss.
-- **Benchmark expansion**: Evaluate on standard IR datasets (BEIR, MTEB) for broader validation.
-
-## Conclusion
-
-ContextRAG tested whether adaptive chunking improves retrieval accuracy in RAG systems. The answer, based on controlled evaluation, is **no**:modern embedding models are robust to chunk boundary placement, and uniform chunking performs equally well with less complexity.
-
-This negative result simplifies RAG system design decisions and suggests that chunking research should focus elsewhere (semantic boundaries, hybrid retrieval) rather than document-length heuristics.
-
-The project is open source: [GitHub](https://github.com/seanbrar/ContextRAG).
+The project is open source: [GitHub](https://github.com/seanbrar/ContextRAG)

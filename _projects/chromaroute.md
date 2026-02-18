@@ -3,7 +3,7 @@ layout: page
 title: chromaroute
 description: Provider-agnostic embedding infrastructure for ChromaDB with intelligent fallback
 img: assets/img/projects/project-placeholder.png
-importance: 2
+importance: 4
 category: [ml infrastructure]
 ---
 
@@ -84,7 +84,7 @@ chromaroute powers the embedding layer in [ContextRAG](/projects/contextrag/), w
 
 This pattern - extracting reusable infrastructure from research projects - reflects how I think about systems development. Research code tends to accumulate useful abstractions that deserve independent existence. By publishing chromaroute as a standalone library, I can iterate on the embedding infrastructure independently of the projects that use it, and other developers can benefit from the work.
 
-The design decisions in chromaroute also informed my approach to provider abstraction in the [Gemini Batch Prediction Framework](/projects/gemini-batch/) (Google Summer of Code 2025). While that project targets a different API and use case, the underlying philosophy - opinionated defaults, escape hatches, actionable errors - carries through.
+The design decisions in chromaroute also informed my approach to provider abstraction in [Pollux](/projects/pollux/) (Google Summer of Code 2025 with Google DeepMind). While that project targets a different API and use case, the underlying philosophy — opinionated defaults, escape hatches, actionable errors — carries through.
 
 ## Limitations
 

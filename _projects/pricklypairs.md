@@ -3,7 +3,7 @@ layout: page
 title: Prickly Pairs
 description: Personal study tool using GPT-4 to enrich flashcard answers
 img: assets/img/projects/prickly-pairs-thumbnail.png
-importance: 5
+importance: 7
 category: [personal tools]
 ---
 
