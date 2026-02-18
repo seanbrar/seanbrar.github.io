@@ -11,7 +11,7 @@ ninja.data = [{
     },
   },{id: "nav-projects",
           title: "projects",
-          description: "Applied AI systems for information retrieval, research discovery, and knowledge enhancement.",
+          description: "Evaluation and verification infrastructure for AI systems, ML research tooling, and systems engineering.",
           section: "Navigation",
           handler: () => {
             window.location.href = "/projects/";
@@ -265,19 +265,24 @@ ninja.data = [{
               window.location.href = "/projects/chromaroute/";
             },},{id: "projects-contextrag",
           title: 'ContextRAG',
-          description: "Empirical investigation of adaptive chunking strategies in retrieval-augmented generation",
+          description: "Evaluation framework for RAG chunking strategies with formal statistical validation",
           section: "Projects",handler: () => {
               window.location.href = "/projects/contextrag/";
-            },},{id: "projects-gemini-batch-prediction-framework",
-          title: 'Gemini Batch Prediction Framework',
-          description: "Production-grade multimodal AI pipeline with intelligent batching and context caching",
+            },},{id: "projects-gh-templates",
+          title: 'gh-templates',
+          description: "Schema-constrained LLM extraction and validation across 3,746 GitHub repositories",
           section: "Projects",handler: () => {
-              window.location.href = "/projects/gemini-batch/";
+              window.location.href = "/projects/gh-templates/";
             },},{id: "projects-paperweight",
           title: 'paperweight',
-          description: "Personalized research discovery system through intelligent filtering and summarization",
+          description: "Automated arXiv paper discovery and triage with configurable research interest profiles",
           section: "Projects",handler: () => {
               window.location.href = "/projects/paperweight/";
+            },},{id: "projects-pollux",
+          title: 'Pollux',
+          description: "Multimodal LLM orchestration with deterministic caching and concurrent correctness guarantees",
+          section: "Projects",handler: () => {
+              window.location.href = "/projects/pollux/";
             },},{id: "projects-prickly-pairs",
           title: 'Prickly Pairs',
           description: "Personal study tool using GPT-4 to enrich flashcard answers",
