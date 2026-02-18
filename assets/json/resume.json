@@ -4,7 +4,7 @@
     "label": "ML Systems Engineer",
     "email": "hello@seanbrar.com",
     "url": "https://seanbrar.com",
-    "summary": "Google DeepMind GSoC '25 Alumnus. Building production infrastructure for ML research. Post-bacc CS & Mathematics.",
+    "summary": "Google DeepMind GSoC '25 alumnus. ML systems engineer building evaluation and verification infrastructure for AI systems. Post-bacc CS & Mathematics.",
     "location": {
       "city": "Los Angeles",
       "region": "California",
@@ -30,28 +30,78 @@
   },
   "projects": [
     {
-      "name": "Gemini Batch Prediction Framework",
-      "description": "Google Summer of Code 2025 with Google DeepMind",
+      "name": "Pollux",
+      "description": "Multimodal LLM orchestration library — Google Summer of Code 2025 with Google DeepMind",
       "highlights": [
-        "Async pipeline reducing Gemini API costs 75%",
-        "Intelligent batching yields 4-5× fewer API calls",
-        "95%+ test coverage, full documentation suite",
-        "Production use for multimodal research analysis"
+        "Deterministic content-hash caching cutting API costs 90% on fan-out workloads",
+        "Single-flight async deduplication eliminating duplicate uploads across concurrent requests",
+        "Error hierarchy separating retry policy for generation vs. side-effect calls",
+        "Layered validation: mutation testing, property-based testing, contract/integration/golden tests",
+        "Published to PyPI; 113+ merged PRs across Python 3.10–3.14 CI matrix"
       ],
-      "url": "https://github.com/seanbrar/gemini-batch-prediction",
-      "startDate": "2025-05",
-      "endDate": "2025-09"
+      "url": "https://polluxlib.dev",
+      "startDate": "2025-06",
+      "endDate": "Present"
     },
     {
       "name": "ContextRAG",
-      "description": "A system for context-aware retrieval processing in large language models",
+      "description": "RAG evaluation harness with formal statistical validation",
       "highlights": [
-        "Adaptive chunking by document length",
-        "30% token reduction vs. fixed strategies",
-        "Compatible with major LLM frameworks"
+        "7 retrieval metrics with TOST equivalence testing and Holm-Bonferroni correction",
+        "Confirmed preregistered null hypothesis (adaptive ≈ uniform within 0.02 nDCG margin)",
+        "Reproducibility manifests tracking git SHA, dependency versions, and dataset fingerprints",
+        "60+ experiment runs across 3 datasets at 91% test coverage"
       ],
       "url": "https://github.com/seanbrar/ContextRAG",
       "startDate": "2024",
+      "endDate": "Present"
+    },
+    {
+      "name": "gh-templates",
+      "description": "Schema-constrained LLM extraction and validation across 3,746 repositories",
+      "highlights": [
+        "Pydantic contracts validating structured Gemini output at 99.97% success rate",
+        "Transient/permanent error taxonomy with resumable 40-worker async pipeline",
+        "Phi coefficient and point-biserial correlation with Benjamini-Hochberg FDR correction"
+      ],
+      "url": "https://github.com/seanbrar/gh-templates",
+      "startDate": "2026-02",
+      "endDate": "2026-02"
+    },
+    {
+      "name": "Cartridge",
+      "description": "Userspace NFSv3 client implementing wire protocols from specification",
+      "highlights": [
+        "ONC RPC framing and XDR binary serialization in C# across 119 source files",
+        "8-script verification harness: warning-fingerprint regression gating, stub-completeness scanning",
+        "Concurrent NFS client with semaphore-guarded state machine and TTL-expiring caches"
+      ],
+      "url": "https://github.com/seanbrar/Cartridge",
+      "startDate": "2024-12",
+      "endDate": "Present"
+    },
+    {
+      "name": "paperweight",
+      "description": "Automated academic paper discovery and triage from arXiv",
+      "highlights": [
+        "RSS-first fetch routing with batched arXiv API fallback and Tenacity retry at 3 external boundaries",
+        "Golden-set scoring validation and SQLite-backed offline integration testing",
+        "Published to PyPI with 1:1 test-to-source ratio across 15 test files"
+      ],
+      "url": "https://github.com/seanbrar/paperweight",
+      "startDate": "2024-09",
+      "endDate": "Present"
+    },
+    {
+      "name": "nullscope",
+      "description": "Zero-cost telemetry library for Python with optional OpenTelemetry adapter",
+      "highlights": [
+        "33 ns/call disabled overhead (matching bare function call cost) verified via GC-disabled benchmarking",
+        "contextvars-based async-safe scope hierarchy with token-reset semantics",
+        "Published to PyPI with OIDC trusted publishing and 5-version CI matrix"
+      ],
+      "url": "https://github.com/seanbrar/telemetry",
+      "startDate": "2026-02",
       "endDate": "Present"
     },
     {
@@ -59,52 +109,32 @@
       "description": "Caltech AI/ML Certificate capstone",
       "highlights": [
         "Benchmarked 8 architectures (YOLO, SSD, Faster R-CNN)",
-        "18% improvement on minority class detection",
         "76% mAP on custom traffic dataset"
       ],
       "startDate": "2025-01",
       "endDate": "2025-02"
-    },
-    {
-      "name": "paperweight",
-      "description": "Tool for automated academic paper filtering and summarization",
-      "highlights": [
-        "300+ papers/hour automated discovery",
-        "85% precision on relevance filtering",
-        "30-page → 2-page structured summaries"
-      ],
-      "url": "https://github.com/seanbrar/paperweight",
-      "startDate": "2024",
-      "endDate": "Present"
-    },
-    {
-      "name": "Prickly Pairs",
-      "description": "AI-powered study aid for CompTIA certification exams",
-      "highlights": [
-        "2,400+ AI-enhanced technical flashcards",
-        "Three CompTIA certifications in 30 days",
-        "OpenAI API for explanation generation"
-      ],
-      "url": "",
-      "startDate": "2024-05",
-      "endDate": "2024-06"
     }
   ],
   "skills": [
     {
-      "name": "ML Engineering",
+      "name": "ML/AI",
       "level": "Advanced",
-      "keywords": ["LLM APIs", "Context Optimization", "RAG Systems", "Async Pipelines", "API Design"]
+      "keywords": ["LLM APIs (Gemini, OpenAI)", "RAG Systems", "Evaluation Harness Design", "Async Pipelines"]
+    },
+    {
+      "name": "Verification & Testing",
+      "level": "Advanced",
+      "keywords": ["Mutation Testing", "Property-Based Testing", "Equivalence Testing", "Reproducibility Infrastructure"]
     },
     {
       "name": "Programming",
       "level": "Advanced",
-      "keywords": ["Python", "Async/Await", "Testing (pytest)", "Shell/Bash", "Git"]
+      "keywords": ["Python", "C/C++", "C#", "Bash/Shell"]
     },
     {
-      "name": "Systems",
+      "name": "Systems & Tools",
       "level": "Advanced",
-      "keywords": ["Linux Administration", "Networking", "Docker", "AWS", "Troubleshooting"]
+      "keywords": ["Linux", "Docker", "AWS", "CI/CD (GitHub Actions)", "mypy (strict)"]
     }
   ],
   "work": [
@@ -113,38 +143,35 @@
       "position": "Support and Systems Engineer",
       "startDate": "2023-08",
       "endDate": "2025-01",
-      "summary": "High-level technical support and systems engineering for enterprise media solutions.",
+      "summary": "Tier 2/3 Linux support for enterprise media environments.",
       "highlights": [
-        "Tier 2/3 support for enterprise media clients",
-        "Linux CLI troubleshooting and configuration",
-        "Custom API workflow development",
+        "Tier 2/3 Linux troubleshooting for enterprise media clients",
+        "Custom Python API integrations for client services",
         "Cross-timezone international collaboration"
       ]
     },
     {
-        "name": "Latido203 Creative LLC",
-        "position": "Founder & Systems Engineer",
-        "startDate": "2023-02",
-        "endDate": "2023-07",
-        "summary": "Founded technical consultancy for creative agencies.",
-        "highlights": [
-          "Led six-figure app development initiative",
-          "Deployed ChatGPT and AutoGen automations",
-          "Administered AWS infrastructure (EC2, Route53)",
-          "Continued as technical consultant through 2024"
-        ]
+      "name": "Latido203 Creative LLC",
+      "position": "Founder & Systems Engineer",
+      "startDate": "2023-02",
+      "endDate": "2024-12",
+      "summary": "Founded technical consultancy serving creative agencies.",
+      "highlights": [
+        "Led six-figure, 5-person app development initiative",
+        "Administered AWS infrastructure (EC2, Route53, SES)",
+        "Continued as technical consultant through 2024"
+      ]
     },
     {
       "name": "Brisa Del Mar Strategies",
       "position": "IT Coordinator",
       "startDate": "2022-07",
       "endDate": "2023-01",
-      "summary": "Implemented technical solutions for political campaign organization.",
+      "summary": "Technical infrastructure and data analysis for political campaign.",
       "highlights": [
-        "GPT-powered minutes system (96% time savings)",
-        "Wireguard VPN on Raspberry Pi/Docker",
-        "Campaign data analysis and optimization",
-        "Full data recovery after drive failure"
+        "GPT-powered meeting minutes system (2 hours → 5 minutes post-meeting)",
+        "WireGuard VPN deployment on Raspberry Pi/Docker",
+        "Full data recovery after critical drive failure"
       ]
     }
   ],
@@ -156,8 +183,7 @@
       "startDate": "2025",
       "endDate": "Present",
       "highlights": [
-        "Data Structures, Discrete Math, Calculus sequence",
-        "Preparing for MSCS admission"
+        "Data Structures, Discrete Mathematics, Computer Architecture, Calculus sequence"
       ],
       "courses": ["CS/IS 211", "CS/IS 125", "MATH 103EH", "CS/IS 135"]
     },
@@ -169,9 +195,9 @@
       "endDate": "2022",
       "score": "3.9/4.0, summa cum laude",
       "highlights": [
-        "3.9 GPA, summa cum laude",
+        "Summa Cum Laude, 3.9/4.0 GPA",
         "Computer Information Systems minor",
-        "Best undergraduate paper award",
+        "Best Undergraduate Paper Award",
         "National Pi Sigma Alpha writing nominee"
       ],
       "courses": ["CIS 4380", "CIS 3050", "CIS 3010", "CIS 4840"]
@@ -182,7 +208,10 @@
       "studyType": "Associate Degree for Transfer",
       "startDate": "2016",
       "endDate": "2021",
-      "highlights": ["Academic Honors at graduation", "Unix/Linux systems coursework", "Cybersecurity training"],
+      "highlights": [
+        "Academic Honors at graduation",
+        "Unix/Linux systems coursework"
+      ],
       "courses": ["CS/IS 172", "CS/IS 193"]
     }
   ],
@@ -257,11 +286,11 @@
   "interests": [
     {
       "name": "Research Interests",
-      "keywords": ["Reinforcement Learning", "Efficient ML Systems", "Context Optimization"]
+      "keywords": ["ML Evaluation & Verification", "Reinforcement Learning", "Reproducibility Infrastructure"]
     },
     {
       "name": "Current Projects",
-      "keywords": ["Game-playing RL Agents", "Academic Paper Processing", "LLM Infrastructure"]
+      "keywords": ["LLM Output Validation", "Evaluation Harness Design", "Academic Paper Triage"]
     }
   ],
   "awards": [
@@ -284,11 +313,10 @@
       "position": "Eagle Scout Project Leader",
       "startDate": "2012-04",
       "endDate": "2012-12",
-      "summary": "Planned and executed a community service project to achieve Eagle Scout rank, demonstrating project management and leadership skills.",
+      "summary": "Planned and executed community service project, demonstrating project management and leadership.",
       "highlights": [
         "Multi-level approved project plan",
         "Team-based implementation management",
-        "Successful resource acquisition campaign",
         "On-spec community project delivery"
       ]
     }

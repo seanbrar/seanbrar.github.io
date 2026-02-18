@@ -27,12 +27,12 @@ latest_posts:
   limit: 3 # leave blank to include all the blog posts
 ---
 
-I'm an ML systems engineer and Google DeepMind GSoC 2025 alumnus.
+I'm an ML systems engineer and [Google DeepMind GSoC 2025](https://summerofcode.withgoogle.com/) alumnus.
 
-My GSoC project — [Gemini Batch Prediction Framework](https://github.com/seanbrar/gemini-batch-prediction) — is a production async pipeline that reduced API costs 75% through intelligent batching and context caching. It's now used by researchers for scalable multimodal analysis.
+I build evaluation and verification infrastructure for AI systems — the harnesses, validation pipelines, and correctness guarantees that determine whether model outputs can be trusted. My GSoC project, [Pollux](https://polluxlib.dev), is an async multimodal LLM orchestration library that cuts API costs 90% through deterministic content-hash caching and single-flight deduplication.
 
-Background: BA in Political Science (summa cum laude) from Cal State LA, Caltech AI/ML Certificate, systems engineering at ELEMENTS. Currently pursuing post-bacc CS and Mathematics, preparing for doctoral research.
+Background: BA in Political Science (summa cum laude) from Cal State LA, Caltech AI/ML Certificate, systems engineering at ELEMENTS. Currently pursuing post-baccalaureate CS and Mathematics, preparing for graduate research.
 
-**Projects:** [Gemini Batch Prediction](https://github.com/seanbrar/gemini-batch-prediction) · [ContextRAG](https://github.com/seanbrar/ContextRAG) · [paperweight](https://github.com/seanbrar/paperweight)
+**Projects:** [Pollux](https://polluxlib.dev) · [ContextRAG](https://github.com/seanbrar/ContextRAG) · [gh-templates](https://github.com/seanbrar/gh-templates) · [paperweight](https://github.com/seanbrar/paperweight)
 
-Current interests: reinforcement learning, efficient ML systems, and building an RL agent that can actually play Pokémon well.
+Research interests: ML evaluation and verification, reinforcement learning, and reproducibility infrastructure.

@@ -2,7 +2,7 @@
 layout: page
 title: projects
 permalink: /projects/
-description: Applied AI systems for information retrieval, research discovery, and knowledge enhancement.
+description: Evaluation and verification infrastructure for AI systems, ML research tooling, and systems engineering.
 nav: true
 nav_order: 1
 # display_categories: [applied ai systems, ml research]
