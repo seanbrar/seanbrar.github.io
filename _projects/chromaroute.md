@@ -2,7 +2,7 @@
 layout: page
 title: chromaroute
 description: Provider-agnostic embedding infrastructure for ChromaDB with intelligent fallback
-img: assets/img/projects/project-placeholder.png
+img: assets/img/projects/chromaroute-thumbnail.png
 importance: 4
 category: [ml infrastructure]
 ---

@@ -2,7 +2,7 @@
 layout: page
 title: gh-templates
 description: Schema-constrained LLM extraction and validation across 3,746 GitHub repositories
-img: assets/img/projects/project-placeholder.png
+img: assets/img/projects/gh-templates-thumbnail.png
 importance: 3
 category: [ml research]
 ---
