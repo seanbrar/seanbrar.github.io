@@ -29,7 +29,7 @@ latest_posts:
 
 I'm an ML systems engineer and [Google DeepMind GSoC 2025](https://summerofcode.withgoogle.com/) alumnus.
 
-I build evaluation and verification infrastructure for AI systems — the harnesses, validation pipelines, and correctness guarantees that determine whether model outputs can be trusted. My GSoC project, [Pollux](https://polluxlib.dev), is an async multimodal LLM orchestration library that cuts API costs 90% through deterministic content-hash caching and single-flight deduplication.
+I build evaluation and verification infrastructure for AI systems: harnesses, validation pipelines, and correctness guarantees that determine whether model outputs can be trusted. My GSoC project, [Pollux](https://polluxlib.dev), is an async library for multimodal LLM orchestration. It cuts API costs by 90% through content-hash caching and single-flight deduplication.
 
 Background: BA in Political Science (summa cum laude) from Cal State LA, Caltech AI/ML Certificate, systems engineering at ELEMENTS. Currently pursuing post-baccalaureate CS and Mathematics, preparing for graduate research.
 

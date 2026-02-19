@@ -7,69 +7,56 @@ importance: 2
 category: [ml research]
 ---
 
-## The Question
+## The More Expensive Model Was Frequently Dumber
 
-Does adaptive chunking — routing documents to different chunk sizes based on length — improve retrieval quality in RAG systems?
+In 2022, I was building a RAG tool for internal documentation, the kind where someone asks "how do I configure X?" and the system finds the relevant docs and answers the question. GPT-3.5 came in two flavors: a 4K context window at one price, and a 16K context window at roughly double. The obvious move was to use the bigger window when documents were long and save money on the shorter ones.
 
-The intuition seems sound: short documents lose context when chunked unnecessarily, while long documents benefit from finer granularity. A length-aware router should outperform a fixed-size strategy. I built ContextRAG to find out whether that intuition holds up under controlled evaluation.
+But cost wasn't the real issue. The 16K model had a different performance profile. It was frequently, but not always, worse than its 4K counterpart. For a RAG application, where the answer depends more on having the right context than on raw model intelligence, this mattered. Routing short, specific questions to the cheaper, often-smarter model wasn't just an optimization. It was often the better answer.
 
-**The answer is no.** Adaptive chunking is statistically equivalent to uniform chunking within a preregistered nDCG margin of 0.02, confirmed by TOST equivalence testing across three datasets. This null result is itself informative — it suggests that modern embedding models are robust to chunk boundary placement, which simplifies RAG system design considerably.
+The tool was ambitious in other ways too. It had an "edit the docs" mode: if the system told you something wrong, you could correct it inline, and it would propagate the fix back to the source documentation. This worked in theory. In practice, it required a level of subtle, contextual understanding that early models couldn't deliver, and I didn't yet know enough about building TUIs to make the interaction feel right. I knew much less then.
 
-## The Evaluation Harness
+## Context Windows Grew
 
-ContextRAG is a CLI-driven evaluation pipeline that runs controlled experiments across datasets and applies formal statistical comparison to produce a defensible answer. A single `run_eval` call chains: document loading → token-level chunking via a strategy registry → embedding via [chromaroute](/projects/chromaroute/) → ChromaDB vector indexing → multi-modal retrieval → per-query metric calculation → artifact emission. A separate comparison layer loads paired per-query results and runs a full statistical inference suite.
+Context windows grew, but not all at once. GPT-4 brought 32K tokens, which sounds like a big jump from 16K, but very few single-turn RAG interactions were constrained by 16K and not 32K. The routing logic still made sense. Costs were higher with GPT-4 for debatable additional performance on retrieval tasks, so the cheaper model routing remained practical.
 
-The framework computes **7 retrieval metrics** per query: precision@k, recall@k, hit@k, hit@1, MRR@k, nDCG@k, and unique_doc_ratio@k. It supports four retrieval modes — dense, BM25 (implemented from scratch), hybrid via reciprocal rank fusion, and dense with token-overlap reranking — enabling comparison across retrieval approaches within a single evaluation framework.
+Then Gemini launched with a million-token context window.
 
-## Why Statistical Rigor Matters Here
+I came back to this project after finishing my GSoC work on [Pollux](/projects/pollux/), and the mismatch was obvious. I'd been carefully routing between 4K and 16K context limits while the industry had moved to windows large enough to hold a novel. The original premise, that context window size was a constraint worth optimizing around, had evaporated.
 
-Showing that two systems perform *differently* is straightforward: run a significance test, reject the null. Showing that two systems perform *equivalently* is a harder claim. A non-significant difference doesn't prove equivalence — it might just mean you lack statistical power.
+## A Better Question
 
-This is why ContextRAG uses **TOST (two one-sided tests) equivalence testing** rather than standard significance testing. TOST requires you to preregister an equivalence margin (here, 0.02 nDCG) and demonstrate that the observed difference falls within that margin with statistical confidence. It's the methodology used in clinical trials when you need to prove a generic drug works the same as the branded version — the burden of proof is on equivalence, not difference.
+But one piece survived. If you're building a RAG system, you're chunking documents regardless of context window size. And the intuition behind my original routing logic still seemed sound in a different form: short documents lose context when chunked unnecessarily, long documents benefit from finer granularity. A length-aware chunking strategy should outperform a uniform one.
 
-The statistical suite also includes bootstrap confidence intervals, paired randomization tests, Cohen's d and Cliff's delta effect sizes, and **Holm-Bonferroni correction** for multiple comparisons. When you're computing 7 metrics across multiple datasets, controlling Type I error isn't optional — it's the difference between a defensible finding and a p-hacking exercise.
+Should. The word "should" was doing a lot of work there. I decided to actually find out.
 
-## Reproducibility
+## Building the Evaluation
 
-Every experiment run emits a **reproducibility manifest** capturing the git SHA, dependency versions, dataset SHA-256 fingerprints, and config hash. This means any result can be traced back to the exact code, data, and configuration that produced it. The framework enforces this: there is no way to generate results without generating a manifest alongside them.
+Testing whether two approaches perform *differently* is straightforward: run a significance test, reject the null hypothesis. But I wasn't trying to show that adaptive chunking was better. I was trying to determine whether it was better *or* equivalent, and those are very different statistical claims. A non-significant difference doesn't prove equivalence. It might just mean you lack statistical power.
 
-All configuration flows through frozen dataclasses with YAML experiment configs validated before execution — type coercion, range checking, and accumulated error reporting. An experiment matrix runner orchestrates baseline × k sweeps across datasets and generates aggregate comparison dashboards.
+This is why ContextRAG uses TOST (two one-sided tests) equivalence testing. The idea comes from clinical trials: when you need to prove a generic drug works the same as the branded version, you can't just fail to find a difference. You have to preregister an equivalence margin and demonstrate that the observed difference falls within it with statistical confidence. The burden of proof is on equivalence, not just the absence of difference.
 
-60+ experiment runs across 3 datasets (eval-expanded, eval-external, eval-scifact-mini) are archived with their manifests.
+I preregistered a margin of 0.02 nDCG: roughly, if the two approaches differ by less than 2% in ranking quality, they're equivalent for practical purposes. The evaluation harness computes 7 retrieval metrics per query across 4 retrieval modes (dense, BM25, hybrid, and dense with reranking), with bootstrap confidence intervals, paired randomization tests, and Holm-Bonferroni correction for multiple comparisons. When you're computing 7 metrics across multiple datasets, controlling for false positives isn't optional. It's the difference between a defensible finding and accidentally p-hacking yourself.
 
-## Results
+Every experiment run emits a reproducibility manifest: git SHA, dependency versions, dataset fingerprints, config hash. There's no way to generate results without generating the manifest alongside them. Sixty-plus runs across three datasets are archived this way.
 
-On eval-expanded at k=5, uniform chunking achieves recall@5 of 0.835 versus the router's 0.785 — the adaptive strategy performs *slightly worse*. Across all three datasets, the preregistered null hypothesis holds: adaptive ≈ uniform within the 0.02 nDCG equivalence margin.
+## The Answer
 
-This is a legitimate scientific finding, not an absence of results. The framework was designed to produce a defensible answer regardless of which direction the evidence pointed. It happened to point toward equivalence, which required more statistical machinery to support than a simple difference would have.
+No. Adaptive chunking is statistically equivalent to uniform chunking within the preregistered margin. On the expanded evaluation set at k=5, uniform chunking actually achieved slightly higher recall (0.835 vs 0.785). Across all three datasets, the equivalence hypothesis held.
 
-## Historical Context
+## What I Actually Think
 
-This project originated in 2022–2023 when GPT-3.5 (4K context) was significantly cheaper than GPT-3.5-16K. The original motivation was cost-based model routing:
+I believe that result is accurate for the datasets I used. I'm less convinced the conclusion generalizes.
 
-```python
-# Original model selection logic (2022-2023)
-if token_count <= 3500:
-    model = ChatModels.GPT_3_5_TURBO_1106  # Cheaper, 4K context
-elif token_count < 15000:
-    model = ChatModels.GPT_3_5_TURBO_16K   # More expensive, 16K context
-```
+My suspicion (and I'll be upfront that this is expectation, not evidence) is that on a larger, more realistic dataset, adaptive chunking would show a meaningful advantage. The datasets I tested against may not have enough variation in document length and complexity to surface the difference. Modern embedding models are remarkably robust to chunk boundary placement, which is what the data shows. But "robust across these three datasets" is a narrower claim than "robust in general."
 
-As context windows expanded (128K–2M tokens by 2024–2025), the cost-routing motivation became obsolete. The project evolved: first to chunking strategies, then to rigorous evaluation of those strategies. The provider-agnostic embedding infrastructure developed during this work was extracted into [chromaroute](https://github.com/seanbrar/chromaroute), a standalone library [available on PyPI](https://pypi.org/project/chromaroute/).
+This is something I want to revisit. I'm not very experienced with building datasets and benchmarks, and I think the quality of the evaluation is only as good as the data it runs on. The statistical methodology is sound. The open question is whether I was measuring the right thing on the right corpus.
 
-## On Null Results
+I chose to report the finding as-is rather than keep tweaking until I got the result I expected. That felt important. But I also don't want to overstate the conclusion. The data says equivalent, my instinct says otherwise, and resolving that tension requires better data than I currently have.
 
-This project reinforced something I believe about research: **null results are results**.
+## What Fell Out
 
-A well-documented negative finding has value:
-- It prevents others from pursuing unproductive approaches
-- It requires (and demonstrates) rigorous methodology to be convincing
-- It often reveals unexpected insights — here, the robustness of modern embeddings
+The embedding infrastructure I built for ContextRAG turned out to be useful on its own: provider fallback, environment configuration, ChromaDB integration. I extracted it into [chromaroute](/projects/chromaroute/), a standalone library on [PyPI](https://pypi.org/project/chromaroute/). ContextRAG now depends on chromaroute for embeddings and keeps only the evaluation logic.
 
-The temptation with null results is to keep tweaking until something "works." I chose instead to document the finding honestly. The hypothesis was reasonable, the methodology was sound, and the result was clear. That's the output of research, whether or not it confirms the initial intuition.
-
-## Connection to Other Work
-
-ContextRAG is an evaluation harness — it measures whether a system modification produces measurably different outputs using preregistered endpoints, equivalence margins, and formal statistical tests. This is the same fundamental question that runs through my other work: [Pollux](/projects/pollux/) ensures infrastructure-level correctness (deterministic caching, idempotent retries), and [gh-templates](https://github.com/seanbrar/gh-templates) validates that LLM extractions conform to a schema. ContextRAG asks the evaluation version of that question: does this change actually make the system better, and can you prove it?
+The evaluation methodology (preregistered margins, equivalence testing, reproducibility manifests) informed how I approached verification in later projects. Building the harness to answer one question taught me how to build harnesses in general.
 
 The project is open source: [GitHub](https://github.com/seanbrar/ContextRAG)
