@@ -7,36 +7,30 @@ importance: 5
 category: [research tooling]
 ---
 
-## What It Does
+## Why Would Someone Use This Over Just Checking the Website?
 
-paperweight is a CLI tool that fetches recent arXiv papers, scores them against configurable research interests, optionally summarizes the top matches with an LLM, and delivers a ranked digest via stdout, JSON, Atom feed, or email. It solves the daily "keep up with papers" problem: what used to take 30–60 minutes of manual browsing becomes 5–10 minutes of reviewing pre-filtered results.
+That's the question that drives every design decision in paperweight. arXiv is free, fast, and already organized by category. If the tool can't justify its existence against "just go to arxiv.org," it shouldn't exist.
 
-The tool is published on [PyPI](https://pypi.org/project/academic-paperweight/) and runs as a daily cron job for my own research tracking.
+The answer I've landed on: paperweight isn't for discovery. It's for triage. It fetches recent papers, filters them against your research interests, scores them by relevance, and produces a ranked digest you can read in minutes. The value isn't showing you papers you couldn't find yourself. It's cutting a 30-60 minute browsing session down to 5-10 minutes of reviewing a pre-filtered list, and producing output in formats (stdout, JSON, Atom) that plug into whatever workflow you already have.
+
+## Learning What "Usable" Means
+
+The original version was oriented around a daily email digest: paperweight runs on a cron job, queries arXiv, and sends you an email with the top matches. This sounds reasonable until you think about what it asks of the user. Setting up SMTP credentials in a config file is the kind of thing a developer will tolerate in their own tool and no one else will ever do.
+
+After thinking about what it would take for paperweight to be simple, usable, and fast, I moved toward a different model: a scriptable CLI that does one thing and gets out of your way. `paperweight run` prints a ranked digest to stdout. If you want JSON for scripting, pass `--delivery json`. If you want an Atom feed, pass `--delivery atom`. Email is still there as an option, but it's not the primary interface. The primary interface is text you can pipe.
+
+The first run backfills a week of papers automatically. After that, `paperweight run` fetches only what's new. No configuration required beyond `paperweight init` to generate defaults. The tool works without API keys. Heuristic triage and abstracts as summaries are the baseline, LLM-powered triage and summarization are opt-in upgrades.
+
+This is still a work in progress. UX and interface are ongoing priorities, and there are improvements I want to make. But the direction feels right: give users information in a format they can build on, rather than trying to be the entire workflow.
 
 ## Design Decisions
 
-**RSS-first routing.** For daily fetches (the common case), paperweight hits arXiv's RSS feed rather than its API. RSS responses are sub-second and have no rate limits. The API is a fallback for multi-day windows or when RSS doesn't cover a category. This means the tool stays fast and polite to arXiv's infrastructure without user configuration.
+A few design decisions that keep the tool fast and polite to arXiv's infrastructure:
 
-**Batched API queries.** When the API fallback is needed, paperweight batches categories into a single query (`cat:cs.AI OR cat:cs.CL`) rather than issuing one request per category. This reduces API calls linearly with the number of categories tracked.
+Daily fetches hit arXiv's RSS feed rather than its API. RSS responses are sub-second and have no rate limits. The API is a fallback for multi-day windows or categories RSS doesn't cover. The relevance scorer uses logarithmic weighting with per-component caps, so a paper mentioning "reinforcement learning" in every paragraph doesn't score dramatically higher than one with the term in the title and abstract. Every external boundary (API, RSS, content downloads) has independent retry with exponential backoff, so a transient failure fetching one paper doesn't block the rest of the pipeline.
 
-**Logarithmic scoring with per-component caps.** The relevance scorer uses `log(count+1)` weighting with separate caps for title, abstract, and content matches, plus min-max normalization. This prevents a single section with many keyword hits from dominating the score — a paper with "reinforcement learning" in every paragraph shouldn't score dramatically higher than one with the term in the title and abstract.
+The testing infrastructure is disproportionately thorough for a tool this size, with roughly a 1:1 test-to-source ratio. A `MockArxivClient` backed by SQLite enables full pipeline runs offline with deterministic data. A network isolation suite patches `requests` at the module level and asserts zero network calls, verifying that the mocks actually prevent network access rather than just happening not to make requests. `paperweight doctor --strict` validates configuration and serves as a CI gate. This level of testing exists because the scoring algorithm is the kind of thing where regressions are subtle: a changed weight or a broken normalization quietly produces worse rankings without failing loudly.
 
-**Retry at every external boundary.** arXiv's API, RSS feeds, and content downloads each have independent Tenacity retry strategies with exponential backoff. A transient failure fetching one paper's PDF doesn't block the rest of the pipeline.
-
-## Testing Infrastructure
-
-The testing approach is the most interesting engineering decision in the project. paperweight has a ~1:1 test-to-source ratio (3,453 test lines across 15 test files for 3,500 lines of source), organized around a few key patterns:
-
-**Golden-set validation.** A `MockArxivClient` backed by SQLite stores a curated set of known papers with known scores. Tests assert that specific papers score above threshold and rank in expected order. This catches regressions in the scoring algorithm without relying on live data.
-
-**Offline integration testing.** The mock client enables full pipeline runs — fetch through delivery — without touching the network. Tests exercise the real pipeline code paths with deterministic data, which is harder to set up than mocking individual functions but catches integration bugs that unit tests miss.
-
-**Network isolation verification.** A `TestNoNetworkCalls` suite patches `requests` at the module level and asserts zero network calls during offline test runs. This verifies that the mock infrastructure actually prevents network access rather than just happening not to make requests.
-
-**`doctor --strict` as CI gate.** The CLI includes a self-diagnostic command that validates configuration (11 dedicated validation functions with specific error messages). Running it in strict mode serves as a CI gate — broken configs fail the build.
-
-## Connection to Other Work
-
-paperweight was my first project that took testing infrastructure seriously as a design concern rather than an afterthought. The golden-set validation pattern — known inputs with expected outputs, used as a regression safety net — later informed the characterization tests in [Pollux](/projects/pollux/) and the evaluation methodology in [ContextRAG](/projects/contextrag/). The `doctor --strict` pattern (self-diagnostic CLI as CI gate) appears in several of my subsequent projects.
+The tool is published on [PyPI](https://pypi.org/project/academic-paperweight/) and runs as a daily cron job for my own research tracking.
 
 The project is open source: [GitHub](https://github.com/seanbrar/paperweight) &#124; [PyPI](https://pypi.org/project/academic-paperweight/)

@@ -7,101 +7,24 @@ importance: 4
 category: [ml infrastructure]
 ---
 
-## Summary
+## Writing the Same Code Twice
 
-chromaroute is a Python library that abstracts embedding provider complexity for ChromaDB applications. It provides drop-in `EmbeddingFunction` implementations with automatic fallback from cloud providers (OpenRouter) to local models (SentenceTransformers), enabling seamless development and production deployments without provider lock-in.
+OpenRouter has no built-in adapter for ChromaDB. When I needed embeddings for [ContextRAG](/projects/contextrag/), I wrote one inline: OpenRouter as the primary provider, SentenceTransformers as a local fallback for development and API outages, with the fallback logic, error handling, and ChromaDB integration all living inside the project.
 
-The library emerged from my work on [ContextRAG](/projects/contextrag/), where I needed reliable embedding infrastructure that could gracefully handle API failures, work offline during development, and integrate cleanly with ChromaDB's persistence model. Rather than copy that code into future projects, I extracted, refined, and published it as a standalone package [on PyPI](https://pypi.org/project/chromaroute/).
+Then I started building similar functionality for [paperweight](/projects/paperweight/). Same provider, same vector store, same fallback pattern. Writing the same adapter a second time felt like a signal that this code didn't belong inside either project.
 
-## Motivation
+chromaroute is what I pulled out. It's a small, opinionated library: OpenRouter for cloud embeddings, SentenceTransformers for local fallback, ChromaDB as the vector store. That's it. There are escape hatches for custom setups (you can override the base URL, bring your own API key configuration, use a different model) but those are supported on a best-effort basis. The library solves one problem well rather than trying to be an abstraction over every provider and every vector database.
 
-Building RAG systems involves a recurring infrastructure problem: embedding providers are unreliable (rate limits, outages, API changes), switching between development and production environments requires code changes, and ChromaDB's embedding function interface has specific requirements for persistence that are easy to get wrong.
+## What Made It Worth Extracting
 
-The typical workarounds - hardcoded API keys, manual fallback logic, environment-specific code paths - create fragile systems that break at inconvenient times. I wanted infrastructure that would:
+The ChromaDB integration has specific requirements that are easy to get wrong. Custom embedding functions need `build_from_config()` and `get_config()` methods to work with ChromaDB's persistence model. Without them, collections using your embedding function can't be restored after a restart. Getting this right once, in a tested library, is meaningfully better than getting it right (or wrong) in every project that needs embeddings.
 
-1. **Just work** in development (no API key required)
-2. **Gracefully degrade** when cloud providers fail
-3. **Integrate correctly** with ChromaDB's persistence model
-4. **Provide actionable errors** when things go wrong
+The same applies to the error handling. API failures map to actionable suggestions: a 401 means "verify your API key," a 402 means "check your credits," a 529 means "provider overloaded, consider enabling fallbacks." These aren't complex, but they're the kind of thing you don't bother implementing when the adapter is inline code in a larger project. As a standalone library, the cost of doing it properly is low and the payoff compounds across everything that depends on it.
 
-chromaroute addresses these requirements through an opinionated design with intentional escape hatches.
+## Smaller Pieces, Better Focus
 
-## Design Philosophy
+chromaroute was, in some ways, the start of a pattern. Pulling this code out of ContextRAG and giving it its own repository, its own tests, its own release cycle was the first time I experienced how much easier it is to make something functional and reliable when it's separated from the project that spawned it. Inside ContextRAG, this was supporting infrastructure. Good enough, not a priority. As its own library, it became the thing I was focused on, and the quality reflected that.
 
-The library is optimized for a specific workflow: OpenRouter as the primary provider (for its model routing and cost efficiency), with local SentenceTransformers as an automatic fallback. This isn't the only way to do embeddings, but it's a good default that covers most use cases.
+The same pattern repeated later: Nullscope (zero-overhead telemetry) came out of [Pollux](/projects/pollux/) the same way. I expect it to keep happening. The lesson isn't "extract everything into libraries." It's that when you notice yourself writing the same code in two places, the duplication is telling you something about where the natural boundaries are.
 
-**Opinionated defaults, escape hatches for edge cases.** The `build_embedding_function()` factory does the right thing automatically: detecting available providers, loading configuration from environment variables, and returning a working embedding function. For users who need more control, direct instantiation of `OpenRouterEmbeddingFunction` exposes all parameters.
-
-```python
-# The common case: auto-detection handles everything
-from chromaroute import build_embedding_function
-embed_fn = build_embedding_function()
-
-# The escape hatch: full control when needed
-from chromaroute import OpenRouterEmbeddingFunction
-embed_fn = OpenRouterEmbeddingFunction(
-    model="openai/text-embedding-3-small",
-    api_key="sk-or-...",
-    provider={"order": ["openai", "azure"], "allow_fallbacks": True},
-)
-```
-
-**Production-ready error handling.** API failures shouldn't require reading stack traces to diagnose. chromaroute maps HTTP status codes to actionable suggestions:
-
-| Status | Hint |
-| ------ | ---- |
-| 401 | "Verify OPENROUTER_API_KEY" |
-| 402 | "Check OpenRouter credits" |
-| 404 | "Verify OPENROUTER_EMBEDDINGS_MODEL" |
-| 429 | "Rate limit exceeded; retry later" |
-| 529 | "Provider overloaded; consider allow_fallbacks" |
-
-The library also detects common configuration mistakes, like using a third-party API key with OpenRouter without registering it as a BYOK integration.
-
-## Technical Architecture
-
-chromaroute is organized into three focused modules:
-
-**`config.py`** — Configuration management via a frozen dataclass (`EmbedConfig`) with environment variable loading. The `resolve_provider()` and `resolve_model()` methods implement the fallback logic, keeping decision-making centralized and testable.
-
-**`embedding.py`** — The core `OpenRouterEmbeddingFunction` class implementing ChromaDB's `EmbeddingFunction` protocol. It includes retry logic with exponential backoff, proper request/response handling, and - critically - the `build_from_config()` and `get_config()` methods required for ChromaDB persistence. Without these, collections using custom embedding functions can't be restored after restart.
-
-**`vector_store.py`** — A high-level `VectorStore` wrapper providing simplified collection management with automatic batching. This is optional convenience for users who want less boilerplate.
-
-```python
-from chromaroute import VectorStore
-
-store = VectorStore("my_docs", persist_path="./chroma_db")
-store.add_documents(["doc1", "doc2", "doc3"])  # Auto-batched
-results = store.query(["search term"], n_results=5)
-```
-
-The codebase follows strict engineering practices: full type annotations with a `py.typed` marker (PEP 561), strict mypy configuration, comprehensive linting via ruff, and CI through GitHub Actions.
-
-## Connection to Broader Work
-
-chromaroute powers the embedding layer in [ContextRAG](/projects/contextrag/), where it handles all vector store operations for the chunking strategy evaluation. The library will soon be integrated into [paperweight](/projects/paperweight/), replacing its current embedding implementation with a more robust foundation.
-
-This pattern - extracting reusable infrastructure from research projects - reflects how I think about systems development. Research code tends to accumulate useful abstractions that deserve independent existence. By publishing chromaroute as a standalone library, I can iterate on the embedding infrastructure independently of the projects that use it, and other developers can benefit from the work.
-
-The design decisions in chromaroute also informed my approach to provider abstraction in [Pollux](/projects/pollux/) (Google Summer of Code 2025 with Google DeepMind). While that project targets a different API and use case, the underlying philosophy — opinionated defaults, escape hatches, actionable errors — carries through.
-
-## Limitations
-
-chromaroute is intentionally focused:
-
-- **OpenRouter-first**: Other providers (OpenAI direct, Azure, etc.) work via the base URL override, but aren't first-class citizens
-- **ChromaDB-specific**: The embedding functions implement ChromaDB's interface, not a generic protocol
-- **Two-provider fallback**: The chain is OpenRouter → Local; more complex routing isn't supported
-
-These constraints are features, not bugs. A library that tries to support every provider and every vector database becomes a framework with its own learning curve. chromaroute solves one problem well.
-
-## Conclusion
-
-chromaroute demonstrates that focused infrastructure can meaningfully accelerate higher-level work. By handling provider fallback, environment configuration, and ChromaDB integration correctly once, I can build RAG applications without re-solving these problems each time.
-
-The library is open source and available on [GitHub](https://github.com/seanbrar/chromaroute) and [PyPI](https://pypi.org/project/chromaroute/).
-
-```bash
-pip install chromaroute
-```
+The library is open source: [GitHub](https://github.com/seanbrar/chromaroute) &#124; [PyPI](https://pypi.org/project/chromaroute/)
